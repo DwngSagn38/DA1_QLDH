@@ -3,13 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    >
 
-    <TextView
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/chao1"
+        android:layout_marginLeft="234dp"
+        />
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hô hô lô lô"
-        android:textStyle="bold"
-        android:textSize="44dp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:src="@drawable/logo"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yuii handmade"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            />
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="crochet"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/chao2"
+        android:layout_marginLeft="-30dp"
+        />
 
 </LinearLayout>
