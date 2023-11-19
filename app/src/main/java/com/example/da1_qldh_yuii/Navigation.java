@@ -16,6 +16,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.fragment.fragment_banggiatheosize;
+import com.example.da1_qldh_yuii.fragment.fragment_doimatkhau;
+import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
+import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
+import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
+import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
+import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation extends AppCompatActivity {
@@ -44,6 +51,9 @@ public class Navigation extends AppCompatActivity {
         // set mau icon ve ban goc
         nv.setItemIconTintList(null);
 
+        fragment_trangchu fragment_trangchu = new fragment_trangchu();
+        replaceFrg(fragment_trangchu);
+
 
         ///nmbhghv
 
@@ -55,24 +65,33 @@ public class Navigation extends AppCompatActivity {
 
                 if (id == R.id.nav_giaSize){
                     setTitle("Quản lý bảng giá theo size");
+                    fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
+                    replaceFrg(fragmentBanggiatheosize);
 
                 } else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");
+                    fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
+                    replaceFrg(fragmentDonvivanchuyen);
 
                 } else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
+                    fragment_thongbao fragmentThongbao = new fragment_thongbao();
+                    replaceFrg(fragmentThongbao);
 
                 } else if (id == R.id.nav_thanhVien){
-                    setTitle("Quản lý bảng giá theo size");
-
-                } else if (id == R.id.nav_giaSize){
                     setTitle("Quản lý thành viên");
+                    fragment_thanhvien fragment_thanhvien = new fragment_thanhvien();
+                    replaceFrg(fragment_thanhvien);
 
                 } else if(id == R.id.nav_quenMatKhau){
                     setTitle("Quên mật khẩu");
+                    fragment_quenmatkhau fragment_quenmatkhau = new fragment_quenmatkhau();
+                    replaceFrg(fragment_quenmatkhau);
 
                 } else if(id == R.id.nav_doiMatKhau){
                     setTitle("Đổi mật khẩu");
+                    fragment_doimatkhau fragment_doimatkhau = new fragment_doimatkhau();
+                    replaceFrg(fragment_doimatkhau);
 
                 }else if (id == R.id.nav_dangXuat){
                     AlertDialog.Builder builder = new AlertDialog.Builder(Navigation.this);
