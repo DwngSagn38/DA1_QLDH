@@ -89,7 +89,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you new user? "
+            android:text="Are you a new user? "
 
             />
 
