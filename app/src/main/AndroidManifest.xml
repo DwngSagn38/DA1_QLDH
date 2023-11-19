@@ -13,16 +13,13 @@
         android:theme="@style/Theme.DA1_QLDH_YUII"
         tools:targetApi="31">
         <activity
-            android:name=".Navigation"
-            android:exported="false" />
-        <activity
-            android:name=".DoiMatKhau"
+            android:name=".DangNhap"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DangNhap"
+            android:name=".Navigation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
