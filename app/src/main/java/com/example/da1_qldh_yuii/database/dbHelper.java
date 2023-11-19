@@ -33,6 +33,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
         String dbSanPham = "CREATE TABLE SANPHAM (\n" +
                 " maSanPham TEXT PRIMARY KEY , \n" +
+                "anhSanPham INTEGER, \n" +
                 "tenSanPham TEXT, \n" +
                 "trangThai INTEGER, \n" +
                 "maBangGia INTEGER, \n" +
@@ -120,9 +121,9 @@ public class dbHelper extends SQLiteOpenHelper {
                                             " (3, 4, 150)");
 
         //mã, tên, trạng thái, mã bảng giá
-        db.execSQL("INSERT INTO SANPHAM VALUES('SP01', 'Gấu bông', 1, 2)," +
-                                            " ('SP02', 'Hoa', 2, 1)," +
-                                            " ('SP03', 'Khăn', 1, 1)");
+        db.execSQL("INSERT INTO SANPHAM VALUES('SP01',1, 'Gấu bông', 1, 2)," +
+                                            " ('SP02',2, 'Hoa', 2, 1)," +
+                                            " ('SP03',2, 'Khăn', 1, 1)");
 
 
         //maThanhVien, tenThanhVien, soDienThoai, matKhau, phanQuyen
