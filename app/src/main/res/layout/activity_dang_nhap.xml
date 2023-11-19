@@ -16,43 +16,44 @@
         />
 
 
-    <EditText
-        android:layout_marginTop="40dp"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/khung"
-        android:hint="Email"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingLeft="10dp"
-        android:drawableStart="@drawable/email"
-        android:drawablePadding="10dp"
-
-        />
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/khung"
-        android:hint="Mật khẩu"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:drawableStart="@drawable/key"
-        android:drawableEnd="@drawable/open"
-        android:drawablePadding="10dp"
-        android:inputType="textPassword"
+        android:id="@+id/in_User">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/khung"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="10dp"
+            android:hint="Tên Đăng Nhập"
+            android:textSize="18dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/khung"
+            android:drawableStart="@drawable/key"
+            android:drawablePadding="10dp"
+            android:hint="Mật Khẩu"
+            android:textSize="18dp"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 
 

@@ -17,65 +17,64 @@
         />
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/khung"
-        android:hint="Nhập mật khẩu cũ"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:layout_marginTop="40dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:drawableStart="@drawable/key"
-        android:drawableEnd="@drawable/close"
-        android:drawablePadding="10dp"
-        android:inputType="textPassword"
-
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/khung"
-        android:hint="Nhập mật khẩu mới"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:drawableStart="@drawable/key1"
-        android:drawableEnd="@drawable/close"
-        android:drawablePadding="10dp"
-        android:inputType="textPassword"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/khung"
+            android:drawableStart="@drawable/key"
+            android:drawablePadding="10dp"
+            android:hint="Nhập mật khẩu cũ"
+            android:textSize="18dp"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        />
-
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/khung"
-        android:hint="Nhập lại mật khẩu mới"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:drawableStart="@drawable/repass"
-        android:drawableEnd="@drawable/close"
-        android:drawablePadding="10dp"
-        android:inputType="textPassword"
+        app:passwordToggleEnabled="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/khung"
+            android:drawableStart="@drawable/key1"
+            android:drawablePadding="10dp"
+            android:hint="Nhập mật khẩu mới"
+            android:textSize="18dp"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:passwordToggleEnabled="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/khung"
+            android:drawableStart="@drawable/repass"
+            android:drawablePadding="10dp"
+            android:hint="Nhập lại mật khẩu mới"
+            android:textSize="18dp"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 
 
