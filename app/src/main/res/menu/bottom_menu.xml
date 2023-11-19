@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_trangChu"
+        android:title="Trang chủ"
+        android:icon="@drawable/trangchu"/>
+    <item android:id="@+id/bottom_khoHang"
+        android:title="Kho hàng"
+        android:icon="@drawable/khohang"/>
+    <item android:id="@+id/bottom_hoaDon"
+        android:title="Hóa đơn"
+        android:icon="@drawable/hoadon"/>
+    <item android:id="@+id/bottom_thongKe"
+        android:title="Thống kê"
+        android:icon="@drawable/thongke"/>
+</menu>
