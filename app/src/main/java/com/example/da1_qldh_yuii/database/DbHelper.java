@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class dbHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper {
 
 
-    public dbHelper(@Nullable Context context) {
+    public DbHelper(@Nullable Context context) {
         super(context, "QLHD", null, 1);
     }
 
