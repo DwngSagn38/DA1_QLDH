@@ -45,6 +45,7 @@ public class Navigation extends AppCompatActivity {
         nv.setItemIconTintList(null);
 
 
+        ///nmbhghv
 
         // su kien fragment
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
