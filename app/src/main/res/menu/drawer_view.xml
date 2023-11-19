@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_giaSize"
+            android:icon="@drawable/giasize"
+            android:title="Quản lý bảng giá theo Size"/>
+        <item android:id="@+id/nav_DVVC"
+            android:icon="@drawable/dvvc"
+            android:title="Quản lý đơn vị vận chuyển"/>
+        <item android:id="@+id/nav_thongBao"
+            android:icon="@drawable/thongbao"
+            android:title="Quản lý thông báo"/>
+        <item android:id="@+id/nav_thanhVien"
+        android:icon="@drawable/thanhvien"
+        android:title="Quản lý thành viên"/>
+
+        <item android:title="Người dùng">
+            <menu>
+                <item android:id="@+id/nav_quenMatKhau"
+                    android:icon="@drawable/quenmk"
+                    android:title="Quên mật khẩu"></item>
+                <item android:id="@+id/nav_doiMatKhau"
+                    android:icon="@drawable/doimatkhau"
+                    android:title="Đổi mật khẩu"></item>
+                <item android:id="@+id/nav_dangXuat"
+                    android:icon="@drawable/dangxuat"
+                    android:title="Đăng xuất"></item>
+            </menu>
+        </item>
+
+    </group>
+</menu>
