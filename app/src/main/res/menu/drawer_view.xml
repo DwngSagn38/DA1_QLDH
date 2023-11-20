@@ -13,8 +13,9 @@
             android:visible="false"
             android:title="Quản lý thông báo"/>
         <item android:id="@+id/nav_thanhVien"
-        android:icon="@drawable/thanhvien" android:visible="false"
-        android:title="Quản lý thành viên"/>
+            android:icon="@drawable/thanhvien"
+            android:visible="false"
+            android:title="Quản lý thành viên"/>
 
         <item android:title="Người dùng">
             <menu>
