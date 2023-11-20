@@ -99,9 +99,15 @@ public class DangNhap extends AppCompatActivity {
                 String sdt = edsdt.getText().toString();
                 String pass = edPass.getText().toString();
                 String confirm = edRePass.getText().toString();
-                ThanhVien tv = new ThanhVien(user,hoten,sdt,pass,2);
+
                 if (user.trim().isEmpty() || hoten.trim().isEmpty() || sdt.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()) {
                     Toast.makeText(DangNhap.this, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+                }else {
+                    ThanhVien tv = new ThanhVien(user,hoten,sdt,pass,1);
+                    tvDAO.insert(tv);
+
+                    Toast.makeText(DangNhap.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                 }
             }
         });

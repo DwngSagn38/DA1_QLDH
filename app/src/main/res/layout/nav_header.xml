@@ -24,9 +24,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:text="Nguyễn Thị Lý"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:text="Nguyễn Thị Lý"/>
         <TextView
             android:id="@+id/tvLevel"
             android:layout_width="match_parent"

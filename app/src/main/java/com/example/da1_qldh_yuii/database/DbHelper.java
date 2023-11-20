@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(@Nullable Context context) {
-        super(context, "QLHD", null, 1);
+        super(context, "QLHD", null, 2);
     }
 
     @Override
@@ -127,9 +127,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
         //maThanhVien, tenThanhVien, soDienThoai, matKhau, phanQuyen
-        db.execSQL("INSERT INTO THANHVIEN VALUES('TV01', 'Nguyễn Thị Lý', '0922222222', '123456', 'Admin'),\n" +
-                "('TV02', 'Phạm Thị B', '0933333333', '123456', 'Nhanvien'),\n" +
-                "('TV03', 'Lê Văn C', '0944444444', '123456', 'Nhanvien')");
+        db.execSQL("INSERT INTO THANHVIEN VALUES('TV01', 'Nguyễn Thị Lý', '0922222222', '123456', 0),\n" +
+                "('TV02', 'Phạm Thị B', '0933333333', '123456', 1),\n" +
+                "('TV03', 'Lê Văn C', '0944444444', '123456', 1)");
 
         //maVanChuyen, tenVanChuyen, GiaVanChuyen, moTa, trangThai
         db.execSQL("INSERT INTO VANCHUYEN VALUES('VC01', 'Giao hàng nhanh', 20, 'Dịch vụ giao hàng nhanh trong thành phố', 0), \n" +

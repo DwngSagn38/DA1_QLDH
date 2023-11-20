@@ -67,12 +67,19 @@ public class Navigation extends AppCompatActivity {
         // show user trên header
         mHeaderView = nv.getHeaderView(0);
         tvUser = mHeaderView.findViewById(R.id.tvUser);
+        tvLevel = mHeaderView.findViewById(R.id.tvLevel);
         Intent i = getIntent();
         String user = i.getStringExtra("user");
         tvDAO = new ThanhVienDAO(this);
         ThanhVien thanhVien = tvDAO.getID(user);
         String username = thanhVien.getTenThanhVien();
+        int level = thanhVien.getPhanQuyen();
         tvUser.setText(username);
+        if (level == 0){
+            tvLevel.setText("(Quản lý)");
+        }else {
+            tvLevel.setText("(Nhân Viên)");
+        }
 
 
         // admin co quyen ql bang gia, dvvc
@@ -89,6 +96,11 @@ public class Navigation extends AppCompatActivity {
                     setTitle("Quản lý bảng giá theo size");
                     fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
                     replaceFrg(fragmentBanggiatheosize);
+
+                }  else if (id == R.id.nav_home){
+                    setTitle("Yuii shop");
+                    fragment_trangchu fragment_trangchu = new fragment_trangchu();
+                    replaceFrg(fragment_trangchu);
 
                 } else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");

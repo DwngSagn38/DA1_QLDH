@@ -12,14 +12,15 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        // hihi
 
+        // abccccc
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Welcome.this, DangNhap.class);
-                startActivity(intent);
+                startActivity(new Intent(Welcome.this, DangNhap.class));
             }
-        },1500);
+        },3000);
     }
 }
