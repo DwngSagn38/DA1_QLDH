@@ -2,20 +2,16 @@ package com.example.da1_qldh_yuii.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.da1_qldh_yuii.Photo;
+import com.example.da1_qldh_yuii.model.Photo;
 import com.example.da1_qldh_yuii.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
 
