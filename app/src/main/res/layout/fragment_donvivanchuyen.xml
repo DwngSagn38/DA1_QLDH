@@ -79,7 +79,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/dvvc"
+                android:src="@drawable/anh2"
                 android:layout_marginLeft="10dp"
 
                 />
@@ -122,7 +122,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/dvvc"
+                android:src="@drawable/stop"
                 android:layout_marginLeft="10dp"
 
                 />
