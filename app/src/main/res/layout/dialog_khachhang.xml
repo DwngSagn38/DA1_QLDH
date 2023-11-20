@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@drawable/khung">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm khách hàng"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30sp"/>
+        <EditText
+            android:id="@+id/edMaKH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/khung"
+            android:hint="Mã khách hàng"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/makh"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/edTenKH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/khung"
+            android:hint="Tên khách hàng"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/tenkh"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/edSDT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/khung"
+            android:hint="Số điện thoại"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/sdt"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/edDiaChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/khung"
+            android:hint="Địa chỉ"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/diachi"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu"
+                android:background="@drawable/khungdn"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textSize="17dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hủy"
+                android:background="@drawable/khungdn"
+                android:textColor="@color/white"
+                android:backgroundTint="#F44336"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:textSize="17dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
