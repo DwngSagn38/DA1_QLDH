@@ -30,6 +30,8 @@ public class ThanhVienDAO {
         return db.insert("THANHVIEN",null,values);
     }
 
+
+
     public long update(ThanhVien tv){
         ContentValues values = new ContentValues();
         values.put("tenThanhVien",tv.getTenThanhVien());
