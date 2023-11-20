@@ -17,6 +17,7 @@ import java.util.List;
 public class TonKhoDAO {
     private SQLiteDatabase db;
 
+    //
     public TonKhoDAO(Context context) {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
