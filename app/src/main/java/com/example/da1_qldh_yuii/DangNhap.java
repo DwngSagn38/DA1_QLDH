@@ -40,7 +40,6 @@ public class DangNhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-        // test
         //anh xa
 
         edUsername = findViewById(R.id.edUsername);
