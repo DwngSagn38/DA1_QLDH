@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,7 +81,8 @@ public class Navigation extends AppCompatActivity {
             tvLevel.setText("(Nhân Viên)");
         }
 
-        // admin co quyen ql bang gia, dvvc
+
+        // quanly co quyen ql bang gia, dvvc
 
 
 
@@ -104,6 +106,10 @@ public class Navigation extends AppCompatActivity {
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
+
+                } else if (id == R.id.bottom_trangChu){
+                    setTitle("Yuii shop");
+                    replaceFrg(fragment_trangchu);
 
                 } else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
