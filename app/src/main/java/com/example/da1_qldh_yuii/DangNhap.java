@@ -3,7 +3,9 @@ package com.example.da1_qldh_yuii;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,9 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.adapter.ThanhVienAdapter;
 import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
 import com.example.da1_qldh_yuii.model.ThanhVien;
+
+import java.util.ArrayList;
 
 public class DangNhap extends AppCompatActivity {
 
@@ -34,6 +39,7 @@ public class DangNhap extends AppCompatActivity {
     EditText edUser,edTen,edsdt,edPass,edRePass;
 
     Button btnLuu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,19 +75,21 @@ public class DangNhap extends AppCompatActivity {
         tvDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                openDialog(DangNhap.this);
             }
         });
 
     }
 
-    public void openDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
+    public void openDialog(Context context){
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = inflater.inflate(R.layout.dl_dangky,null);
         builder.setView(view); // gan view vao hop thoai
         Dialog dialog = builder.create();
         dialog.show();
+
+        ThanhVienDAO tvDao = new ThanhVienDAO(context);
 
         // anh xa
         edUser = dialog.findViewById(R.id.edUser);
@@ -101,18 +109,17 @@ public class DangNhap extends AppCompatActivity {
                 String confirm = edRePass.getText().toString();
 
                 if (user.trim().isEmpty() || hoten.trim().isEmpty() || sdt.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()) {
-                    Toast.makeText(DangNhap.this, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
-                } else if (tvDAO.checkUser(user)) {
-                    Toast.makeText(DangNhap.this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
+                } else if (tvDao.checkUser(user)) {
+                    Toast.makeText(context, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
                 } else if (!pass.equals(confirm)) {
-                    Toast.makeText(DangNhap.this, "Mật khẩu chưa khớp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Mật khẩu chưa khớp", Toast.LENGTH_SHORT).show();
                 } else if (!validateSDT(sdt) || sdt.length() < 10){
-                    Toast.makeText(DangNhap.this, "Số điện thoại chưa đúng", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Số điện thoại chưa đúng", Toast.LENGTH_SHORT).show();
                 } else {
                     ThanhVien tv = new ThanhVien(user,hoten,sdt,pass,1);
-                    tvDAO.insert(tv);
-
-                    Toast.makeText(DangNhap.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    tvDao.insert(tv);
+                    Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             }
