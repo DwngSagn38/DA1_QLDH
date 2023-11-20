@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class PhotoAdapter extends PagerAdapter  {
         Photo photo = mListPhoto.get(position);
         if (photo != null){
             Glide.with(mcontext).load(photo.getResourceId()).into(imgPhoto);
+
         }
 
         // Add view to viewgroup

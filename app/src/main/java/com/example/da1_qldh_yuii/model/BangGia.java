@@ -1,17 +1,19 @@
 package com.example.da1_qldh_yuii.model;
 
 public class BangGia {
-    private int maBangGia,size;
-    private double gia;
+    private int maBangGia;
+    private int size;
+    private double giaBan;
 
     public BangGia() {
     }
 
-    public BangGia(int maBangGia, int size, double gia) {
+    public BangGia(int maBangGia, int size, double giaBan) {
         this.maBangGia = maBangGia;
         this.size = size;
-        this.gia = gia;
+        this.giaBan = giaBan;
     }
+
 
     public int getMaBangGia() {
         return maBangGia;
@@ -29,11 +31,11 @@ public class BangGia {
         this.size = size;
     }
 
-    public double getGia() {
-        return gia;
+    public double getGiaBan() {
+        return giaBan;
     }
 
-    public void setGia(double gia) {
-        this.gia = gia;
+    public void setGiaBan(double giaBan) {
+        this.giaBan = giaBan;
     }
 }
