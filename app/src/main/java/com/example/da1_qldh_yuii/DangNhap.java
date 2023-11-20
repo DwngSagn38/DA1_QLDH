@@ -106,9 +106,6 @@ public class DangNhap extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     public void rememberUser(String u, String p, boolean status) {
@@ -145,5 +142,5 @@ public class DangNhap extends AppCompatActivity {
         }
     }
 
-
+// comment
 }
