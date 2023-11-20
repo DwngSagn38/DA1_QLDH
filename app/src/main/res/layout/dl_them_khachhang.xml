@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp"
-        android:background="@drawable/khung">
+        android:background="@drawable/khung"
+        >
 
         <TextView
             android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:textColor="@color/black"
             android:textSize="30sp"/>
         <EditText
-            android:id="@+id/edMaKH"
+            android:id="@+id/edMaKHadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/khung"
@@ -35,7 +36,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/edTenKH"
+            android:id="@+id/edTenKHadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/khung"
@@ -48,7 +49,7 @@
             android:layout_margin="10dp"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/edSDT"
+            android:id="@+id/edSDTadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/khung"
@@ -61,7 +62,7 @@
             android:layout_margin="10dp"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/edDiaChi"
+            android:id="@+id/edDiaChiadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/khung"
@@ -80,6 +81,7 @@
             android:layout_margin="20dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btnLuuAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lưu"
@@ -89,6 +91,7 @@
                 android:layout_weight="1"
                 android:textSize="17dp"/>
             <Button
+                android:id="@+id/btnHuyAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hủy"
