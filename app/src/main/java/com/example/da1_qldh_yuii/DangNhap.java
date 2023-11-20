@@ -102,7 +102,13 @@ public class DangNhap extends AppCompatActivity {
 
                 if (user.trim().isEmpty() || hoten.trim().isEmpty() || sdt.trim().isEmpty() || pass.trim().isEmpty() || confirm.trim().isEmpty()) {
                     Toast.makeText(DangNhap.this, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
-                }else {
+                } else if (tvDAO.checkUser(user)) {
+                    Toast.makeText(DangNhap.this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+                } else if (!pass.equals(confirm)) {
+                    Toast.makeText(DangNhap.this, "Mật khẩu chưa khớp", Toast.LENGTH_SHORT).show();
+                } else if (!validateSDT(sdt) || sdt.length() < 10){
+                    Toast.makeText(DangNhap.this, "Số điện thoại chưa đúng", Toast.LENGTH_SHORT).show();
+                } else {
                     ThanhVien tv = new ThanhVien(user,hoten,sdt,pass,1);
                     tvDAO.insert(tv);
 
@@ -148,5 +154,9 @@ public class DangNhap extends AppCompatActivity {
         }
     }
 
+    public boolean validateSDT(String sdt){
+        return sdt.matches("\\d++");
+    }
 
+// comment a
 }

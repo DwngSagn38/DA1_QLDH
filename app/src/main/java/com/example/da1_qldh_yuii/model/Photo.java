@@ -1,4 +1,4 @@
-package com.example.da1_qldh_yuii;
+package com.example.da1_qldh_yuii.model;
 
 public class Photo {
     private int resourceId;

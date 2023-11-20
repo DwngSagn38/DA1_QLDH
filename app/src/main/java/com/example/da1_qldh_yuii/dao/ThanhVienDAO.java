@@ -23,6 +23,7 @@ public class ThanhVienDAO {
 
     public long insert(ThanhVien tv){
         ContentValues values = new ContentValues();
+        values.put("maThanhVien",tv.getMaThanhVien());
         values.put("tenThanhVien",tv.getTenThanhVien());
         values.put("soDienThoai",tv.getSoDienThoai());
         values.put("matKhau",tv.getMatKhau());
@@ -34,6 +35,7 @@ public class ThanhVienDAO {
 
     public long update(ThanhVien tv){
         ContentValues values = new ContentValues();
+        values.put("maThanhVien",tv.getMaThanhVien());
         values.put("tenThanhVien",tv.getTenThanhVien());
         values.put("soDienThoai",tv.getSoDienThoai());
         values.put("matKhau",tv.getMatKhau());
@@ -63,6 +65,15 @@ public class ThanhVienDAO {
             return -1;
         }
         return 1;
+    }
+
+    public boolean checkUser(String username) {
+        boolean usernameExists = false;
+        Cursor cursor = db.rawQuery("SELECT * FROM THANHVIEN WHERE maThanhVien = ?", new String[]{username});
+        if (cursor.moveToFirst()) {
+            usernameExists = true;
+        }
+        return usernameExists;
     }
 
     @SuppressLint("Range")

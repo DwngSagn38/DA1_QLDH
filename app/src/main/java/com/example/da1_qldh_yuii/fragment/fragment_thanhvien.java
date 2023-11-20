@@ -10,7 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.da1_qldh_yuii.R;
 
+
 public class fragment_thanhvien extends Fragment {
+
+
+    public fragment_thanhvien() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
