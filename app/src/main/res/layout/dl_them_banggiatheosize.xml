@@ -31,7 +31,7 @@
         />
 
     <EditText
-        android:id="@+id/SizeAdd"
+        android:id="@+id/edtSizeAdd"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Size"
@@ -43,7 +43,7 @@
         />
 
     <EditText
-        android:id="@+id/GiaBanAdd"
+        android:id="@+id/edtGiaBanAdd"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Giá bán"
