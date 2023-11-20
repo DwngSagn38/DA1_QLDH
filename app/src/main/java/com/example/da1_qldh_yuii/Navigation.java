@@ -74,7 +74,7 @@ public class Navigation extends AppCompatActivity {
         tvUser.setText(username);
 
         // admin co quyen ql bang gia, dvvc
-       
+
 
 
         // su kien fragment
