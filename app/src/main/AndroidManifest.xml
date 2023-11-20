@@ -19,7 +19,7 @@
             android:name=".DangNhap"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Photo"
             android:exported="false" />
         <activity
             android:name=".Navigation"

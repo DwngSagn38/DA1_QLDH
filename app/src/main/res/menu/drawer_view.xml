@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Trang chủ"/>
         <item android:id="@+id/nav_giaSize"
             android:icon="@drawable/giasize"
             android:title="Quản lý bảng giá theo Size"/>
         <item android:id="@+id/nav_DVVC"
-            android:icon="@drawable/dvvc"
+            android:icon="@drawable/ic_vchuyen"
             android:title="Quản lý đơn vị vận chuyển"/>
         <item android:id="@+id/nav_thongBao"
             android:icon="@drawable/thongbao"

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +26,13 @@ import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+
 public class Navigation extends AppCompatActivity {
+
 
     DrawerLayout drawer;
     Toolbar toolbar;
@@ -40,6 +47,7 @@ public class Navigation extends AppCompatActivity {
         drawer = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar1);
         nv = findViewById(R.id.nvView);
+
         // set toolbar thay actionbar
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
@@ -73,7 +81,12 @@ public class Navigation extends AppCompatActivity {
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
 
-                } else if (id == R.id.nav_thongBao){
+                }  else if (id == R.id.nav_home){
+                    setTitle("Yuii shop");
+                    fragment_trangchu fragment_trangchu = new fragment_trangchu();
+                    replaceFrg(fragment_trangchu);
+
+                }else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
                     fragment_thongbao fragmentThongbao = new fragment_thongbao();
                     replaceFrg(fragmentThongbao);
@@ -129,4 +142,6 @@ public class Navigation extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent,frg).commit();
     }
+
+
 }
