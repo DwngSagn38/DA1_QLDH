@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.fragment_trangchu">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/khung"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_margin="20dp"
+                android:drawableStart="@drawable/search"
+                android:hint="Search..."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sản phẩm mới:"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+            
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow1"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow3"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow1"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/slideshow3"/>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTaoHoaDon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/taohoadon"
+                    android:text="Tạo hóa đơn"
+                    android:padding="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/khung"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:id="@+id/btnSanPham"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/sanpham"
+                    android:background="@drawable/khung"
+                    android:layout_marginLeft="20dp"
+                    android:text="Sản phẩm"
+                    android:padding="10dp"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+                <Button
+                    android:id="@+id/btnKhachHang"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/khachhang"
+                    android:background="@drawable/khung"
+                    android:layout_marginLeft="20dp"
+                    android:text="Khách hàng"
+                    android:padding="10dp"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông báo:"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvThongBao"
+                android:background="@drawable/khung"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:padding="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frmbottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_weight="1"/>
 
-</FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C0D3F8"
+        app:itemIconTint="@color/bottom_nav_icon_color"
+        app:itemTextColor="@color/bottom_nav_text_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_menu" />
+
+</LinearLayout>
