@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".DangNhap">
 
     <ImageView
@@ -23,7 +22,7 @@
         android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtTenDangNhap"
+            android:id="@+id/edUsername"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -38,13 +37,14 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtMatKhau"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -60,6 +60,7 @@
 
 
     <CheckBox
+        android:id="@+id/chkRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nhớ mật khẩu"
@@ -90,7 +91,6 @@
 
         >
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Are you a new user? "
@@ -98,6 +98,7 @@
             />
 
         <TextView
+            android:id="@+id/tvDangKy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"

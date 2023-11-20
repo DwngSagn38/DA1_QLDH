@@ -9,14 +9,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.fragment.fragment_banggiatheosize;
 import com.example.da1_qldh_yuii.fragment.fragment_doimatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
@@ -24,20 +26,19 @@ import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
+import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import me.relex.circleindicator.CircleIndicator;
-
 public class Navigation extends AppCompatActivity {
-
 
     DrawerLayout drawer;
     Toolbar toolbar;
 
+    View mHeaderView;
+    TextView tvUser;
     NavigationView nv;
+
+    ThanhVienDAO tvDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,6 @@ public class Navigation extends AppCompatActivity {
         drawer = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar1);
         nv = findViewById(R.id.nvView);
-
         // set toolbar thay actionbar
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
@@ -62,8 +62,21 @@ public class Navigation extends AppCompatActivity {
         fragment_trangchu fragment_trangchu = new fragment_trangchu();
         replaceFrg(fragment_trangchu);
 
+        // show user trên header
+        mHeaderView = nv.getHeaderView(0);
+        tvUser = mHeaderView.findViewById(R.id.tvUser);
+        Intent i = getIntent();
+        String user = i.getStringExtra("user");
+        tvDAO = new ThanhVienDAO(this);
+        ThanhVien thanhVien = tvDAO.getID(user);
+        String username = thanhVien.getTenThanhVien();
+        tvUser.setText(username);
 
-        ///nmbhghv
+        // admin co quyen ql bang gia, dvvc
+        if (user.equalsIgnoreCase("Admin")) {
+            nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
+        }
+
 
         // su kien fragment
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -81,12 +94,7 @@ public class Navigation extends AppCompatActivity {
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
 
-                }  else if (id == R.id.nav_home){
-                    setTitle("Yuii shop");
-                    fragment_trangchu fragment_trangchu = new fragment_trangchu();
-                    replaceFrg(fragment_trangchu);
-
-                }else if (id == R.id.nav_thongBao){
+                } else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
                     fragment_thongbao fragmentThongbao = new fragment_thongbao();
                     replaceFrg(fragmentThongbao);
@@ -142,6 +150,4 @@ public class Navigation extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent,frg).commit();
     }
-
-
 }

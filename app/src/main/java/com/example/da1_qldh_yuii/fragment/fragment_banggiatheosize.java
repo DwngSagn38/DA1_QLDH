@@ -25,4 +25,6 @@ public class fragment_banggiatheosize extends Fragment {
 
         return view;
     }
+
+
 }
