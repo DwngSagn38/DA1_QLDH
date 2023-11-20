@@ -74,9 +74,7 @@ public class Navigation extends AppCompatActivity {
         tvUser.setText(username);
 
         // admin co quyen ql bang gia, dvvc
-        if (user.equalsIgnoreCase("Admin")) {
-            nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
-        }
+       
 
 
         // su kien fragment
