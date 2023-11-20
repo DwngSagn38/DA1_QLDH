@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông tin chi tiết thành viên"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_margin="20dp"
+
+        />
+
+
+    <ImageView
+        android:id="@+id/imgAnhThanhVien"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/khung"
+
+        />
+
+
+    <TextView
+        android:id="@+id/txtMaThanhVien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtHoVaTen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/txtSoDienThoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtChucVu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+
+        >
+
+        <Button
+            android:id="@+id/btnUpdateTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:background="@drawable/khungdn"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/btnDeleteTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/khung_delete"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
