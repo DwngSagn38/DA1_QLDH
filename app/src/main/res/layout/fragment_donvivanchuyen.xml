@@ -9,37 +9,35 @@
     <LinearLayout
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="vertical"
-
-
-        >
+        android:background="@color/gray">
         <TextView
-            android:background="@color/gray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Vận chuyển"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="26dp"
-
-            />
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:textSize="26dp" />
+    </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-
+            android:background="@drawable/bg_bottom"
+            android:layout_marginTop="4dp"
             >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/dvvc"
-                android:layout_marginLeft="10dp"
-
+                android:layout_margin="10dp"
+                android:scaleType="fitXY"
                 />
 
             <TextView
@@ -72,15 +70,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-
+            android:background="@drawable/bg_bottom"
+            android:layout_marginVertical="4dp"
             >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/anh2"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
 
                 />
 
@@ -115,15 +113,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-
+            android:background="@drawable/bg_bottom"
+            android:layout_marginBottom="4dp"
             >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/stop"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
 
                 />
 
@@ -135,7 +133,6 @@
                 android:layout_marginLeft="20dp"
                 android:textSize="18dp"
                 android:textColor="@color/black"
-
                 />
 
             <ImageView
@@ -145,25 +142,28 @@
                 android:src="@drawable/next"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-
                 />
 
 
         </LinearLayout>
 
 
-    </LinearLayout>
-
-    <TextView
-        android:background="@color/gray"
+    <LinearLayout
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Danh Sách"
-        android:textColor="@color/black"
-        android:textSize="26dp"
-        android:layout_marginTop="20dp"
-
-        />
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:background="@color/gray">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Danh sách"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:textSize="26dp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvDonViVanChuyen"
@@ -171,5 +171,7 @@
         android:layout_height="match_parent"
 
         />
-
 </LinearLayout>
+
+
+
