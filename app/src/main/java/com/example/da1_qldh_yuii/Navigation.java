@@ -82,7 +82,7 @@ public class Navigation extends AppCompatActivity {
         }
 
 
-        // admin co quyen ql bang gia, dvvc
+        // quanly co quyen ql bang gia, dvvc
 
 
 
