@@ -71,44 +71,55 @@ public class fragment_banggiatheosize extends Fragment {
         View view = inflater.inflate(R.layout.dl_them_banggiatheosize, null);
         builder.setView(view);
 
-        EditText edtMaBangGiaAdd = view.findViewById(R.id.edtMaBangGiaAdd);
         EditText edtSizeAdd = view.findViewById(R.id.edtSizeAdd);
         EditText edtGiaBanAdd = view.findViewById(R.id.edtGiaBanAdd);
 
         //thêm
-        builder.setNegativeButton("Thêm", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                int size = Integer.parseInt(edtSizeAdd.getText().toString());
-                double giaBan = Double.parseDouble(edtGiaBanAdd.getText().toString());
+                String checkSize = edtSizeAdd.getText().toString().trim();
+                String checkGiaban = edtGiaBanAdd.getText().toString().trim();
 
-                boolean check = bangGiaTheoSizeDAO.themBangGia(size, giaBan);
-                if (check){
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    //load data
-                    loadData();
+                if (isInt(checkSize) && isDouble(checkGiaban)){
+                    int size = Integer.parseInt(edtSizeAdd.getText().toString());
+                    double giaBan = Double.parseDouble(edtGiaBanAdd.getText().toString());
 
-                }else{
-                    Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    boolean check = bangGiaTheoSizeDAO.themBangGia(size, giaBan);
+                    if (check){
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        //load data
+                        loadData();
+
+                    }else{
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(getContext(), "Size hoặc giá bán chưa hợp lệ", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         //hủy
-        builder.setPositiveButton("Hủy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        builder.setNegativeButton("Hủy",null);
 
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
+    public boolean isInt(String so){
+        return so.matches("\\d++");
+    }
+    public boolean isDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 
 }

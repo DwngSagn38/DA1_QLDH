@@ -1,4 +1,4 @@
-package com.example.da1_qldh_yuii;
+package com.example.da1_qldh_yuii.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 
 import com.bumptech.glide.Glide;
+import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.model.Photo;
 
 import java.util.List;

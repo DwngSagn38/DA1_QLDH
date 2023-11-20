@@ -1,4 +1,4 @@
-package com.example.da1_qldh_yuii;
+package com.example.da1_qldh_yuii.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.model.ThanhVien;
 

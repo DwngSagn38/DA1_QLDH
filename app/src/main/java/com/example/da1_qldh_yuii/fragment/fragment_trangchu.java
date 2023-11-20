@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.da1_qldh_yuii.model.Photo;
-import com.example.da1_qldh_yuii.PhotoAdapter;
+import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
 
 import java.util.ArrayList;

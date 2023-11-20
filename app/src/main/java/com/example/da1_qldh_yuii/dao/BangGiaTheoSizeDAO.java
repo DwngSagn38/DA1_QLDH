@@ -50,14 +50,14 @@ public class BangGiaTheoSizeDAO {
     }
 
     //update
-    public boolean capNhatBangGia(int maBangGia, int size, double giaBan ){
+    public boolean capNhatBangGia( BangGia bg ){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maBangGia", maBangGia);
-        contentValues.put("size", size);
-        contentValues.put("giaBan", giaBan);
 
-        long check = sqLiteDatabase.update("BANGGIA", contentValues, "maBangGia = ?", new String[]{String.valueOf(maBangGia)});
+        contentValues.put("size", bg.getSize());
+        contentValues.put("giaBan", bg.getGiaBan());
+
+        long check = sqLiteDatabase.update("BANGGIA", contentValues, "maBangGia = ?", new String[]{String.valueOf(bg.getMaBangGia())});
 
         if (check == -1)
             return false;

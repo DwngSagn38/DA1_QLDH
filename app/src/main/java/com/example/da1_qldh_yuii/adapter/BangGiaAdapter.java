@@ -65,15 +65,25 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         holder.imgDeleteBangGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int check = bangGiaTheoSizeDAO.xoaBangGia(list.get(holder.getAdapterPosition()).getMaBangGia());
-                if (check == 1) {
-                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                    loadData();
-                } else if (check == 0) {
-                    Toast.makeText(context, "Bảng giá không tồn tại", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Cảnh báo !");
+                builder.setMessage("Bạn có chắc chắn muốn xóa không?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int check = bangGiaTheoSizeDAO.xoaBangGia(list.get(holder.getAdapterPosition()).getMaBangGia());
+                        if (check == 1) {
+                            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            loadData();
+                        } else if (check == 0) {
+                            Toast.makeText(context, "Bảng giá không tồn tại", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No",null);
+                builder.show();
             }
         });
 
@@ -113,7 +123,7 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         View view = layoutInflater.inflate(R.layout.dl_sua_banggiatheosize, null);
         builder.setView(view);
 
-        EditText edtMaBangGiaSua = view.findViewById(R.id.edtMaBangGiaSua);
+        TextView edtMaBangGiaSua = view.findViewById(R.id.edtMaBangGiaSua);
         EditText edtSizeSua = view.findViewById(R.id.edtSizeSua);
         EditText edtGiaBanSua = view.findViewById(R.id.edtGiaBanSua);
 
@@ -122,34 +132,38 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         edtSizeSua.setText(String.valueOf(bangGia.getSize()));
         edtGiaBanSua.setText(String.valueOf(bangGia.getGiaBan()));
 
-        builder.setNegativeButton("Cập nhật", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //lấy giá trị từ edittext
 
-                int maBG = Integer.parseInt(edtMaBangGiaSua.getText().toString());
-                int sizeBG = Integer.parseInt(edtSizeSua.getText().toString());
-                double giaBanBG = Double.parseDouble(edtGiaBanSua.getText().toString());
+                String checkSize = edtSizeSua.getText().toString().trim();
+                String checkGiaban = edtGiaBanSua.getText().toString().trim();
 
-                boolean check = bangGiaTheoSizeDAO.capNhatBangGia(maBG, sizeBG, giaBanBG);
-                if (check){
-                    Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                    //loadData
-                    loadData();
+                if (isInt(checkSize) && isDouble(checkGiaban)) {
+                    //lấy giá trị từ edittext
 
-                }else{
-                    Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                    int sizeBG = Integer.parseInt(edtSizeSua.getText().toString());
+                    double giaBanBG = Double.parseDouble(edtGiaBanSua.getText().toString());
+                    bangGia.setSize(sizeBG);
+                    bangGia.setGiaBan(giaBanBG);
+
+                    boolean check = bangGiaTheoSizeDAO.capNhatBangGia(bangGia);
+                    if (check){
+                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                        //loadData
+                        loadData();
+
+                    }else{
+                        Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(context, "Size hoặc giá bán chưa hợp lệ", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
-        builder.setPositiveButton("Hủy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        builder.setNegativeButton("Hủy",null);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
@@ -160,6 +174,18 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         list = bangGiaTheoSizeDAO.getDSBangGia();
         notifyDataSetChanged();
 
+    }
+
+    public boolean isInt(String so){
+        return so.matches("\\d++");
+    }
+    public boolean isDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 
