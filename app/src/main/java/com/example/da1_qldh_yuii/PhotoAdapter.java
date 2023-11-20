@@ -32,7 +32,6 @@ public class PhotoAdapter extends PagerAdapter  {
         Photo photo = mListPhoto.get(position);
         if (photo != null){
             Glide.with(mcontext).load(photo.getResourceId()).into(imgPhoto);
-            
 
         }
 

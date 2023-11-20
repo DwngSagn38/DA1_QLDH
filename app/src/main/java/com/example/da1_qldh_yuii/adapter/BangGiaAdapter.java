@@ -42,6 +42,8 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         return new ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull BangGiaAdapter.ViewHolder holder, int position) {
 
@@ -50,7 +52,7 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         holder.txtGiaBan.setText("Giá bán: " + list.get(position).getGiaBan());
 
 
-        //edit
+        //edit banggia
         holder.imgEditBangGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
