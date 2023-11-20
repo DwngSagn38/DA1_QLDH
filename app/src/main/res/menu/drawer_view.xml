@@ -10,9 +10,10 @@
             android:title="Quản lý đơn vị vận chuyển"/>
         <item android:id="@+id/nav_thongBao"
             android:icon="@drawable/thongbao"
+            android:visible="false"
             android:title="Quản lý thông báo"/>
         <item android:id="@+id/nav_thanhVien"
-        android:icon="@drawable/thanhvien"
+        android:icon="@drawable/thanhvien" android:visible="false"
         android:title="Quản lý thành viên"/>
 
         <item android:title="Người dùng">

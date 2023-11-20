@@ -14,8 +14,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.fragment.fragment_banggiatheosize;
 import com.example.da1_qldh_yuii.fragment.fragment_doimatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
@@ -23,6 +26,7 @@ import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
+import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation extends AppCompatActivity {
@@ -30,7 +34,11 @@ public class Navigation extends AppCompatActivity {
     DrawerLayout drawer;
     Toolbar toolbar;
 
+    View mHeaderView;
+    TextView tvUser;
     NavigationView nv;
+
+    ThanhVienDAO tvDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +62,21 @@ public class Navigation extends AppCompatActivity {
         fragment_trangchu fragment_trangchu = new fragment_trangchu();
         replaceFrg(fragment_trangchu);
 
+        // show user trên header
+        mHeaderView = nv.getHeaderView(0);
+        tvUser = mHeaderView.findViewById(R.id.tvUser);
+        Intent i = getIntent();
+        String user = i.getStringExtra("user");
+        tvDAO = new ThanhVienDAO(this);
+        ThanhVien thanhVien = tvDAO.getID(user);
+        String username = thanhVien.getTenThanhVien();
+        tvUser.setText(username);
 
-        ///nmbhghv
+        // admin co quyen ql bang gia, dvvc
+        if (user.equalsIgnoreCase("Admin")) {
+            nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
+        }
+
 
         // su kien fragment
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
