@@ -51,7 +51,6 @@ public class fragment_banggiatheosize extends Fragment {
     }
 
 
-
     //load data
     private void loadData(){
 
