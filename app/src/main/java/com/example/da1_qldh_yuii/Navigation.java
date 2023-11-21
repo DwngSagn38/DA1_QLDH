@@ -32,7 +32,6 @@ import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.navigation.NavigationView;
 
 public class Navigation extends AppCompatActivity {
-
     //
     DrawerLayout drawer;
     Toolbar toolbar;

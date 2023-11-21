@@ -81,7 +81,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
             holder.txtTenThanhVien.setText(tv.getTenThanhVien());
             holder.txtSoDienThoai.setText(tv.getSoDienThoai());
 
-            // 6. longClickListener là một đối tượng triển khai interface OnItemLongClickListener, và nó được truyền vào Adapter. Khi sự kiện long click xảy ra trong Adapter, nó sẽ thông báo về cho longClickListener để xử lý tương ứng.
+            // 6. OnClickListener là một đối tượng triển khai interface OnItemLongClickListener, và nó được truyền vào Adapte
             holder.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(int i) {

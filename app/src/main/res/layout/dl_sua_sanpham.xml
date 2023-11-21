@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/khung"
+        android:layout_margin="10dp"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sửa thông tin sản phẩm"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:layout_margin="20dp"
+
+            />
+
+
+        <ImageView
+
+            android:id="@+id/imgAnhSanPhamSua"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/khung"
+            android:scaleType="fitXY"
+
+            />
+
+
+
+
+        <EditText
+            android:id="@+id/edtMaSPsua"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/khung"
+            android:hint="Mã sản phẩm"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <EditText
+            android:id="@+id/edtTenSPsua"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/khung"
+            android:hint="Tên sản phẩm"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <Spinner
+            android:id="@+id/spnMaBangGiasua"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+
+
+            />
+
+        <RadioGroup
+            android:id="@+id/radio_groupSua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rdoConHangSua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Còn hàng" />
+
+            <RadioButton
+                android:id="@+id/rdoDatHangSua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đặt hàng" />
+
+            <RadioButton
+                android:id="@+id/rdoNgungBanSua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngừng bán" />
+
+        </RadioGroup>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginVertical="30dp"
+
+            >
+
+            <Button
+                android:id="@+id/btnLuuSua"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Lưu"
+                android:background="@drawable/khungdn"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/btnHuySua"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Hủy"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/khung_delete"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

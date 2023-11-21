@@ -110,9 +110,6 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
             imgDeleteBangGia = itemView.findViewById(R.id.imgDeleteBangGia);
 
 
-
-
-
         }
     }
 

@@ -10,11 +10,12 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(@Nullable Context context) {
-        super(context, "QLHD", null, 3);
+        super(context, "QLHD", null, 4);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
 
         String dbKhachHang = "CREATE TABLE KHACHHANG(\n" +
                 "maKhachHang TEXT PRIMARY KEY ,\n" +
@@ -39,6 +40,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maBangGia INTEGER, \n" +
                 "FOREIGN KEY (maBangGia) REFERENCES BANGGIA(maBangGia) );";
         db.execSQL(dbSanPham);
+
 
 
         String dbHoaDon = "CREATE TABLE HOADON (\n" +
@@ -68,6 +70,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "    FOREIGN KEY (maHoaDon) REFERENCES HOADON(maHoaDon)\n" +
                 ");";
         db.execSQL(dbChiTietHoaDon);
+
 
 
         String dbVanChuyen = "CREATE TABLE VANCHUYEN (\n" +
