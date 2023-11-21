@@ -75,34 +75,34 @@
             android:layout_margin="10dp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnLuuAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lưu"
-                android:background="@drawable/khungdn"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:textSize="17dp"/>
-            <Button
-                android:id="@+id/btnHuyAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hủy"
-                android:background="@drawable/khungdn"
-                android:textColor="@color/white"
-                android:backgroundTint="#F44336"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:textSize="17dp"/>
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:orientation="horizontal">-->
+<!--            <Button-->
+<!--                android:id="@+id/btnLuuAdd"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Lưu"-->
+<!--                android:background="@drawable/khungdn"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textSize="17dp"/>-->
+<!--            <Button-->
+<!--                android:id="@+id/btnHuyAdd"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hủy"-->
+<!--                android:background="@drawable/khungdn"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:backgroundTint="#F44336"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textSize="17dp"/>-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
 </LinearLayout>
