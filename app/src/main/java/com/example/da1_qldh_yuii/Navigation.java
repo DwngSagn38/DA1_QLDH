@@ -28,13 +28,19 @@ import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
+import com.example.da1_qldh_yuii.fragment.fragment_trangchu_thongke;
 import com.example.da1_qldh_yuii.model.ThanhVien;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class Navigation extends AppCompatActivity {
+public class Navigation extends AppCompatActivity{
+
     //
     DrawerLayout drawer;
     Toolbar toolbar;
+
+    DrawerLayout mdrawer;
 
     View mHeaderView;
     TextView tvUser,tvLevel;
@@ -42,6 +48,10 @@ public class Navigation extends AppCompatActivity {
     NavigationView nv;
 
     ThanhVienDAO tvDAO;
+
+    BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,16 +117,29 @@ public class Navigation extends AppCompatActivity {
                     fragment_trangchu fragment_trangchu = new fragment_trangchu();
                     replaceFrg(fragment_trangchu);
 
+                }  else if (id == R.id.nav_thongke){
+                    setTitle("Yuii shop");
+                    fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
+                    replaceFrg(fragment_trangchu_thongke);
+
                 } else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
 
-                } else if (id == R.id.bottom_trangChu){
+                }
+                else if (id == R.id.bottom_trangChu){
                     setTitle("Yuii shop");
                     replaceFrg(fragment_trangchu);
 
-                } else if (id == R.id.nav_thongBao){
+                }
+                else if (id == R.id.bottom_thongKe){
+                    setTitle("Yuii shop");
+                    fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
+                    replaceFrg(fragment_trangchu_thongke);
+
+                }
+                else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
                     fragment_thongbao fragmentThongbao = new fragment_thongbao();
                     replaceFrg(fragmentThongbao);
@@ -172,4 +195,8 @@ public class Navigation extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent,frg).commit();
     }
+
+//
+
+
 }
