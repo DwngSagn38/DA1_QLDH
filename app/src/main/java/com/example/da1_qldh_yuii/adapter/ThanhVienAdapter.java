@@ -226,6 +226,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
             adapter.add("Quản Lý");
             adapter.add("Nhân Viên");
         }
+        //nnn
 
         spinnerOptions.setAdapter(adapter);
 
