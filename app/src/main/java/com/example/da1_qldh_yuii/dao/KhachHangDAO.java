@@ -38,13 +38,13 @@ public class KhachHangDAO {
     }
 
 
-    public boolean themKhachHang(String maKhachHang, String tenKhachHang, String soDienThoai, String diaChi){
+    public boolean themKhachHang(KhachHang kh){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maKhachHang", maKhachHang);
-        contentValues.put("tenKhachHang", tenKhachHang);
-        contentValues.put("soDienThoai", soDienThoai);
-        contentValues.put("diaChi", diaChi);
+        contentValues.put("maKhachHang", kh.getMaKhachHang());
+        contentValues.put("tenKhachHang", kh.getTenKhachHang());
+        contentValues.put("soDienThoai", kh.getSoDienThoai());
+        contentValues.put("diaChi", kh.getDiaChi());
 
         long check = sqLiteDatabase.insert("KHACHHANG", null, contentValues);
         if (check == -1)
@@ -53,5 +53,37 @@ public class KhachHangDAO {
         return true;
 
     }
+
+    public boolean suaKhachHang(KhachHang kh){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("maKhachHang", kh.getMaKhachHang());
+        contentValues.put("tenKhachHang", kh.getTenKhachHang());
+        contentValues.put("soDienThoai", kh.getSoDienThoai());
+        contentValues.put("diaChi", kh.getDiaChi());
+
+        long check = sqLiteDatabase.update("KHACHHANG", contentValues,"maKhachHang=?",
+                new String[]{String.valueOf(kh.getMaKhachHang())});
+        return check != -1;
+    }
+    public boolean checkID(String username) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        boolean IDExists = false;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM KHACHHANG WHERE maKhachHang = ?", new String[]{username});
+        if (cursor.moveToFirst()) {
+            IDExists = true;
+        }
+        return IDExists;
+    }
+
+    public boolean xoaKhachHang(String maKhachHang){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        long check = sqLiteDatabase.delete("KHACHHANG","maKhachHang=?",
+                new String[]{maKhachHang});
+        if (check == -1)
+            return false;
+        return true;
+    }
+
 
 }

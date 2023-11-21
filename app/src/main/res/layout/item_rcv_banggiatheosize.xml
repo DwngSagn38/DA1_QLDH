@@ -30,7 +30,7 @@
                 android:id="@+id/txtMaBangGia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#736C6C"
+                android:textColor="@color/blue"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 />
@@ -39,7 +39,7 @@
                 android:id="@+id/txtSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#736C6C"
+                android:textColor="@color/blue"
                 android:textSize="20dp"
                 android:layout_marginVertical="3dp"
                 android:textStyle="bold"
@@ -49,7 +49,7 @@
                 android:id="@+id/txtGiaBan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#736C6C"
+                android:textColor="@color/blue"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 />

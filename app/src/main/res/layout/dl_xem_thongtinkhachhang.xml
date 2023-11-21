@@ -18,55 +18,63 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
             android:textSize="30sp"/>
-        <TextView
-            android:id="@+id/tvMaKH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mã:"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:textSize="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="2dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:id="@+id/tvTenKH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tên:"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:textSize="20dp"
-            android:layout_marginBottom="2dp"
-            android:textColor="@color/black"
 
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tvSDT"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SĐT:"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="2dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tvDiaChi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Địa chỉ:"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="2dp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/tvMaKH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mã:"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/tvTenKH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên:"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/blue"
+
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvSDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SĐT:"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/blue"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvDiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ:"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/blue"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,6 +82,7 @@
             android:layout_margin="20dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btnUpdateKh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update"
@@ -83,6 +92,7 @@
                 android:layout_weight="1"
                 android:textSize="17dp"/>
             <Button
+                android:id="@+id/btnDeleteKh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
