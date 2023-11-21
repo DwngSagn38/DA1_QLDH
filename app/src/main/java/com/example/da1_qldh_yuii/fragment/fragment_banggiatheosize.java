@@ -33,6 +33,7 @@ public class fragment_banggiatheosize extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_banggiatheosize, container, false);
+
         recyclerViewBangGia = view.findViewById(R.id.rcvBangGiaTheoSize);
         FloatingActionButton floatAddTV = view.findViewById(R.id.floatAddBangGia);
 

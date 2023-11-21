@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.da1_qldh_yuii.database.DbHelper;
+import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.HoaDon;
 import com.example.da1_qldh_yuii.model.KhachHang;
 
@@ -14,59 +15,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KhachHangDAO {
-    private SQLiteDatabase db;
+    DbHelper dbHelper;
+    public KhachHangDAO(Context context){
+        dbHelper = new DbHelper(context);
 
-
-    public KhachHangDAO(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
-        db = dbHelper.getWritableDatabase();
     }
 
-    public long insert(KhachHang obj) {
-        ContentValues values = new ContentValues();
-        values.put("tenKhachHang", obj.getTenKhachHang());
-        values.put("soDienThoai", obj.getSoDienThoai());
-        values.put("diaChi", obj.getDiaChi());
-        return db.insert("KHACHHANG", null, values);
-    }
+    public ArrayList<KhachHang> getDSKhachHang(){
+        ArrayList<KhachHang> list = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM KHACHHANG", null);
 
-    public long update(KhachHang obj) {
-        ContentValues values = new ContentValues();
-        values.put("tenKhachHang", obj.getTenKhachHang());
-        values.put("soDienThoai", obj.getSoDienThoai());
-        values.put("diaChi", obj.getDiaChi());
-        return db.update("KHACHHANG", values, "maKhachHang = ?", new String[]{String.valueOf(obj.getMaKhachHang())});
-    }
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                list.add(new KhachHang(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
+            }while (cursor.moveToNext());
 
-    public long delete(String id) {
-        return db.delete("KHACHHANG", "maKhachHang = ?", new String[]{String.valueOf(id)});
-    }
-
-    public List<KhachHang> getAll() {
-        String sql = "SELECT * FROM KHACHHANG";
-        return getData(sql);
-    }
-
-    public KhachHang getID(String id) {
-        String sql = "SELECT * FROM KHACHHANG WHERE maKhachHang=?";
-        List<KhachHang> list = getData(sql, id);
-        return list.get(0);
-    }
-
-
-    @SuppressLint("Range")
-    private List<KhachHang> getData(String sql, String... selectionArgs) {
-        List<KhachHang> list = new ArrayList<>();
-        Cursor cursor = db.rawQuery(sql, selectionArgs);
-        while (cursor.moveToNext()) {
-            KhachHang kh = new KhachHang();
-            kh.setMaKhachHang(cursor.getString(cursor.getColumnIndex("maKhachHang")));
-            kh.setTenKhachHang(cursor.getString(cursor.getColumnIndex("tenKhachHang")));
-            kh.setSoDienThoai(cursor.getString(cursor.getColumnIndex("soDienThoai")));
-            kh.setDiaChi(cursor.getString(cursor.getColumnIndex("diaChi")));
-
-            list.add(kh);
         }
+
         return list;
     }
+
+
+    public boolean themKhachHang(String maKhachHang, String tenKhachHang, String soDienThoai, String diaChi){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("maKhachHang", maKhachHang);
+        contentValues.put("tenKhachHang", tenKhachHang);
+        contentValues.put("soDienThoai", soDienThoai);
+        contentValues.put("diaChi", diaChi);
+
+        long check = sqLiteDatabase.insert("KHACHHANG", null, contentValues);
+        if (check == -1)
+            return false;
+
+        return true;
+
+    }
+
 }
