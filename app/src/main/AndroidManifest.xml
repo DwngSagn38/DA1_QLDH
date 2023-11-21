@@ -16,13 +16,13 @@
             android:name=".Navigation"
             android:exported="false" />
         <activity
-            android:name=".Welcome"
+            android:name=".DangNhap"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DangNhap"
+            android:name=".Welcome"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

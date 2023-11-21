@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(@Nullable Context context) {
-        super(context, "QLHD", null, 2);
+        super(context, "QLHD", null, 3);
     }
 
     @Override
