@@ -2,6 +2,7 @@ package com.example.da1_qldh_yuii.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,6 +11,8 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 
 import com.example.da1_qldh_yuii.model.Photo;
 import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
@@ -30,6 +33,7 @@ public class fragment_trangchu extends Fragment {
     private Timer timer;
 
     private List<Photo> mListphoto = new ArrayList<>();
+
     public fragment_trangchu() {
         // Required empty public constructor
     }
@@ -38,7 +42,7 @@ public class fragment_trangchu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_trangchu, container, false);
+      View view = inflater.inflate(R.layout.fragment_trangchu, container, false);
 
         viewPager = view.findViewById(R.id.viewpager);
         circleIndicator = view.findViewById(R.id.circle_indicator);
