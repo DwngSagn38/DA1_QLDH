@@ -14,6 +14,11 @@ public class BangGia {
         this.giaBan = giaBan;
     }
 
+    public BangGia(int size, double giaBan) {
+        this.size = size;
+        this.giaBan = giaBan;
+    }
+
 
     public int getMaBangGia() {
         return maBangGia;

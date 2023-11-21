@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class Navigation extends AppCompatActivity {
 
     View mHeaderView;
     TextView tvUser,tvLevel;
+    ImageView img_logo;
     NavigationView nv;
 
     ThanhVienDAO tvDAO;
@@ -68,6 +70,7 @@ public class Navigation extends AppCompatActivity {
         mHeaderView = nv.getHeaderView(0);
         tvUser = mHeaderView.findViewById(R.id.tvUser);
         tvLevel = mHeaderView.findViewById(R.id.tvLevel);
+        img_logo = mHeaderView.findViewById(R.id.img_logo);
         Intent i = getIntent();
         String user = i.getStringExtra("user");
         tvDAO = new ThanhVienDAO(this);
@@ -77,8 +80,11 @@ public class Navigation extends AppCompatActivity {
         tvUser.setText(username);
         if (level == 0){
             tvLevel.setText("(Quản lý)");
+            img_logo.setImageResource(R.drawable.logo_yuii);
         }else {
             tvLevel.setText("(Nhân Viên)");
+            img_logo.setImageResource(R.drawable.ic_person);
+            nv.setItemIconTintList(null);
         }
 
 

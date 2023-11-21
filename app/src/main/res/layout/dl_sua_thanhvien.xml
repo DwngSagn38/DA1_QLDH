@@ -7,107 +7,131 @@
 
     >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cập nhật thông tin thành viên"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="26dp"
-
-
-        />
-
-
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtMaThanhVienAdd"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/khung"
-            android:drawableStart="@drawable/email"
-            android:drawablePadding="10dp"
-            android:hint="Mã thành viên"
-            android:textSize="18dp"
+        android:orientation="vertical"
+        android:background="@drawable/khung"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật thông tin thành viên"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+
+
             />
-    </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMaThanhVienAdd"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/email"
+                android:drawablePadding="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="Mã thành viên"
+                android:textSize="18dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtHoTenAdd"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtHoTenAdd"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/name"
+                android:drawablePadding="10dp"
+                android:hint="Họ và tên"
+                android:textSize="18dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSoDienThoaiAdd"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/phone"
+                android:drawablePadding="10dp"
+                android:hint="Số điện thoại"
+                android:textSize="18dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMatKhauAdd"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/key"
+                android:drawablePadding="10dp"
+                android:hint="Mật Khẩu"
+                android:textSize="18dp"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/spnChucVu"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/khung"
-            android:drawableStart="@drawable/name"
-            android:drawablePadding="10dp"
-            android:hint="Họ và tên"
-            android:textSize="18dp"
+            android:layout_margin="20dp"
+
+
             />
-    </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLuu"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="Lưu"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/khungdn"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:textSize="17dp"/>
 
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtSoDienThoaiAdd"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/khung"
-            android:drawableStart="@drawable/phone"
-            android:drawablePadding="10dp"
-            android:hint="Số điện thoại"
-            android:textSize="18dp"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtMatKhauAdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        app:passwordToggleEnabled="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/khung"
-            android:drawableStart="@drawable/key"
-            android:drawablePadding="10dp"
-            android:hint="Mật Khẩu"
-            android:textSize="18dp"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <Spinner
-        android:id="@+id/spnChucVu"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="20dp"
-
-
-        />
-
-
+    </LinearLayout>
 </LinearLayout>
