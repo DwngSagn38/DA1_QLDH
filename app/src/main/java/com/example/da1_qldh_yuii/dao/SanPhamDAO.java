@@ -23,6 +23,7 @@ public class SanPhamDAO {
 
     public long insert(SanPham sp) {
         ContentValues values = new ContentValues();
+        values.put("maSanPham", sp.getMaSanPham());
         values.put("anhSanPham", sp.getAnhSanPham());
         values.put("tenSanPham", sp.getTenSanPham());
         values.put("trangThai", sp.getTrangThai());
@@ -32,6 +33,7 @@ public class SanPhamDAO {
 
     public long update(SanPham sp) {
         ContentValues values = new ContentValues();
+        values.put("maSanPham", sp.getMaSanPham());
         values.put("anhSanPham", sp.getAnhSanPham());
         values.put("tenSanPham", sp.getTenSanPham());
         values.put("trangThai", sp.getTrangThai());

@@ -1,4 +1,4 @@
-package com.example.da1_qldh_yuii.fragment.frgSP_KH;
+package com.example.da1_qldh_yuii.fragment.frgThongKe;
 
 import android.os.Bundle;
 
@@ -10,10 +10,9 @@ import android.view.ViewGroup;
 
 import com.example.da1_qldh_yuii.R;
 
-public class frgKhoHang extends Fragment {
+public class frgTK_ThongSo extends Fragment {
 
-
-    public frgKhoHang() {
+    public frgTK_ThongSo() {
         // Required empty public constructor
     }
 
@@ -21,6 +20,6 @@ public class frgKhoHang extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frg_kho_hang, container, false);
+        return inflater.inflate(R.layout.fragment_frg_t_k__thong_so, container, false);
     }
 }

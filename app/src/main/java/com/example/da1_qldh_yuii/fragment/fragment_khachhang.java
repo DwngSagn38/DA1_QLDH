@@ -1,6 +1,8 @@
 package com.example.da1_qldh_yuii.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -11,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.da1_qldh_yuii.DangNhap;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.KhachHangAdapter;
 
@@ -32,6 +36,7 @@ public class fragment_khachhang extends Fragment {
     ArrayList<KhachHang> list = new ArrayList<>();
     KhachHangDAO khachHangDAO;
     RecyclerView recyclerViewKhachHang;
+    DangNhap dn = new DangNhap();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,11 +50,15 @@ public class fragment_khachhang extends Fragment {
 
         loadData();
 
+        // Lấy reference đến NavController
+
+
 
         floatAddKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                KhachHang kh = new KhachHang();
+                showDialog(kh);
             }
         });
 
@@ -58,7 +67,7 @@ public class fragment_khachhang extends Fragment {
 
 
     //load data
-    private void loadData(){
+    private void loadData() {
 
         khachHangDAO = new KhachHangDAO(getContext());
         list = khachHangDAO.getDSKhachHang();
@@ -71,12 +80,13 @@ public class fragment_khachhang extends Fragment {
     }
 
 
-    private void showDialog(){
+    public void showDialog(KhachHang kh) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dl_them_khachhang, null);
         builder.setView(view);
+
 
         EditText edMaKHadd = view.findViewById(R.id.edMaKHadd);
         EditText edTenKHadd = view.findViewById(R.id.edTenKHadd);
@@ -93,8 +103,12 @@ public class fragment_khachhang extends Fragment {
                 String tenKH = edTenKHadd.getText().toString();
                 String sdtKH = edSDTadd.getText().toString();
                 String diaChiKH = edDiaChiadd.getText().toString();
+                kh.setMaKhachHang(maKH);
+                kh.setTenKhachHang(tenKH);
+                kh.setSoDienThoai(sdtKH);
+                kh.setDiaChi(diaChiKH);
 
-                boolean check = khachHangDAO.themKhachHang(maKH, tenKH, sdtKH, diaChiKH);
+                boolean check = khachHangDAO.themKhachHang(kh);
                 if (check){
                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     //load data
@@ -113,9 +127,10 @@ public class fragment_khachhang extends Fragment {
 
             }
         });
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+
     }
 
-}
+    }
+

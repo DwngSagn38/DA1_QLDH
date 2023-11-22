@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +43,6 @@ public class fragment_banggiatheosize extends Fragment {
         bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(getContext());
         loadData();
 
-
         floatAddTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +52,6 @@ public class fragment_banggiatheosize extends Fragment {
 
         return view;
     }
-
 
 
     //load data

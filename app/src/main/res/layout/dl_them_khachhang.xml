@@ -19,7 +19,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
             android:textSize="30sp"/>
         <EditText
             android:id="@+id/edMaKHadd"
@@ -31,7 +31,8 @@
             android:padding="10dp"
             android:drawableStart="@drawable/makh"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
             android:layout_margin="10dp"
             android:textStyle="bold"
             />
@@ -45,7 +46,8 @@
             android:padding="10dp"
             android:drawableStart="@drawable/tenkh"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
             android:layout_margin="10dp"
             android:textStyle="bold" />
         <EditText
@@ -58,7 +60,8 @@
             android:padding="10dp"
             android:drawableStart="@drawable/sdt"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
             android:layout_margin="10dp"
             android:textStyle="bold" />
         <EditText
@@ -71,7 +74,8 @@
             android:padding="10dp"
             android:drawableStart="@drawable/diachi"
             android:textSize="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/blue"
             android:layout_margin="10dp"
             android:textStyle="bold" />
 

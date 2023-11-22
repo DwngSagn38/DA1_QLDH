@@ -18,11 +18,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cập nhật thông tin thành viên"
+            android:text="Cập nhật thông tin"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
             android:textSize="26dp"
 
 
@@ -45,6 +45,8 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:hint="Mã thành viên"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/blue"
                 android:textSize="18dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +66,8 @@
                 android:background="@drawable/khung"
                 android:drawableStart="@drawable/name"
                 android:drawablePadding="10dp"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/blue"
                 android:hint="Họ và tên"
                 android:textSize="18dp"
                 />
@@ -84,6 +88,8 @@
                 android:background="@drawable/khung"
                 android:drawableStart="@drawable/phone"
                 android:drawablePadding="10dp"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/blue"
                 android:hint="Số điện thoại"
                 android:textSize="18dp"
                 />
@@ -105,6 +111,8 @@
                 android:background="@drawable/khung"
                 android:drawableStart="@drawable/key"
                 android:drawablePadding="10dp"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/blue"
                 android:hint="Mật Khẩu"
                 android:textSize="18dp"
                 android:inputType="textPassword" />
@@ -116,6 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="20dp"
+            android:outlineAmbientShadowColor="@color/blue"
 
 
             />
