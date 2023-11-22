@@ -3,10 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".fragment.fragment_thongke">
-
+    tools:context=".fragment.fragment_taohoadon">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,35 +28,44 @@
             android:textSize="13dp"
             android:text="Tất cả"/>
         <Button
-            android:id="@+id/btnTop5"
+            android:id="@+id/btnSize15"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="35dp"
             android:background="@drawable/khung"
             android:textSize="13dp"
             android:layout_marginLeft="10dp"
-            android:text="Top 5"/>
+            android:text="Size 15"/>
         <Button
-            android:id="@+id/btnDonHang"
+            android:id="@+id/btnSize20"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="35dp"
             android:background="@drawable/khung"
             android:textSize="13dp"
             android:layout_marginLeft="10dp"
-            android:text="Đơn hàng"/>
+            android:text="Size 20"/>
+        <Button
+            android:id="@+id/btnSize25"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="13dp"
+            android:layout_marginLeft="10dp"
+            android:text="Size 25"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thống kê số lượng bán"
+        android:text="Chọn sản phẩm"
         android:textColor="@color/black"
         android:background="@color/gray"
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="15dp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvThongKe"
+        android:id="@+id/rcvTaoHoaDon"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"/>

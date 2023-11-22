@@ -11,19 +11,18 @@ import android.view.ViewGroup;
 import com.example.da1_qldh_yuii.R;
 
 
-public class fragment_thongke extends Fragment {
+public class fragment_khohang extends Fragment {
 
 
-    public fragment_thongke() {
+    public fragment_khohang() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_thongke, container, false);
+        View view =  inflater.inflate(R.layout.fragment_khohang, container, false);
         return view;
     }
 }
