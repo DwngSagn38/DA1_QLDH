@@ -6,6 +6,21 @@
     android:id="@+id/frgKhachHang"
     tools:context=".fragment.fragment_khachhang">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh sách khách hàng"
+        android:layout_marginVertical="5dp"
+        android:padding="12dp"
+        android:background="@color/gray"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:textSize="26sp"/>
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rcvKhachHang"
@@ -13,6 +28,7 @@
         android:layout_height="match_parent"
 
         />
+</LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 

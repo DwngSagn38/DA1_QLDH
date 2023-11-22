@@ -4,7 +4,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.frgSP_KH.frgSanPham">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/section">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/section"/>
 
+    <Button
+        android:id="@+id/btnTatCa"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:background="@drawable/khung"
+        android:textSize="13dp"
+        android:textColor="@color/blue"
+        android:text="Tất cả"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/khung"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+
+        <EditText
+            android:id="@+id/btnTheosize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/blue"
+            android:textSize="13dp"
+            android:background="@drawable/khung"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:contextClickable="false"
+            android:gravity="center"
+            android:text="Theo size"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/khung"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+
+        <EditText
+            android:id="@+id/btnTT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/blue"
+            android:textSize="13dp"
+            android:background="@drawable/khung"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:focusable="false"
+            android:contextClickable="false"
+            android:gravity="center"
+            android:text="Trạng thái"/>
+    </LinearLayout>
+    </LinearLayout>
     <TextView
         android:id="@+id/txtDanhSachSP"
         android:layout_width="match_parent"
@@ -14,9 +81,9 @@
         android:textSize="26dp"
         android:textStyle="bold"
         android:paddingLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
+        android:layout_below="@+id/section"
         android:background="@color/gray"
         />
 
@@ -26,7 +93,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp" />
 

@@ -50,6 +50,9 @@ public class fragment_khachhang extends Fragment {
 
         loadData();
 
+        // Lấy reference đến NavController
+
+
 
         floatAddKH.setOnClickListener(new View.OnClickListener() {
             @Override

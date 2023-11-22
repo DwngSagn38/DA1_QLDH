@@ -86,6 +86,20 @@ public class BangGiaTheoSizeDAO {
         }
     }
 
+    public BangGia getID(int id){
+        ArrayList<BangGia> list = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from Banggia where mabanggia=?",new String[]{String.valueOf(id)});
+
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                list.add(new BangGia(cursor.getInt(0), cursor.getInt(1), cursor.getDouble(2)));
+            }while (cursor.moveToNext());
+
+        }
+        return list.get(0);
+    }
 
 
 }

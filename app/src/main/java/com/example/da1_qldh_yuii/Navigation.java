@@ -63,6 +63,7 @@ public class Navigation extends AppCompatActivity{
         nv = findViewById(R.id.nvView);
         // set toolbar thay actionbar
         setSupportActionBar(toolbar);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -95,6 +96,7 @@ public class Navigation extends AppCompatActivity{
             img_logo.setImageResource(R.drawable.ic_person);
             nv.setItemIconTintList(null);
         }
+
 
 
         // quanly co quyen ql bang gia, dvvc
@@ -196,7 +198,21 @@ public class Navigation extends AppCompatActivity{
         manager.beginTransaction().replace(R.id.flContent,frg).commit();
     }
 
+
 //
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Xử lý sự kiện khi nút back được nhấn
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
