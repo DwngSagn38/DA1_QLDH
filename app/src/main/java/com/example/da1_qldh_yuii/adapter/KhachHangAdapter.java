@@ -143,9 +143,6 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         }
     }
 
-
-
-
     //update
     private void showDialogUpdate(final KhachHang khachHang){
         final Dialog dialog = new Dialog(context);
