@@ -27,6 +27,7 @@ import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
 import com.example.da1_qldh_yuii.fragment.fragment_hoadon;
 import com.example.da1_qldh_yuii.fragment.fragment_khohang;
 import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
+import com.example.da1_qldh_yuii.fragment.fragment_sanpham_khohang;
 import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
 import com.example.da1_qldh_yuii.fragment.fragment_trangchu;
@@ -77,6 +78,8 @@ public class Navigation extends AppCompatActivity{
         fragment_trangchu fragment_trangchu = new fragment_trangchu();
         replaceFrg(fragment_trangchu);
 
+
+
         // show user trên header
         mHeaderView = nv.getHeaderView(0);
         tvUser = mHeaderView.findViewById(R.id.tvUser);
@@ -119,8 +122,8 @@ public class Navigation extends AppCompatActivity{
                 replaceFrg(fragment_trangchu_thongke);
             }else if (id == R.id.bottom_khoHang){
                 setTitle("Kho hàng");
-                fragment_khohang fragmentKhohang = new fragment_khohang();
-                replaceFrg(fragmentKhohang);
+                fragment_sanpham_khohang fragment_sanpham_khohang = new fragment_sanpham_khohang();
+                replaceFrg(fragment_sanpham_khohang);
             }else if (id == R.id.bottom_hoaDon){
                 setTitle("Hóa đơn");
                 fragment_hoadon fragment_hoadon = new fragment_hoadon();

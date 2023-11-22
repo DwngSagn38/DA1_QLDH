@@ -56,7 +56,7 @@ public class fragment_thanhvien extends Fragment {
         floatAddThanhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dangNhap.openDialog(getContext());
+                dangNhap.openDialog(getContext(),1,list);
                 loadData();
             }
         });

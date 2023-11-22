@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/img_photo"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="236dp"
         android:src="@drawable/sp_new6"
         android:scaleType="centerCrop"/>
 
