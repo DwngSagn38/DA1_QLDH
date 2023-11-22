@@ -2,106 +2,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:background="@drawable/khung">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sửa khách hàng"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="30sp"/>
-        <EditText
-            android:id="@+id/edMaKHsua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/khung"
-            android:hint="Mã khách hàng"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:drawableStart="@drawable/makh"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:id="@+id/edTenKHsua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/khung"
-            android:hint="Tên khách hàng"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:drawableStart="@drawable/tenkh"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
-        <EditText
-            android:id="@+id/edSDTsua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/khung"
-            android:hint="Số điện thoại"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:drawableStart="@drawable/sdt"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
-        <EditText
-            android:id="@+id/edDiaChisua"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/khung"
-            android:hint="Địa chỉ"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:drawableStart="@drawable/diachi"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edMaKHsua"
+                android:hint="Mã khách hàng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/makh"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edTenKHsua"
+                android:hint="Tên khách hàng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/tenkh"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edSDTsua"
+                android:hint="Số điện thoại"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/sdt"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edDiaChisua"
+                android:hint="Địa chỉ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:background="@drawable/khung"
+                android:drawableStart="@drawable/diachi"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
             <Button
                 android:id="@+id/btnUpdateKH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:text="Update"
                 android:background="@drawable/khungdn"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_weight="1"
                 android:textSize="17dp"/>
-            <Button
-                android:id="@+id/btnDeleteKH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:background="@drawable/khungdn"
-                android:textColor="@color/white"
-                android:backgroundTint="#F44336"
-                android:textStyle="bold"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:textSize="17dp"/>
-        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

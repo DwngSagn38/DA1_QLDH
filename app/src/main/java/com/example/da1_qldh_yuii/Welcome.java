@@ -20,7 +20,9 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(Welcome.this, DangNhap.class));
+                finish();
             }
+
         },3000);
     }
 }

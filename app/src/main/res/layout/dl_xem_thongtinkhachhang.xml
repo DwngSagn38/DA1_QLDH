@@ -74,6 +74,7 @@
             android:layout_margin="20dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btnUpdateKH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update"
@@ -83,6 +84,7 @@
                 android:layout_weight="1"
                 android:textSize="17dp"/>
             <Button
+                android:id="@+id/btnDelteteKH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
