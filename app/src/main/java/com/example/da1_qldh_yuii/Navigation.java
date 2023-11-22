@@ -129,7 +129,7 @@ public class Navigation extends AppCompatActivity{
             return true;
         });
 
-        // su kien fragment
+        // su kien navigation
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -203,5 +203,7 @@ public class Navigation extends AppCompatActivity{
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent,frg).addToBackStack(null).commit();
     }
+
+
 
 }
