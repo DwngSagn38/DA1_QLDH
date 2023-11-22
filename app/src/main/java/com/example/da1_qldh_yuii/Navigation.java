@@ -24,6 +24,8 @@ import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.fragment.fragment_banggiatheosize;
 import com.example.da1_qldh_yuii.fragment.fragment_doimatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
+import com.example.da1_qldh_yuii.fragment.fragment_hoadon;
+import com.example.da1_qldh_yuii.fragment.fragment_khohang;
 import com.example.da1_qldh_yuii.fragment.fragment_quenmatkhau;
 import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.fragment.fragment_thongbao;
@@ -39,8 +41,6 @@ public class Navigation extends AppCompatActivity{
     //
     DrawerLayout drawer;
     Toolbar toolbar;
-
-    DrawerLayout mdrawer;
 
     View mHeaderView;
     TextView tvUser,tvLevel;
@@ -59,8 +59,9 @@ public class Navigation extends AppCompatActivity{
 
         // ánh xạ
         drawer = findViewById(R.id.drawer_layout);
-        toolbar = findViewById(R.id.toolbar1);
+        toolbar = findViewById(R.id.toolbar);
         nv = findViewById(R.id.nvView);
+        bottomNavigationView = findViewById(R.id.bottom_nav);
         // set toolbar thay actionbar
         setSupportActionBar(toolbar);
 
@@ -97,51 +98,56 @@ public class Navigation extends AppCompatActivity{
             nv.setItemIconTintList(null);
         }
 
+        // quanly co quyen ql thong bao, thanh vien
+        if (level == 0){
+            nv.getMenu().findItem(R.id.nav_thongBao).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
+
+        }
 
 
-        // quanly co quyen ql bang gia, dvvc
+        // su kien bottomnavigation
 
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.bottom_trangChu){
+                setTitle("Yuii shop");
+                replaceFrg(fragment_trangchu);
+            }else if(id == R.id.bottom_thongKe){
+                setTitle("Thống kê");
+                fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
+                replaceFrg(fragment_trangchu_thongke);
+            }else if (id == R.id.bottom_khoHang){
+                setTitle("Kho hàng");
+                fragment_khohang fragmentKhohang = new fragment_khohang();
+                replaceFrg(fragmentKhohang);
+            }else if (id == R.id.bottom_hoaDon){
+                setTitle("Hóa đơn");
+                fragment_hoadon fragment_hoadon = new fragment_hoadon();
+                replaceFrg(fragment_hoadon);
+            }
+            return true;
+        });
 
-
-        // su kien fragment
+        // su kien navigation
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
                 if (id == R.id.nav_giaSize){
                     setTitle("Quản lý bảng giá theo size");
                     fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
                     replaceFrg(fragmentBanggiatheosize);
 
-                }  else if (id == R.id.nav_home){
+                }else if(id == R.id.bottom_trangChu){
                     setTitle("Yuii shop");
-                    fragment_trangchu fragment_trangchu = new fragment_trangchu();
                     replaceFrg(fragment_trangchu);
-
-                }  else if (id == R.id.nav_thongke){
-                    setTitle("Yuii shop");
-                    fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
-                    replaceFrg(fragment_trangchu_thongke);
-
-                } else if (id == R.id.nav_DVVC){
+                }else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
 
-                }
-                else if (id == R.id.bottom_trangChu){
-                    setTitle("Yuii shop");
-                    replaceFrg(fragment_trangchu);
-
-                }
-                else if (id == R.id.bottom_thongKe){
-                    setTitle("Yuii shop");
-                    fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
-                    replaceFrg(fragment_trangchu_thongke);
-
-                }
-                else if (id == R.id.nav_thongBao){
+                }else if (id == R.id.nav_thongBao){
                     setTitle("Quản lý thông báo");
                     fragment_thongbao fragmentThongbao = new fragment_thongbao();
                     replaceFrg(fragmentThongbao);
@@ -195,24 +201,9 @@ public class Navigation extends AppCompatActivity{
 
     public void replaceFrg(Fragment frg){
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.flContent,frg).commit();
+        manager.beginTransaction().replace(R.id.flContent,frg).addToBackStack(null).commit();
     }
 
 
-//
 
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed(); // Xử lý sự kiện khi nút back được nhấn
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

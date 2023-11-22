@@ -101,13 +101,14 @@
         android:id="@+id/floatAddSanPham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/item_add"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="70dp"
         android:backgroundTint="@color/blue"
-
-        />
+        android:src="@drawable/item_add" />
 
 
 </RelativeLayout>

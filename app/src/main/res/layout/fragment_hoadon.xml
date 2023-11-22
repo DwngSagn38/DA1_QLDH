@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.fragment_hoadon">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:src="@drawable/section"/>
+
+        <Button
+            android:id="@+id/btnTatCa"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="10dp"
+            android:text="Tất cả"/>
+        <Button
+            android:id="@+id/btnChuaGiao"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="10dp"
+            android:layout_marginLeft="5dp"
+            android:padding="1dp"
+            android:text="Chưa giao"/>
+        <Button
+            android:id="@+id/btnDangGiao"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="10dp"
+            android:padding="2dp"
+            android:layout_marginLeft="5dp"
+            android:text="Đang giao"/>
+        <Button
+            android:id="@+id/btnDaGiao"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="10dp"
+            android:layout_marginLeft="5dp"
+            android:text="Đã giao"/>
+        <Button
+            android:id="@+id/btnHuy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@drawable/khung"
+            android:textSize="10dp"
+            android:layout_marginLeft="5dp"
+            android:text="Hủy"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:text="Danh sách hóa đơn"
+        android:textColor="@color/blue"
+        android:background="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="15dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvHoaDon"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

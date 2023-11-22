@@ -25,6 +25,7 @@
         android:layout_marginTop="20dp"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassOld"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -44,6 +45,7 @@
         app:passwordToggleEnabled="true"
         >
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassChange"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -64,6 +66,7 @@
         app:passwordToggleEnabled="true"
         >
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edRePassChange"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -76,12 +79,8 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-
-
     <Button
+        android:id="@+id/btnDoiMatKhau"
         android:layout_gravity="center"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
