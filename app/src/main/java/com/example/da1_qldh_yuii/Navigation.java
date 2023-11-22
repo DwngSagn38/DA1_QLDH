@@ -111,14 +111,18 @@ public class Navigation extends AppCompatActivity{
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.bottom_trangChu){
+                setTitle("Yuii shop");
                 replaceFrg(fragment_trangchu);
             }else if(id == R.id.bottom_thongKe){
+                setTitle("Thống kê");
                 fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
                 replaceFrg(fragment_trangchu_thongke);
             }else if (id == R.id.bottom_khoHang){
+                setTitle("Kho hàng");
                 fragment_khohang fragmentKhohang = new fragment_khohang();
                 replaceFrg(fragmentKhohang);
             }else if (id == R.id.bottom_hoaDon){
+                setTitle("Hóa đơn");
                 fragment_hoadon fragment_hoadon = new fragment_hoadon();
                 replaceFrg(fragment_hoadon);
             }
@@ -135,6 +139,9 @@ public class Navigation extends AppCompatActivity{
                     fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
                     replaceFrg(fragmentBanggiatheosize);
 
+                }else if(id == R.id.bottom_trangChu){
+                    setTitle("Yuii shop");
+                    replaceFrg(fragment_trangchu);
                 }else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
