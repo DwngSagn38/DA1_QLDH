@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 
@@ -16,7 +17,7 @@ import com.example.da1_qldh_yuii.model.Photo;
 
 import java.util.List;
 
-public class PhotoAdapter extends PagerAdapter  {
+public class PhotoAdapter extends PagerAdapter {
 
     private Context mcontext;
     private List<Photo> mListPhoto;
@@ -24,6 +25,7 @@ public class PhotoAdapter extends PagerAdapter  {
         this.mcontext = mcontext;
         this.mListPhoto = mListPhoto;
     }
+
 
     @NonNull
     @Override

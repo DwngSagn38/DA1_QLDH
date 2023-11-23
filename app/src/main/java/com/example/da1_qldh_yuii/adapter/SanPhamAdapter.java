@@ -153,11 +153,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
 
                 frgSanPham frg = new frgSanPham();
                 frg.opendialog(sp,context,1,list);
-                list.clear();
-                list.addAll(spDao.getAll());
-                notifyDataSetChanged();
+                dialog.dismiss();
             }
         });
+
 
         notifyDataSetChanged();
     }

@@ -1,13 +1,16 @@
 package com.example.da1_qldh_yuii.fragment.frgSP_KH;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,12 +31,16 @@ import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.SanPhamAdapter;
 import com.example.da1_qldh_yuii.dao.BangGiaTheoSizeDAO;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
+import com.example.da1_qldh_yuii.fragment.fragment_sanpham_khohang;
 import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.SanPham;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class frgSanPham extends Fragment {
 
@@ -112,7 +119,7 @@ public class frgSanPham extends Fragment {
         RadioButton rdoNgungBanAdd = view.findViewById(R.id.rdoNgungBanAdd);
         Button btnLuuAdd = view.findViewById(R.id.btnLuuAdd);
         Button btnHuyAdd = view.findViewById(R.id.btnHuyAdd);
-
+        Button btnChonAnh = view.findViewById(R.id.btnChonAnh);
 
         ArrayAdapter<Integer> ArrMabg = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item);
         ArrMabg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -168,6 +175,13 @@ public class frgSanPham extends Fragment {
 
         }
 
+        btnChonAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestPermission(context);
+            }
+        });
+
         btnHuyAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,14 +232,35 @@ public class frgSanPham extends Fragment {
                             Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
-
-
                 }
+                list1.clear();
+                list1.addAll(spDao.getAll());
             }
         });
-
-
     }
 
+    public void requestPermission(Context context){
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                openImagePicker();
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(context, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
+        TedPermission.create()
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("\n" +
+                        "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
+                .setPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .check();
+    }
+
+    private void openImagePicker() {
+
+    }
 
 }
