@@ -207,6 +207,4 @@ public class Navigation extends AppCompatActivity{
         manager.beginTransaction().replace(R.id.flContent,frg).addToBackStack(null).commit();
     }
 
-
-
 }

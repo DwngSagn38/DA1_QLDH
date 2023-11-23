@@ -49,5 +49,11 @@ dependencies {
     // chọn ảnh
     releaseImplementation("gun0912.ted:tedbottompicker:2.0.1")
 
+    // xin quyền
+    implementation ("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+
+    // chọn ảnh
+    implementation ("gun0912.ted:tedbottompicker:2.0.0")
+
 
 }
