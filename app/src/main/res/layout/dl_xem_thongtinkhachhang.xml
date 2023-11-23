@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp"
+        android:padding="10dp"
         android:background="@drawable/khung">
 
         <TextView

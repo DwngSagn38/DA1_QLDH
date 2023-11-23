@@ -53,7 +53,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         holder.txtMaKH.setText("Mã khách hàng: " + list.get(position).getMaKhachHang());
         holder.txtTenKH.setText("Tên khách hàng: " + list.get(position).getTenKhachHang());
         holder.txtSoDienThoaiKH.setText("Số điện thoại: " + list.get(position).getSoDienThoai());
-        holder.txtDiaChiKH.setText("Địa chỉ: " + list.get(position).getDiaChi());
+//        holder.txtDiaChiKH.setText("Địa chỉ: " + list.get(position).getDiaChi());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
             txtMaKH = itemView.findViewById(R.id.txtMaKH);
             txtTenKH = itemView.findViewById(R.id.txtTenKH);
             txtSoDienThoaiKH = itemView.findViewById(R.id.txtSoDienThoaiKH);
-            txtDiaChiKH = itemView.findViewById(R.id.txtDiaChiKH);
+//            txtDiaChiKH = itemView.findViewById(R.id.txtDiaChiKH);
 
 
         }
@@ -161,6 +161,8 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         edSDTsua.setText(khachHang.getSoDienThoai());
         edDiaChisua.setText(khachHang.getDiaChi());
 
+        edMaKHsua.setClickable(false);
+        edMaKHsua.setFocusable(false);
 
         btnUpdateKH.setOnClickListener(new View.OnClickListener() {
             @Override
