@@ -71,7 +71,7 @@
             android:background="@drawable/khung"
             android:hint="Địa chỉ"
             android:drawablePadding="10dp"
-            android:padding="10dp"
+            android:padding="11dp"
             android:drawableStart="@drawable/diachi"
             android:textSize="20dp"
             android:textColor="@color/blue"

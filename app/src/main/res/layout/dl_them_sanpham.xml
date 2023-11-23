@@ -33,6 +33,19 @@
             android:src="@drawable/khung"
             android:scaleType="fitXY"
             />
+        <Button
+            android:id="@+id/btnChonAnh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn ảnh"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_margin="10dp"
+
+            />
 
 
         <EditText
