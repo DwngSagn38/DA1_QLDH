@@ -32,6 +32,7 @@ android {
 
 dependencies {
 
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -39,9 +40,14 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    // slide show
     implementation ("me.relex:circleindicator:2.1.6")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    // xin quyền
+    implementation ("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+
+    // chọn ảnh
+    releaseImplementation("gun0912.ted:tedbottompicker:2.0.1")
 
 
 }

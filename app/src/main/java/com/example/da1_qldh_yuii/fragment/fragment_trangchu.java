@@ -79,6 +79,7 @@ public class fragment_trangchu extends Fragment {
 
         autoSlideshow(mListphoto);
 
+
         return view;
     }
     private List<Photo> getListphoto(List<Photo> list){
@@ -98,7 +99,7 @@ public class fragment_trangchu extends Fragment {
 
         // Init timer
         if (timer != null){
-            timer.cancel();
+            onDestroy();
         }
         timer = new Timer();
 
@@ -128,7 +129,7 @@ public class fragment_trangchu extends Fragment {
         super.onDestroy();
         if (timer != null){
             timer.cancel();
-
+            timer = null;
         }
     }
 }

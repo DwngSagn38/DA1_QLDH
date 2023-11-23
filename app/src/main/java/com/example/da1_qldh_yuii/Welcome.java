@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
+
+import com.gun0912.tedpermission.PermissionListener;
+
+import java.util.List;
 
 public class Welcome extends AppCompatActivity {
 
@@ -23,4 +28,6 @@ public class Welcome extends AppCompatActivity {
             }
         },3000);
     }
+
+
 }
