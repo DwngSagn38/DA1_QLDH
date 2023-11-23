@@ -24,6 +24,7 @@
         android:paddingHorizontal="20dp"
         android:layout_marginTop="20dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edSDT"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -44,6 +45,7 @@
         android:layout_marginTop="20dp"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edMaCode"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -63,6 +65,7 @@
         android:layout_marginTop="20dp"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edPassNew"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
@@ -86,20 +89,22 @@
         >
 
         <Button
+            android:id="@+id/btnLuuQMK"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Lưu"
-            android:background="@color/blue"
             android:layout_marginRight="40dp"
-
+            android:background="@drawable/khung"
+            android:backgroundTint="@color/blue"
             />
 
         <Button
+            android:id="@+id/btnGuiQMK"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Gửi"
-            android:background="@color/red"
-
+            android:background="@drawable/khung"
+            android:backgroundTint="@color/red"
             />
 
 

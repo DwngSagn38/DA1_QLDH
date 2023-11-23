@@ -35,8 +35,6 @@
             />
 
 
-
-
         <EditText
             android:id="@+id/edtMaSPadd"
             android:layout_width="match_parent"

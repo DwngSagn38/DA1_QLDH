@@ -72,6 +72,7 @@ public class frgSanPham extends Fragment {
             public void onClick(View view) {
                 loadData(list);
                 Toast.makeText(getContext(), "Dữ liệu đã được làm mới", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -224,7 +225,7 @@ public class frgSanPham extends Fragment {
             }
         });
 
-
+// comment
     }
 
 
