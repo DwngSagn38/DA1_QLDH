@@ -27,21 +27,6 @@
         android:layout_marginBottom="80dp"
         android:backgroundTint="@color/blue"
         android:src="@drawable/item_add" />
-    <FrameLayout
-        android:id="@+id/frmbottom1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#C0D3F8"
-            app:itemIconTint="@color/bottom_nav_icon_color"
-            app:itemTextColor="@color/bottom_nav_text_color"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_menu" />
-    </FrameLayout>
 
 </RelativeLayout>

@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/edSearch"
                 android:layout_width="match_parent"
@@ -20,7 +21,8 @@
                 android:paddingLeft="10dp"
                 android:layout_margin="20dp"
                 android:drawableStart="@drawable/search"
-                android:hint="Search..."/>
+                android:hint="Search..."
+                android:textColorHint="@color/blue"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,7 +30,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
                 android:textSize="20dp"/>
 
             <LinearLayout
@@ -41,15 +43,16 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_height="236dp" />
 
                 <me.relex.circleindicator.CircleIndicator
                     android:id="@+id/circle_indicator"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_height="10dp"
+                    android:outlineSpotShadowColor="@color/blue"
+                    android:layout_marginVertical="2dp"
+                    android:layout_gravity="center"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -72,7 +75,7 @@
                     android:background="@drawable/khung"
                     android:textSize="11dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/blue"/>
 
                 <Button
                     android:id="@+id/btnSanPham"
@@ -86,7 +89,7 @@
                     android:padding="10dp"
                     android:textSize="12dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/blue"/>
                 <Button
                     android:id="@+id/btnKhachHang"
                     android:layout_weight="1"
@@ -99,7 +102,9 @@
                     android:padding="10dp"
                     android:textSize="11dp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/blue"/>
+
+
             </LinearLayout>
 
             <TextView
@@ -108,12 +113,11 @@
                 android:text="Thông báo:"
                 android:layout_margin="20dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
                 android:textSize="20dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvThongBao"
-                android:background="@drawable/khung"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="20dp"
                 android:padding="10dp"
@@ -121,21 +125,5 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/frmbottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#C0D3F8"
-        app:itemIconTint="@color/bottom_nav_icon_color"
-        app:itemTextColor="@color/bottom_nav_text_color"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_menu" />
 
 </LinearLayout>

@@ -72,16 +72,18 @@ public class DangNhap extends AppCompatActivity {
             }
         });
 
+        ArrayList<ThanhVien> list = new ArrayList<>();
         tvDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog(DangNhap.this);
+                openDialog(DangNhap.this,0,list);
             }
         });
 
     }
 
-    public void openDialog(Context context){
+    public void openDialog(Context context,int type, ArrayList<ThanhVien> list){
+
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = inflater.inflate(R.layout.dl_dangky,null);
@@ -120,6 +122,10 @@ public class DangNhap extends AppCompatActivity {
                     ThanhVien tv = new ThanhVien(user,hoten,sdt,pass,1);
                     tvDao.insert(tv);
                     Toast.makeText(context, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    if (type == 1){
+                        list.clear();
+                        list.addAll(tvDao.getAll());
+                    }
                     dialog.dismiss();
                 }
             }

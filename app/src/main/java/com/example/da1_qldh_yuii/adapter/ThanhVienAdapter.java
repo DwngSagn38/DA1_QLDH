@@ -175,10 +175,13 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
                 builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(tvDAO.delete(tv.getMaThanhVien()) == 1){
+                        if (tvDAO.delete(tv.getMaThanhVien()) != -1){
+                            list.clear();
+                            list.addAll(tvDAO.getAll());
+                            notifyDataSetChanged();
                             Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
-                        }else {
+                        } else {
                             Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -228,6 +231,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
         }
         //nnn
 
+        ArrayList<Integer> chucvu = new ArrayList<>();
         spinnerOptions.setAdapter(adapter);
 
         spinnerOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -236,9 +240,11 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
                 String selectedOption = (String) parent.getItemAtPosition(position);
                 // Thực hiện các thao tác tùy thuộc vào tùy chọn được chọn
                 if (selectedOption.equals("Nhân Viên")) {
-                    tv.setPhanQuyen(1);
+                    chucvu.clear();
+                    chucvu.add(1);
                 } else if (selectedOption.equals("Quản Lý")) {
-                    tv.setPhanQuyen(0);
+                    chucvu.clear();
+                    chucvu.add(0);
                 }
             }
 
@@ -257,7 +263,6 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
                 String sdt = txtSoDienThoaiAdd.getText().toString();
                 String pass = txtMatKhauAdd.getText().toString();
 
-
                 if (user.trim().isEmpty() || hoten.trim().isEmpty() || sdt.trim().isEmpty() || pass.trim().isEmpty()) {
                     Toast.makeText(context, "Không được để trống thông tin", Toast.LENGTH_SHORT).show();
                 }else if (!validateSDT(sdt) || sdt.length() < 10){
@@ -267,6 +272,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
                     tv.setTenThanhVien(hoten);
                     tv.setSoDienThoai(sdt);
                     tv.setMatKhau(pass);
+                    tv.setPhanQuyen(chucvu.get(0));
                     if (tvDAO.update(tv) == 1){
                         Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         notifyDataSetChanged();

@@ -38,7 +38,8 @@
         android:src="@drawable/item_add"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/blue"
 
         />

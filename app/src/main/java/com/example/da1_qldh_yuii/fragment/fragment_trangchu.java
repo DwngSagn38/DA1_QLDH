@@ -77,11 +77,12 @@ public class fragment_trangchu extends Fragment {
         circleIndicator.setViewPager(viewPager);
         photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
-        autoSlideshow();
+        autoSlideshow(mListphoto);
 
         return view;
     }
     private List<Photo> getListphoto(List<Photo> list){
+        list.clear();
         list.add(new Photo(R.drawable.sp_new6));
         list.add(new Photo(R.drawable.sp_new2));
         list.add(new Photo(R.drawable.sp_new3));
@@ -90,15 +91,16 @@ public class fragment_trangchu extends Fragment {
         return list;
     }
 
-    private void autoSlideshow(){
+    private void autoSlideshow(List<Photo> mListphoto){
         if (mListphoto == null || mListphoto.isEmpty() || viewPager == null){
             return;
         }
 
         // Init timer
-        if (timer == null){
-            timer = new Timer();
+        if (timer != null){
+            timer.cancel();
         }
+        timer = new Timer();
 
         timer.schedule(new TimerTask() {
             @Override
@@ -118,7 +120,7 @@ public class fragment_trangchu extends Fragment {
                     }
                 });
             }
-        },500,3000);
+        },3000,3000);
     }
 
     @Override
@@ -126,7 +128,7 @@ public class fragment_trangchu extends Fragment {
         super.onDestroy();
         if (timer != null){
             timer.cancel();
-            timer = null;
+
         }
     }
 }
