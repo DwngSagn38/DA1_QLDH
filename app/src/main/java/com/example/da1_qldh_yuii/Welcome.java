@@ -19,11 +19,14 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         Handler handler = new Handler();
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(Welcome.this, DangNhap.class));
+                finish();
             }
+
         },3000);
     }
 

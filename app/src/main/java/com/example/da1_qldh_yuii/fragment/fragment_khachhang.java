@@ -108,7 +108,7 @@ public class fragment_khachhang extends Fragment {
                 kh.setSoDienThoai(sdtKH);
                 kh.setDiaChi(diaChiKH);
 
-                boolean check = khachHangDAO.themKhachHang(kh);
+                boolean check = khachHangDAO.themKhachHang(maKH, tenKH, sdtKH, diaChiKH);
                 if (check){
                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                     //load data

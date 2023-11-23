@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="10dp"
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
@@ -9,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="7dp"
         android:orientation="vertical"
         android:background="@drawable/khung"
         >
@@ -20,8 +23,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:src="@drawable/makh"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="5dp"/>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/txtMaKH"
@@ -30,9 +32,8 @@
                 android:text="Mã:"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:textColor="@color/blue"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center_vertical"/>
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -43,8 +44,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:src="@drawable/tenkh"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="5dp"/>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/txtTenKH"
@@ -53,33 +53,30 @@
                 android:text="Tên:"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:textColor="@color/blue"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center_vertical"/>
-
-
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"/>
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:orientation="horizontal">-->
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:src="@drawable/sdt"-->
-<!--                android:layout_height="wrap_content"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/sdt"
+                android:layout_height="wrap_content"/>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtSoDienThoaiKH"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="SĐT:"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textColor="@color/blue"-->
-<!--                android:layout_marginLeft="10dp"/>-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/txtSoDienThoaiKH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SĐT:"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
@@ -98,11 +95,11 @@
 <!--                android:text="Địa chỉ:"-->
 <!--                android:textStyle="bold"-->
 <!--                android:textSize="20dp"-->
-<!--                android:textColor="@color/blue"-->
+<!--                android:textColor="@color/black"-->
 <!--                android:layout_marginLeft="10dp"/>-->
 <!--        </LinearLayout>-->
 
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
