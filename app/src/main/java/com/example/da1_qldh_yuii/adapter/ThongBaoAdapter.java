@@ -29,6 +29,8 @@ public class ThongBaoAdapter extends ArrayAdapter<ThongBao> {
     fragment_thongbao fragment;
     private ArrayList<ThongBao> list;
 
+    private boolean hideButtonRemoveTB;
+
     ThanhVienDAO tvDao;
 
     TextView txtTieuDe,txtNoiDung,txtHoTenThanhVien,txtNgay;
@@ -43,6 +45,12 @@ public class ThongBaoAdapter extends ArrayAdapter<ThongBao> {
         this.fragment = fragment;
     }
 
+    public ThongBaoAdapter(@NonNull Context context, ArrayList<ThongBao> list, boolean hideButtonRemoveTB) {
+        super(context, 0,list);
+        this.context = context;
+        this.list = list;
+        this.hideButtonRemoveTB = hideButtonRemoveTB;
+    }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -53,17 +61,24 @@ public class ThongBaoAdapter extends ArrayAdapter<ThongBao> {
         }
 
         final ThongBao item = list.get(position);
+        tvDao = new ThanhVienDAO(context);
         if (item != null){
             txtTieuDe = view.findViewById(R.id.txtTieuDe);
             txtTieuDe.setText(item.getTieuDe());
             txtNoiDung = view.findViewById(R.id.txtNoiDung);
             txtNoiDung.setText(item.getNoiDung());
 
+            ThanhVien thanhVien = tvDao.getID(item.getMaThanhVien());
+
             txtHoTenThanhVien = view.findViewById(R.id.txtHoTenThanhVien);
-            txtHoTenThanhVien.setText("by"+ item.getMaThanhVien());
+            txtHoTenThanhVien.setText("by "+ thanhVien.getTenThanhVien());
             txtNgay=view.findViewById(R.id.txtNgay);
-            txtNgay.setText("Ngày: " + item.getNgayDang());
+            txtNgay.setText(item.getNgayDang());
             imgDeleteThongBao = view.findViewById(R.id.imgDeleteThongBao);
+            if (hideButtonRemoveTB){
+                imgDeleteThongBao.setVisibility(View.INVISIBLE);
+            }
+
         }
 
         imgDeleteThongBao.setOnClickListener(new View.OnClickListener() {

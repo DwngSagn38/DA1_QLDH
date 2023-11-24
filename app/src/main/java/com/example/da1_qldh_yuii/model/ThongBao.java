@@ -1,8 +1,11 @@
 package com.example.da1_qldh_yuii.model;
 
+import java.util.Date;
+
 public class ThongBao {
     private int maThongBao;
     private String maThanhVien,tieuDe,noiDung,ngayDang;
+
 
     public ThongBao() {
     }

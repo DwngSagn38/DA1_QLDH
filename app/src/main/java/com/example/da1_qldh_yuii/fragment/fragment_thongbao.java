@@ -33,8 +33,10 @@ import com.example.da1_qldh_yuii.model.ThongBao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class fragment_thongbao extends Fragment {
 
@@ -73,19 +75,23 @@ public class fragment_thongbao extends Fragment {
         lvThongBao = view.findViewById(R.id.lvThongBao);
         imgAddThongBao = view.findViewById(R.id.imgAddThongBao);
         tbDAO = new ThongBaoDAO(getActivity());
+        thanhVienDAO = new ThanhVienDAO(getContext());
+
+
         loadData();
         imgAddThongBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog(getActivity(),0);
+                openDialog(getActivity(),0,new ThongBao());
             }
         });
+
 
         lvThongBao.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 item = list.get(position);
-                openDialog(getActivity(),1);
+                openDialog(getActivity(),1,item);
                 return false;
             }
         });
@@ -124,7 +130,7 @@ public class fragment_thongbao extends Fragment {
         alert.show();
     }
 
-    public void openDialog(final Context context,final int type){
+    public void openDialog(final Context context,final int type,ThongBao tb){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dl_them_thongbao, null);
@@ -144,7 +150,6 @@ public class fragment_thongbao extends Fragment {
         }
 
 
-
         btnHuyThongBaoAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,6 +162,10 @@ public class fragment_thongbao extends Fragment {
                 item = new ThongBao();
                 item.setNoiDung(edNoiDungAdd.getText().toString());
                 item.setTieuDe(edTieuDeAdd.getText().toString());
+                item.setMaThongBao(tb.getMaThongBao());
+                item.setNgayDang( new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()));
+                List<ThanhVien> list = thanhVienDAO.getAdmin();;
+                item.setMaThanhVien(list.get(0).getMaThanhVien());
                 if (validate() > 0){
                     if (type == 0){
                         if (tbDAO.insert(item) > 0){
