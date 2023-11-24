@@ -34,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String dbSanPham = "CREATE TABLE SANPHAM (\n" +
                 " maSanPham TEXT PRIMARY KEY , \n" +
-                "anhSanPham INTEGER, \n" +
+                "anhSanPham TEXT, \n" +
                 "tenSanPham TEXT, \n" +
                 "trangThai INTEGER, \n" +
                 "maBangGia INTEGER, \n" +
@@ -110,9 +110,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "ngayDang TEXT," +
                 "FOREIGN KEY (maThanhVien) REFERENCES THANHVIEN (maThanhVien))");
 
-
         //add dl
-
 
         db.execSQL("INSERT INTO KHACHHANG VALUES ('KH01', 'Nhung', '0366666666', 'Hải Dương')," +
                                                 " ('KH02', 'Trinh', '0367777777', 'Hà Nội'), " +
@@ -124,9 +122,9 @@ public class DbHelper extends SQLiteOpenHelper {
                                             " (3, 4, 150)");
 
         //mã, tên, trạng thái, mã bảng giá
-        db.execSQL("INSERT INTO SANPHAM VALUES('SP01',1, 'Gấu bông', 1, 2)," +
-                                            " ('SP02',2, 'Hoa', 2, 1)," +
-                                            " ('SP03',2, 'Khăn', 1, 1)");
+//        db.execSQL("INSERT INTO SANPHAM VALUES('SP01','', 'Gấu bông', 1, 2)," +
+//                                            " ('SP02','', 'Hoa', 2, 1)," +
+//                                            " ('SP03','', 'Khăn', 1, 1)");
 
 
         //maThanhVien, tenThanhVien, soDienThoai, matKhau, phanQuyen

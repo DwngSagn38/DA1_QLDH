@@ -56,7 +56,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         KhachHang kh = list.get(position);
         holder.txtTenKH.setText("Tên: " + list.get(position).getTenKhachHang());
         holder.txtMaKH.setText("Mã KH: " + list.get(position).getMaKhachHang());
-//        holder.txtSoDienThoaiKH.setText("Số điện thoại: " + list.get(position).getSoDienThoai());
+//        holder.txtSoDienThoaiKH.setText("SDT: " + list.get(position).getSoDienThoai());
 //        holder.txtDiaChiKH.setText("Địa chỉ: " + list.get(position).getDiaChi());
 
         holder.setOnItemClickListener(new ThanhVienAdapter.OnItemClickListener() {
@@ -81,7 +81,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         private ThanhVienAdapter.OnItemClickListener listener;
         TextView txtMaKH, txtTenKH, txtSoDienThoaiKH, txtDiaChiKH;
         public viewholder(@NonNull View itemView) {
-            super(itemView);
+            super(itemView); 
             txtTenKH = itemView.findViewById(R.id.txtTenKH);
             txtMaKH = itemView.findViewById(R.id.txtMaKH);
 //            txtSoDienThoaiKH = itemView.findViewById(R.id.txtSoDienThoaiKH);
@@ -187,15 +187,25 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
                 kh.setSoDienThoai(edSDTsua.getText().toString().trim());
                 kh.setDiaChi(edDiaChisua.getText().toString().trim());
 
-                if (khDAO.suaKhachHang(kh)){
-                    list.clear();
-                    list.addAll(khDAO.getDSKhachHang());
-                    notifyDataSetChanged();
-                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
+                String ten = edTenKHsua.getText().toString().trim();
+                String sdt = edSDTsua.getText().toString().trim();
+                String dc = edDiaChisua.getText().toString().trim();
+
+                if (ten.isEmpty() || sdt.isEmpty() || dc.isEmpty()){
+                    Toast.makeText(context, "Không được bỏ trống", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+
+                    if (khDAO.suaKhachHang(kh)){
+                        list.clear();
+                        list.addAll(khDAO.getDSKhachHang());
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }else {
+                        Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
     }

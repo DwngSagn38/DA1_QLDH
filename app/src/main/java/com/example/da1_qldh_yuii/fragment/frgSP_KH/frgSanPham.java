@@ -1,19 +1,31 @@
 package com.example.da1_qldh_yuii.fragment.frgSP_KH;
 
+import static android.app.Activity.RESULT_OK;
+
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +50,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class frgSanPham extends Fragment {
 
@@ -48,7 +60,13 @@ public class frgSanPham extends Fragment {
     private RecyclerView rcvSanPham;
     private Button btnTatCa;
     private EditText btnTheosize, btnTT;
+    private Uri selectedImageUri;
+    private ImageView imgPicker;
     ArrayList<SanPham> list = new ArrayList<>();
+
+    SanPham sanPham =new SanPham();
+
+    private static final int REQUEST_CODE = 1;
 
 
     SanPhamAdapter adapter;
@@ -82,6 +100,8 @@ public class frgSanPham extends Fragment {
             }
         });
 
+//        openImagePicker();
+
         return view;
     }
 
@@ -101,6 +121,7 @@ public class frgSanPham extends Fragment {
         rcvSanPham.setAdapter(adapter);
     }
 
+
     public void opendialog(SanPham sp, Context context, int type, ArrayList<SanPham> list1) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -119,7 +140,9 @@ public class frgSanPham extends Fragment {
         RadioButton rdoNgungBanAdd = view.findViewById(R.id.rdoNgungBanAdd);
         Button btnLuuAdd = view.findViewById(R.id.btnLuuAdd);
         Button btnHuyAdd = view.findViewById(R.id.btnHuyAdd);
-        Button btnChonAnh = view.findViewById(R.id.btnChonAnh);
+//        Button btnChonAnh = view.findViewById(R.id.btnChonAnh);
+
+        imgPicker = view.requireViewById(R.id.imgAnhSanPhamAdd);
 
         ArrayAdapter<Integer> ArrMabg = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item);
         ArrMabg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -130,7 +153,7 @@ public class frgSanPham extends Fragment {
 
         for (BangGia bg : listBG) {
             if (bg.getMaBangGia() != sp.getMaBangGia()) {
-                ArrMabg.add(bg.getMaBangGia());
+                ArrMabg.add(bg.getSize());
             }
         }
 
@@ -142,7 +165,7 @@ public class frgSanPham extends Fragment {
                 Integer selectedOption = (Integer) adapterView.getItemAtPosition(i);
                 // Thực hiện các thao tác tùy thuộc vào tùy chọn được chọn
                 for (BangGia bg : listBG) {
-                    if (bg.getMaBangGia() == selectedOption) {
+                    if (bg.getSize() == selectedOption) {
                         sp.setMaBangGia(bg.getMaBangGia());
                     }
                 }
@@ -154,13 +177,13 @@ public class frgSanPham extends Fragment {
             }
         });
         if (type == 1) {
+//            btnChonAnh.setVisibility(View.GONE);
             // cập nhật không cho nhập mã
             edtMaSPadd.setFocusable(false);
             edtMaSPadd.setClickable(false);
-
-            imgAnhSanPhamAdd.setImageResource(R.drawable.sp_new2);
             edtMaSPadd.setText(sp.getMaSanPham());
             edtTenSPadd.setText(sp.getTenSanPham());
+            imgAnhSanPhamAdd.setImageURI(sp.getAnhSanPham());
 
             if (sp.getTrangThai() == 0) {
                 rdoConHangAdd.setChecked(true);
@@ -171,11 +194,10 @@ public class frgSanPham extends Fragment {
             }
 
             // set mã bảng giá của sản phẩm hiện tại về vị trí đầu tiên
-            ArrMabg.insert(sp.getMaBangGia(), 0);
-
+            ArrMabg.insert(bgDao.getID(sp.getMaBangGia()).getSize(), 0);
         }
 
-        btnChonAnh.setOnClickListener(new View.OnClickListener() {
+        imgAnhSanPhamAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 requestPermission(context);
@@ -192,7 +214,7 @@ public class frgSanPham extends Fragment {
         btnLuuAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int anhsp = 1;
+
                 String masp = edtMaSPadd.getText().toString().trim();
 
                 String tensp = edtTenSPadd.getText().toString().trim();
@@ -202,8 +224,6 @@ public class frgSanPham extends Fragment {
                 if (masp.isEmpty() || tensp.isEmpty() || selectedId == -1) {
                     Toast.makeText(context, "Không được bỏ trống", Toast.LENGTH_SHORT).show();
                 } else {
-                    sp.setAnhSanPham(anhsp);
-                    sp.setMaSanPham(masp);
                     sp.setTenSanPham(tensp);
                     if (rdoConHangAdd.isChecked()) {
                         sp.setTrangThai(0);
@@ -216,14 +236,14 @@ public class frgSanPham extends Fragment {
                     if (type == 1) {
                         spDao = new SanPhamDAO(context);
                         if (spDao.update(sp) != -1) {
-                            list1.clear();
-                            list1.addAll(spDao.getAll());
-                            Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Đang cập Cập nhật hãy load lại danh sách", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else {
                             Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                         }
                     } else {
+                        sp.setMaSanPham(masp);
+                        sp.setAnhSanPham(sanPham.getAnhSanPham());
                         if (spDao.insert(sp) != -1) {
                             loadData(list1);
                             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -235,11 +255,12 @@ public class frgSanPham extends Fragment {
                 }
                 list1.clear();
                 list1.addAll(spDao.getAll());
+
             }
         });
     }
 
-    public void requestPermission(Context context){
+    public void requestPermission(Context context) {
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
@@ -259,8 +280,41 @@ public class frgSanPham extends Fragment {
                 .check();
     }
 
-    private void openImagePicker() {
 
+    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Log.e(TAG, "onActivityresult");
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data == null) {
+                            return;
+                        }
+                        Uri uri = data.getData();
+                        sanPham.setAnhSanPham(uri);
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+                            imgPicker.setImageBitmap(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            }
+    );
+
+
+    // Phương thức này được gọi khi người dùng nhấn vào nút upload ảnh
+    public void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        activityResultLauncher.launch(intent);
+//        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+//        intent.setType("image/*");
+
+//        activityResultLauncher.launch(Intent.createChooser(intent, "Select picture"));
+//        activityResultLauncher.launch(intent.setData(selectedImageUri));
     }
-
 }

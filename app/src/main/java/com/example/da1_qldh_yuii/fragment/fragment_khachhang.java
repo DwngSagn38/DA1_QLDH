@@ -108,15 +108,22 @@ public class fragment_khachhang extends Fragment {
                 kh.setSoDienThoai(sdtKH);
                 kh.setDiaChi(diaChiKH);
 
-                boolean check = khachHangDAO.themKhachHang(kh);
-                if (check){
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    //load data
-                    loadData();
+                if (maKH.isEmpty() || tenKH.isEmpty() || sdtKH.isEmpty() || diaChiKH.isEmpty()){
+                    Toast.makeText(getContext(), "Không được bỏ trống", Toast.LENGTH_SHORT).show();
+                } else if (khachHangDAO.checkMaKH(maKH)) {
+                    Toast.makeText(getContext(), "Mã khách hàng đã được sử dụng", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean check = khachHangDAO.themKhachHang(kh);
+                    if (check){
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        //load data
+                        loadData();
 
-                }else{
-                    Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
 

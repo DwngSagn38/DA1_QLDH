@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 import com.example.da1_qldh_yuii.database.DbHelper;
 import com.example.da1_qldh_yuii.model.SanPham;
@@ -24,7 +25,7 @@ public class SanPhamDAO {
     public long insert(SanPham sp) {
         ContentValues values = new ContentValues();
         values.put("maSanPham", sp.getMaSanPham());
-        values.put("anhSanPham", sp.getAnhSanPham());
+        values.put("anhSanPham", sp.getAnhSanPham().toString());
         values.put("tenSanPham", sp.getTenSanPham());
         values.put("trangThai", sp.getTrangThai());
         values.put("maBangGia", sp.getMaBangGia());
@@ -33,8 +34,6 @@ public class SanPhamDAO {
 
     public long update(SanPham sp) {
         ContentValues values = new ContentValues();
-        values.put("maSanPham", sp.getMaSanPham());
-        values.put("anhSanPham", sp.getAnhSanPham());
         values.put("tenSanPham", sp.getTenSanPham());
         values.put("trangThai", sp.getTrangThai());
         values.put("maBangGia", sp.getMaBangGia());
@@ -64,7 +63,13 @@ public class SanPhamDAO {
         while (cursor.moveToNext()) {
             SanPham sp = new SanPham();
             sp.setMaSanPham(cursor.getString(cursor.getColumnIndex("maSanPham")));
-            sp.setAnhSanPham(cursor.getInt(cursor.getColumnIndex("anhSanPham")));
+//            sp.setAnhSanPham(cursor.getInt(cursor.getColumnIndex("anhSanPham")));
+            // Lấy giá trị của trường uri từ Cursor
+            String uriString = cursor.getString(cursor.getColumnIndex("anhSanPham"));
+            if (uriString != null) {
+                Uri uri = Uri.parse(uriString);
+                sp.setAnhSanPham(uri);
+            }
             sp.setTenSanPham(cursor.getString(cursor.getColumnIndex("tenSanPham")));
             sp.setTrangThai(cursor.getInt(cursor.getColumnIndex("trangThai")));
             sp.setMaBangGia(cursor.getInt(cursor.getColumnIndex("maBangGia")));

@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,13 +21,12 @@ import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.BangGiaTheoSizeDAO;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
 import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
-import com.example.da1_qldh_yuii.model.KhachHang;
 import com.example.da1_qldh_yuii.model.SanPham;
 
 import java.util.ArrayList;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewholder> {
-
+    frgSanPham frg = new frgSanPham();
     SanPhamDAO spDao;
     BangGiaTheoSizeDAO bgDao;
     private final Context context;
@@ -63,16 +61,17 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
 
             if (sp.getTrangThai() == 0){
                 holder.txtTrangThaiSP.setText("Trạng thái : Còn hàng");
-                holder.txtTrangThaiSP.setTextColor(Color.BLUE);
+                holder.txtTrangThaiSP.setTextColor(Color.GREEN);
             }else if (sp.getTrangThai() == 1){
                 holder.txtTrangThaiSP.setText("Trạng thái : Đặt hàng");
-                holder.txtTrangThaiSP.setTextColor(Color.GREEN);
+                holder.txtTrangThaiSP.setTextColor(Color.BLUE);
             }else {
                 holder.txtTrangThaiSP.setText("Trạng thái : Ngừng bán");
                 holder.txtTrangThaiSP.setTextColor(Color.RED);
             }
 
-            holder.imgAnhSP.setImageResource(R.drawable.sp_new2);
+//            holder.imgAnhSP.setImageResource(sp.getAnhSanPham());
+            holder.imgAnhSP.setImageURI(sp.getAnhSanPham());
 
             holder.SetOnItemClickListener(new ThanhVienAdapter.OnItemClickListener() {
                 @Override
@@ -102,21 +101,22 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
         Button btnUpdate = view.findViewById(R.id.btnUpdate);
         Button btnDelete = view.findViewById(R.id.btnDelete);
 
+        imgAnhSanPhamCT.setImageURI(sp.getAnhSanPham());
 
-        if (sp.getAnhSanPham() == 1){
-            imgAnhSanPhamCT.setImageResource(R.drawable.sp_new2);
-        }
+//        if (sp.getAnhSanPham() == 1){
+//            imgAnhSanPhamCT.setImageResource(R.drawable.sp_new2);
+//        }
         txtMaSanPhamCT.setText("Mã sản phẩm: "+sp.getMaSanPham());
-        txtTenSanPhamCT.setText("Tên sản phẩm: "+sp.getTenSanPham());
+        txtTenSanPhamCT.setText("Tên: "+sp.getTenSanPham());
         txtSizeSanPhamCT.setText("Size: "+bgDao.getID(sp.getMaBangGia()).getSize()+" cm");
         txtGiaBanCT.setText("Giá: "+bgDao.getID(sp.getMaBangGia()).getGiaBan()+" VNĐ");
 
         if (sp.getTrangThai() == 0){
             txtTrangThaiCT.setText("Trạng thái: Còn hàng");
-            txtTrangThaiCT.setTextColor(Color.BLUE);
+            txtTrangThaiCT.setTextColor(Color.GREEN);
         }else if (sp.getTrangThai() == 1){
             txtTrangThaiCT.setText("Trạng thái: Đặt hàng");
-            txtTrangThaiCT.setTextColor(Color.GREEN);
+            txtTrangThaiCT.setTextColor(Color.BLUE);
         }else {
             txtTrangThaiCT.setText("Trạng thái: Ngừng bán");
             txtTrangThaiCT.setTextColor(Color.RED);
@@ -150,8 +150,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                frgSanPham frg = new frgSanPham();
                 frg.opendialog(sp,context,1,list);
                 dialog.dismiss();
             }

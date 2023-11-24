@@ -84,6 +84,14 @@ public class KhachHangDAO {
             return false;
         return true;
     }
-
+    public boolean checkMaKH(String id) {
+        boolean usernameExists = false;
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM KHACHHANG WHERE maKhachHang = ?", new String[]{id});
+        if (cursor.moveToFirst()) {
+            usernameExists = true;
+        }
+        return usernameExists;
+    }
 
 }

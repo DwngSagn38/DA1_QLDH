@@ -21,8 +21,9 @@
 
         <ImageView
             android:id="@+id/imgAnhSP"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/cunhan"
             android:layout_gravity="center"
             />

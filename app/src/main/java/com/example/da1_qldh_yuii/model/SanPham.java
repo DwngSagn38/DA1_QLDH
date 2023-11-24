@@ -1,21 +1,31 @@
 package com.example.da1_qldh_yuii.model;
 
+import android.net.Uri;
+
 public class SanPham {
     private String maSanPham,tenSanPham;
-    private int anhSanPham;
+    private Uri anhSanPham;
 
     private int trangThai,maBangGia;
 
     public SanPham() {
     }
 
-    public SanPham(String maSanPham, String tenSanPham, int anhSanPham, int trangThai, int maBangGia) {
+    public SanPham(String maSanPham, String tenSanPham, Uri anhSanPham, int trangThai, int maBangGia) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
         this.anhSanPham = anhSanPham;
         this.trangThai = trangThai;
         this.maBangGia = maBangGia;
     }
+
+//    public SanPham(String maSanPham, String tenSanPham, int anhSanPham, int trangThai, int maBangGia) {
+//        this.maSanPham = maSanPham;
+//        this.tenSanPham = tenSanPham;
+//        this.anhSanPham = anhSanPham;
+//        this.trangThai = trangThai;
+//        this.maBangGia = maBangGia;
+//    }
 
     public String getMaSanPham() {
         return maSanPham;
@@ -33,13 +43,21 @@ public class SanPham {
         this.tenSanPham = tenSanPham;
     }
 
-    public int getAnhSanPham() {
+    public Uri getAnhSanPham() {
         return anhSanPham;
     }
 
-    public void setAnhSanPham(int anhSanPham) {
+    public void setAnhSanPham(Uri anhSanPham) {
         this.anhSanPham = anhSanPham;
     }
+//
+//    public int getAnhSanPham() {
+//        return anhSanPham;
+//    }
+//
+//    public void setAnhSanPham(int anhSanPham) {
+//        this.anhSanPham = anhSanPham;
+//    }
 
     public int getTrangThai() {
         return trangThai;
