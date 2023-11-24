@@ -38,13 +38,13 @@ public class KhachHangDAO {
     }
 
 
-    public boolean themKhachHang(KhachHang kh){
+    public boolean themKhachHang(String maKhachHang, String tenKhachHang, String soDienThoai, String diaChi){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maKhachHang", kh.getMaKhachHang());
-        contentValues.put("tenKhachHang", kh.getTenKhachHang());
-        contentValues.put("soDienThoai", kh.getSoDienThoai());
-        contentValues.put("diaChi", kh.getDiaChi());
+        contentValues.put("maKhachHang", maKhachHang);
+        contentValues.put("tenKhachHang", tenKhachHang);
+        contentValues.put("soDienThoai", soDienThoai);
+        contentValues.put("diaChi", diaChi);
 
         long check = sqLiteDatabase.insert("KHACHHANG", null, contentValues);
         if (check == -1)
@@ -54,35 +54,21 @@ public class KhachHangDAO {
 
     }
 
-    public boolean suaKhachHang(KhachHang kh){
+    //update
+
+    public boolean capNhatKhachHang(String maKhachHang, String tenKhachHang, String soDienThoai, String diaChi){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maKhachHang", kh.getMaKhachHang());
-        contentValues.put("tenKhachHang", kh.getTenKhachHang());
-        contentValues.put("soDienThoai", kh.getSoDienThoai());
-        contentValues.put("diaChi", kh.getDiaChi());
+        contentValues.put("maKhachHang", maKhachHang);
+        contentValues.put("tenKhachHang", tenKhachHang);
+        contentValues.put("soDienThoai", soDienThoai);
+        contentValues.put("diaChi", diaChi);
 
-        long check = sqLiteDatabase.update("KHACHHANG", contentValues,"maKhachHang=?",
-                new String[]{String.valueOf(kh.getMaKhachHang())});
-        return check != -1;
-    }
-    public boolean checkID(String username) {
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        boolean IDExists = false;
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM KHACHHANG WHERE maKhachHang = ?", new String[]{username});
-        if (cursor.moveToFirst()) {
-            IDExists = true;
-        }
-        return IDExists;
-    }
-
-    public boolean xoaKhachHang(String maKhachHang){
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        long check = sqLiteDatabase.delete("KHACHHANG","maKhachHang=?",
-                new String[]{maKhachHang});
+        long check = sqLiteDatabase.update("KHACHHANG", contentValues, "maKhachHang = ?", new String[]{String.valueOf(maKhachHang)});
         if (check == -1)
             return false;
         return true;
+
     }
     public boolean checkMaKH(String id) {
         boolean usernameExists = false;
@@ -92,6 +78,20 @@ public class KhachHangDAO {
             usernameExists = true;
         }
         return usernameExists;
+    }
+
+    //xóa
+
+    public int xoaKhachHang(String maKhachHang) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        int check = sqLiteDatabase.delete("KHACHHANG", "maKhachHang = ?", new String[]{maKhachHang});
+        sqLiteDatabase.close();
+
+        if (check == 0) {
+            return 0; // Xóa không thành công
+        } else {
+            return 1; // Xóa thành công
+        }
     }
 
 }

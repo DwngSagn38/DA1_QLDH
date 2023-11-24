@@ -18,7 +18,7 @@
         />
 
     <EditText
-        android:id="@+id/edtTieuDeAdd"
+        android:id="@+id/edTieuDeAdd"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/khung"
@@ -27,6 +27,8 @@
         android:paddingLeft="20dp"
 
         />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +42,7 @@
         />
 
     <EditText
-        android:id="@+id/edtNoiDungAdd"
+        android:id="@+id/edNoiDungAdd"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@drawable/khung"
@@ -48,6 +50,7 @@
         android:paddingLeft="20dp"
 
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"

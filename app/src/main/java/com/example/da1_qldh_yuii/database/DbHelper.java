@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(@Nullable Context context) {
-        super(context, "QLHD", null, 4);
+        super(context, "QLHD", null, 7);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maThanhVien TEXT," +
                 "tieuDe TEXT," +
                 "noiDung TEXT," +
-                "ngayDang TEXT," +
+                "ngayDang DATE," +
                 "FOREIGN KEY (maThanhVien) REFERENCES THANHVIEN (maThanhVien))");
 
         //add dl
