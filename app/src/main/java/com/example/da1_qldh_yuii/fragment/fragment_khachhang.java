@@ -103,20 +103,28 @@ public class fragment_khachhang extends Fragment {
                 String tenKH = edTenKHadd.getText().toString();
                 String sdtKH = edSDTadd.getText().toString();
                 String diaChiKH = edDiaChiadd.getText().toString();
-                kh.setMaKhachHang(maKH);
-                kh.setTenKhachHang(tenKH);
-                kh.setSoDienThoai(sdtKH);
-                kh.setDiaChi(diaChiKH);
 
-                boolean check = khachHangDAO.themKhachHang(maKH, tenKH, sdtKH, diaChiKH);
-                if (check){
-                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    //load data
-                    loadData();
+                if (maKH.trim().isEmpty() || tenKH.trim().isEmpty() || sdtKH.trim().isEmpty() || diaChiKH.trim().isEmpty()){
+                    Toast.makeText(getContext(), "Không được bỏ trống", Toast.LENGTH_SHORT).show();
+                }else {
+                    kh.setMaKhachHang(maKH);
+                    kh.setTenKhachHang(tenKH);
+                    kh.setSoDienThoai(sdtKH);
+                    kh.setDiaChi(diaChiKH);
 
-                }else{
-                    Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+
+                    boolean check = khachHangDAO.themKhachHang(maKH, tenKH, sdtKH, diaChiKH);
+                    if (check){
+                        //load data
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        loadData();
+
+                    }else{
+                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
 

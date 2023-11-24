@@ -1,7 +1,5 @@
 package com.example.da1_qldh_yuii.adapter;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,7 +19,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.da1_qldh_yuii.DangNhap;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.model.ThanhVien;

@@ -52,6 +52,11 @@ public class ThanhVienDAO {
         return getData(sql);
     }
 
+    public List<ThanhVien> getAdmin() {
+        String sql = "SELECT * FROM THANHVIEN WHERE phanQuyen = 0" ;
+        return getData(sql);
+    }
+
     public ThanhVien getID(String id) {
         String sql = "SELECT * FROM THANHVIEN WHERE maThanhVien=?";
         List<ThanhVien> list = getData(sql, id);

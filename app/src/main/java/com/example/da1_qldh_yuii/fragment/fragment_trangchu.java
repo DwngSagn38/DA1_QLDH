@@ -12,10 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.example.da1_qldh_yuii.adapter.ThongBaoAdapter;
+import com.example.da1_qldh_yuii.dao.ThongBaoDAO;
 import com.example.da1_qldh_yuii.model.Photo;
 import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
+import com.example.da1_qldh_yuii.model.ThongBao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,14 @@ public class fragment_trangchu extends Fragment {
     private CircleIndicator circleIndicator;
     private PhotoAdapter photoAdapter;
     private Timer timer;
+
+    ListView lvThongBao;
+
+    ArrayList<ThongBao> list;
+
+    ThongBaoAdapter adapter;
+
+    ThongBaoDAO tbDAO;
     Button btnKhachHang, btnSanPham;
 
     private List<Photo> mListphoto = new ArrayList<>();
@@ -44,9 +56,17 @@ public class fragment_trangchu extends Fragment {
         viewPager = view.findViewById(R.id.viewpager);
         circleIndicator = view.findViewById(R.id.circle_indicator);
 
+        lvThongBao = view.findViewById(R.id.lvThongBao);
+
+
         //btnKhachHang
         btnKhachHang = view.findViewById(R.id.btnKhachHang);
         btnSanPham = view.findViewById(R.id.btnSanPham);
+
+        tbDAO = new ThongBaoDAO(getActivity());
+        list = (ArrayList<ThongBao>) tbDAO.getAll();
+        adapter = new ThongBaoAdapter(getActivity(),list,true);
+        lvThongBao.setAdapter(adapter);
 
         btnKhachHang.setOnClickListener(new View.OnClickListener() {
             @Override
