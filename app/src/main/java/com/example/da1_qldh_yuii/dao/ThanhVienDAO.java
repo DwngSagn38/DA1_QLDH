@@ -55,7 +55,10 @@ public class ThanhVienDAO {
     public ThanhVien getID(String id) {
         String sql = "SELECT * FROM THANHVIEN WHERE maThanhVien=?";
         List<ThanhVien> list = getData(sql, id);
-        return list.get(0);
+        if (!list.isEmpty()) {
+            return list.get(0); // Truy cập vào phần tử đầu tiên nếu danh sách không rỗng
+        }
+        return null;
     }
 
     public int checkLogin(String id, String password) {

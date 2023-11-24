@@ -1,9 +1,12 @@
 package com.example.da1_qldh_yuii.adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +49,15 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull BangGiaAdapter.ViewHolder holder, int position) {
+
+        // Lấy thông tin người dùng từ SharedPreferences
+        SharedPreferences pref = context.getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+
+        if (level == 1){
+            holder.imgDeleteBangGia.setVisibility(View.GONE);
+            holder.imgEditBangGia.setVisibility(View.GONE);
+        }
 
         holder.txtMaBangGia.setText("Mã bảng giá: " + list.get(position).getMaBangGia());
         holder.txtSize.setText("Size: " + list.get(position).getSize());

@@ -133,7 +133,7 @@ public class DangNhap extends AppCompatActivity {
 
     }
 
-    public void rememberUser(String u, String p, boolean status) {
+    public void rememberUser(String u, String p, boolean status,int level) {
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
         if (!status) {
@@ -143,6 +143,7 @@ public class DangNhap extends AppCompatActivity {
             edit.putString("USERNAME", u);
             edit.putString("PASSWORD", p);
             edit.putBoolean("REMEMBER", status);
+            edit.putInt("LEVEL",level);
         }
         // luu lai toan bo du lieu
         edit.commit();
@@ -156,7 +157,7 @@ public class DangNhap extends AppCompatActivity {
         } else {
             if (tvDAO.checkLogin(strUser, strPass) > 0) {
                 Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
-                rememberUser(strUser, strPass, chkRemember.isChecked());
+                rememberUser(strUser, strPass, chkRemember.isChecked(),tvDAO.getID(strUser).getPhanQuyen());
                 Intent intent = new Intent(getApplicationContext(), Navigation.class);
                 intent.putExtra("user", strUser);
                 startActivity(intent);

@@ -1,7 +1,11 @@
 package com.example.da1_qldh_yuii.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -16,20 +20,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.BangGiaAdapter;
 import com.example.da1_qldh_yuii.dao.BangGiaTheoSizeDAO;
+import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.model.BangGia;
+import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class fragment_banggiatheosize extends Fragment {
 
     BangGiaTheoSizeDAO bangGiaTheoSizeDAO;
     RecyclerView recyclerViewBangGia;
+    ThanhVienDAO tvDAO;
+    int level;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,11 +47,21 @@ public class fragment_banggiatheosize extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_banggiatheosize, container, false);
 
+        TextView tvtest =view.findViewById(R.id.tvtest);
         recyclerViewBangGia = view.findViewById(R.id.rcvBangGiaTheoSize);
         FloatingActionButton floatAddTV = view.findViewById(R.id.floatAddBangGia);
 
         bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(getContext());
         loadData();
+
+
+        // Nhân viên không có quyền thêm bảng giá
+        // Nhận Bundle từ Fragment
+        SharedPreferences pref = getContext().getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+        if (level == 1){
+            floatAddTV.setVisibility(View.GONE);
+        }
 
         floatAddTV.setOnClickListener(new View.OnClickListener() {
             @Override

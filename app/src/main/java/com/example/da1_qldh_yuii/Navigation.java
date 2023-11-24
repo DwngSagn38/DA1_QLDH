@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -70,7 +71,7 @@ public class Navigation extends AppCompatActivity{
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.logo_menu);
+
         actionBar.setDisplayHomeAsUpEnabled(true);
         // set mau icon ve ban goc
         nv.setItemIconTintList(null);
@@ -93,9 +94,11 @@ public class Navigation extends AppCompatActivity{
         int level = thanhVien.getPhanQuyen();
         tvUser.setText(username);
         if (level == 0){
+            actionBar.setHomeAsUpIndicator(R.drawable.logo_menu);
             tvLevel.setText("(Quản lý)");
             img_logo.setImageResource(R.drawable.logo_yuii);
         }else {
+            actionBar.setHomeAsUpIndicator(R.drawable.logo_menu2);
             tvLevel.setText("(Nhân Viên)");
             img_logo.setImageResource(R.drawable.ic_person);
             nv.setItemIconTintList(null);
@@ -107,7 +110,6 @@ public class Navigation extends AppCompatActivity{
             nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
 
         }
-
 
         // su kien bottomnavigation
 
@@ -142,9 +144,6 @@ public class Navigation extends AppCompatActivity{
                     fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
                     replaceFrg(fragmentBanggiatheosize);
 
-                }else if(id == R.id.bottom_trangChu){
-                    setTitle("Yuii shop");
-                    replaceFrg(fragment_trangchu);
                 }else if (id == R.id.nav_DVVC){
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
@@ -206,7 +205,4 @@ public class Navigation extends AppCompatActivity{
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent,frg).addToBackStack(null).commit();
     }
-
-
-
 }
