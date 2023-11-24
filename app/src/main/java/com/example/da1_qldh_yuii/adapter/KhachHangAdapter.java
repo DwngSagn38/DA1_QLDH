@@ -175,6 +175,8 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
 
 
         edMaKHsua.setText(kh.getMaKhachHang());
+        edMaKHsua.setClickable(false);
+        edMaKHsua.setFocusable(false);
         edTenKHsua.setText(kh.getTenKhachHang());
         edSDTsua.setText(kh.getSoDienThoai());
         edDiaChisua.setText(kh.getDiaChi());

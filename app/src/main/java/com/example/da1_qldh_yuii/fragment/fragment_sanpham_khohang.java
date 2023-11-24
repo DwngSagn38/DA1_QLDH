@@ -55,7 +55,5 @@ public class fragment_sanpham_khohang extends Fragment {
 
 
 
-
-
     }
 }
