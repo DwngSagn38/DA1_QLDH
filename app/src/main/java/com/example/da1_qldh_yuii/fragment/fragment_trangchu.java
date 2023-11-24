@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.adapter.ThongBaoAdapter;
 import com.example.da1_qldh_yuii.dao.ThongBaoDAO;
@@ -40,7 +41,7 @@ public class fragment_trangchu extends Fragment {
     ThongBaoAdapter adapter;
 
     ThongBaoDAO tbDAO;
-    Button btnKhachHang, btnSanPham;
+    Button btnKhachHang, btnSanPham,btnTaoHoaDon;
 
     private List<Photo> mListphoto = new ArrayList<>();
     public fragment_trangchu() {
@@ -62,6 +63,7 @@ public class fragment_trangchu extends Fragment {
         //btnKhachHang
         btnKhachHang = view.findViewById(R.id.btnKhachHang);
         btnSanPham = view.findViewById(R.id.btnSanPham);
+        btnTaoHoaDon = view.findViewById(R.id.btnTaoHoaDon);
 
         tbDAO = new ThongBaoDAO(getActivity());
         list = (ArrayList<ThongBao>) tbDAO.getAll();
@@ -87,7 +89,12 @@ public class fragment_trangchu extends Fragment {
             }
         });
 
-
+        btnTaoHoaDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Chức năng đang cải thiện", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //slide show
         getListphoto(mListphoto);

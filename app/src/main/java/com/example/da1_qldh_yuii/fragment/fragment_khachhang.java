@@ -103,17 +103,14 @@ public class fragment_khachhang extends Fragment {
                 String tenKH = edTenKHadd.getText().toString();
                 String sdtKH = edSDTadd.getText().toString();
                 String diaChiKH = edDiaChiadd.getText().toString();
-                kh.setMaKhachHang(maKH);
-                kh.setTenKhachHang(tenKH);
-                kh.setSoDienThoai(sdtKH);
-                kh.setDiaChi(diaChiKH);
+
 
                 if (maKH.isEmpty() || tenKH.isEmpty() || sdtKH.isEmpty() || diaChiKH.isEmpty()){
                     Toast.makeText(getContext(), "Không được bỏ trống", Toast.LENGTH_SHORT).show();
                 } else if (khachHangDAO.checkMaKH(maKH)) {
                     Toast.makeText(getContext(), "Mã khách hàng đã được sử dụng", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean check = khachHangDAO.themKhachHang(kh);
+                    boolean check = khachHangDAO.themKhachHang(maKH,tenKH,sdtKH,diaChiKH);
                     if (check){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         //load data

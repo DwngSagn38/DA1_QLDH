@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@drawable/khung"
+    android:layout_margin="10dp"
+    android:padding="20dp"
     >
 
     <TextView
@@ -22,10 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/khung"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:hint="Nhập tiêu đề"
+        android:textColorHint="@color/gray"
         android:paddingLeft="20dp"
-
         />
 
 
@@ -37,19 +39,23 @@
         android:textSize="26dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         />
 
-    <EditText
-        android:id="@+id/edNoiDungAdd"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/khung"
-        android:layout_margin="20dp"
-        android:paddingLeft="20dp"
-
-        />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/khung">
+            <EditText
+                android:id="@+id/edNoiDungAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nhập nội dung"
+                android:textColorHint="@color/gray"
+                />
+        </ScrollView>
 
 
     <LinearLayout
@@ -57,6 +63,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:paddingBottom="20dp"
         >
 
         <Button
@@ -67,6 +74,7 @@
             android:background="@drawable/khungdn"
             android:textColor="@color/white"
             android:textStyle="bold"
+
             />
 
         <Button
@@ -78,6 +86,7 @@
             android:background="@drawable/khung_delete"
             android:textColor="@color/white"
             android:textStyle="bold"
+
             />
 
     </LinearLayout>

@@ -135,7 +135,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
                 builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (khDAO.xoaKhachHang(kh.getMaKhachHang())){
+                        if (khDAO.xoaKhachHang(kh.getMaKhachHang()) == 1){
                             list.clear();
                             list.addAll(khDAO.getDSKhachHang());
                             notifyDataSetChanged();
@@ -171,7 +171,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
         EditText edTenKHsua = view.findViewById(R.id.edTenKHsua);
         EditText edSDTsua = view.findViewById(R.id.edSDTsua);
         EditText edDiaChisua = view.findViewById(R.id.edDiaChisua);
-        Button btnLuuKH = view.findViewById(R.id.btnLuuKH);
+        Button btnLuuKH = view.findViewById(R.id.btnUpdateKH);
 
 
         edMaKHsua.setText(kh.getMaKhachHang());
@@ -183,9 +183,6 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
             @Override
             public void onClick(View view) {
                 kh.setMaKhachHang(edMaKHsua.getText().toString().trim());
-                kh.setTenKhachHang(edTenKHsua.getText().toString().trim());
-                kh.setSoDienThoai(edSDTsua.getText().toString().trim());
-                kh.setDiaChi(edDiaChisua.getText().toString().trim());
 
                 String ten = edTenKHsua.getText().toString().trim();
                 String sdt = edSDTsua.getText().toString().trim();
@@ -195,7 +192,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
                     Toast.makeText(context, "Không được bỏ trống", Toast.LENGTH_SHORT).show();
                 }else {
 
-                    if (khDAO.suaKhachHang(kh)){
+                    if (khDAO.capNhatKhachHang(kh.getMaKhachHang(),ten,sdt,dc)){
                         list.clear();
                         list.addAll(khDAO.getDSKhachHang());
                         notifyDataSetChanged();

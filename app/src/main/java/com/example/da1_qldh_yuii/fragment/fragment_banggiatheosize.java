@@ -3,6 +3,7 @@ package com.example.da1_qldh_yuii.fragment;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,8 +52,8 @@ public class fragment_banggiatheosize extends Fragment {
         recyclerViewBangGia = view.findViewById(R.id.rcvBangGiaTheoSize);
         FloatingActionButton floatAddTV = view.findViewById(R.id.floatAddBangGia);
 
-        bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(getContext());
-        loadData();
+
+        loadDataBG(getContext(),recyclerViewBangGia);
 
 
         // Nhân viên không có quyền thêm bảng giá
@@ -75,14 +76,13 @@ public class fragment_banggiatheosize extends Fragment {
 
 
     //load data
-    private void loadData(){
-
+    public void loadDataBG(Context context, RecyclerView recyclerView){
+        BangGiaTheoSizeDAO bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(context);
         ArrayList<BangGia> list = bangGiaTheoSizeDAO.getDSBangGia();
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerViewBangGia.setLayoutManager(linearLayoutManager);
-        BangGiaAdapter adapter = new BangGiaAdapter(getContext(), list, bangGiaTheoSizeDAO);
-        recyclerViewBangGia.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        BangGiaAdapter adapter = new BangGiaAdapter(context, list, bangGiaTheoSizeDAO);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -112,7 +112,7 @@ public class fragment_banggiatheosize extends Fragment {
                     if (check){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         //load data
-                        loadData();
+                        loadDataBG(getContext(),recyclerViewBangGia);
 
                     }else{
                         Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();

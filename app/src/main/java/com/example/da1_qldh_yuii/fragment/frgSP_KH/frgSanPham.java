@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -37,12 +38,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.SanPhamAdapter;
 import com.example.da1_qldh_yuii.dao.BangGiaTheoSizeDAO;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
+import com.example.da1_qldh_yuii.fragment.fragment_banggiatheosize;
 import com.example.da1_qldh_yuii.fragment.fragment_sanpham_khohang;
 import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.SanPham;
@@ -58,8 +61,9 @@ public class frgSanPham extends Fragment {
 
     private FloatingActionButton floatAddSanPham;
     private RecyclerView rcvSanPham;
-    private Button btnTatCa;
-    private EditText btnTheosize, btnTT;
+    private Button btnTatCa,btnTheosize;
+    private EditText btnTT;
+    private TextView txtDanhSachSP;
     private Uri selectedImageUri;
     private ImageView imgPicker;
     ArrayList<SanPham> list = new ArrayList<>();
@@ -84,6 +88,8 @@ public class frgSanPham extends Fragment {
 
         getAnhXa(view);
 
+
+
         loadData(list);
         floatAddSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +98,36 @@ public class frgSanPham extends Fragment {
                 opendialog(sanPham, getContext(), 0, list);
             }
         });
+        btnTatCa.setBackgroundResource(R.drawable.khungdn);
+        btnTatCa.setTextColor(Color.WHITE);
         btnTatCa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loadData(list);
-                Toast.makeText(getContext(), "Dữ liệu đã được làm mới", Toast.LENGTH_SHORT).show();
+                txtDanhSachSP.setText("Danh sách sản phẩm");
+                btnTatCa.setBackgroundResource(R.drawable.khungdn);
+                btnTheosize.setBackgroundResource(R.drawable.khung);
+                btnTatCa.setTextColor(Color.WHITE);
+                btnTheosize.setTextColor(Color.BLUE);
+            }
+        });
+
+        btnTheosize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment_banggiatheosize frgBG = new fragment_banggiatheosize();
+                frgBG.loadDataBG(getContext(),rcvSanPham);
+                txtDanhSachSP.setText("Danh sách bảng giá");
+                btnTheosize.setBackgroundResource(R.drawable.khungdn);
+                btnTatCa.setBackgroundResource(R.drawable.khung);
+                btnTheosize.setTextColor(Color.WHITE);
+                btnTatCa.setTextColor(Color.BLUE);
+            }
+        });
+        btnTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Chức năng đang cải thiện", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,6 +142,7 @@ public class frgSanPham extends Fragment {
         btnTheosize = view.findViewById(R.id.btnTheosize);
         btnTT = view.findViewById(R.id.btnTT);
         btnTatCa = view.findViewById(R.id.btnTatCa);
+        txtDanhSachSP = view.findViewById(R.id.txtDanhSachSP);
     }
 
     public void loadData(ArrayList<SanPham> list) {

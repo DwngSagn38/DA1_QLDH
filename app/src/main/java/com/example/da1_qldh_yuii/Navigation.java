@@ -38,14 +38,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class Navigation extends AppCompatActivity{
+public class Navigation extends AppCompatActivity {
 
     //
     DrawerLayout drawer;
     Toolbar toolbar;
 
     View mHeaderView;
-    TextView tvUser,tvLevel;
+    TextView tvUser, tvLevel;
     ImageView img_logo;
     NavigationView nv;
 
@@ -80,7 +80,6 @@ public class Navigation extends AppCompatActivity{
         replaceFrg(fragment_trangchu);
 
 
-
         // show user trên header
         mHeaderView = nv.getHeaderView(0);
         tvUser = mHeaderView.findViewById(R.id.tvUser);
@@ -93,11 +92,11 @@ public class Navigation extends AppCompatActivity{
         String username = thanhVien.getTenThanhVien();
         int level = thanhVien.getPhanQuyen();
         tvUser.setText(username);
-        if (level == 0){
+        if (level == 0) {
             actionBar.setHomeAsUpIndicator(R.drawable.logo_menu);
             tvLevel.setText("(Quản lý)");
             img_logo.setImageResource(R.drawable.logo_yuii);
-        }else {
+        } else {
             actionBar.setHomeAsUpIndicator(R.drawable.logo_menu2);
             tvLevel.setText("(Nhân Viên)");
             img_logo.setImageResource(R.drawable.ic_person);
@@ -105,7 +104,7 @@ public class Navigation extends AppCompatActivity{
         }
 
         // quanly co quyen ql thong bao, thanh vien
-        if (level == 0){
+        if (level == 0) {
             nv.getMenu().findItem(R.id.nav_thongBao).setVisible(true);
             nv.getMenu().findItem(R.id.nav_thanhVien).setVisible(true);
 
@@ -115,21 +114,24 @@ public class Navigation extends AppCompatActivity{
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.bottom_trangChu){
+            if (id == R.id.bottom_trangChu) {
                 setTitle("Yuii shop");
                 replaceFrg(fragment_trangchu);
-            }else if(id == R.id.bottom_thongKe){
+            } else if (id == R.id.bottom_thongKe) {
                 setTitle("Thống kê");
                 fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
                 replaceFrg(fragment_trangchu_thongke);
-            }else if (id == R.id.bottom_khoHang){
+                Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.bottom_khoHang) {
                 setTitle("Kho hàng");
                 fragment_sanpham_khohang fragment_sanpham_khohang = new fragment_sanpham_khohang();
                 replaceFrg(fragment_sanpham_khohang);
-            }else if (id == R.id.bottom_hoaDon){
+            } else if (id == R.id.bottom_hoaDon) {
                 setTitle("Hóa đơn");
                 fragment_hoadon fragment_hoadon = new fragment_hoadon();
                 replaceFrg(fragment_hoadon);
+
+                Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
             }
             return true;
         });
@@ -139,37 +141,40 @@ public class Navigation extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.nav_giaSize){
+                if (id == R.id.nav_giaSize) {
                     setTitle("Quản lý bảng giá theo size");
                     fragment_banggiatheosize fragmentBanggiatheosize = new fragment_banggiatheosize();
                     replaceFrg(fragmentBanggiatheosize);
 
-                }else if (id == R.id.nav_DVVC){
+                } else if (id == R.id.nav_DVVC) {
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
+                    Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
 
-                }else if (id == R.id.nav_thongBao){
+                } else if (id == R.id.nav_thongBao) {
                     setTitle("Quản lý thông báo");
                     fragment_thongbao fragmentThongbao = new fragment_thongbao();
                     replaceFrg(fragmentThongbao);
 
-                } else if (id == R.id.nav_thanhVien){
+                } else if (id == R.id.nav_thanhVien) {
                     setTitle("Quản lý thành viên");
                     fragment_thanhvien fragment_thanhvien = new fragment_thanhvien();
                     replaceFrg(fragment_thanhvien);
 
-                } else if(id == R.id.nav_quenMatKhau){
+                } else if (id == R.id.nav_quenMatKhau) {
                     setTitle("Quên mật khẩu");
                     fragment_quenmatkhau fragment_quenmatkhau = new fragment_quenmatkhau();
                     replaceFrg(fragment_quenmatkhau);
+                    Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
 
-                } else if(id == R.id.nav_doiMatKhau){
+                } else if (id == R.id.nav_doiMatKhau) {
                     setTitle("Đổi mật khẩu");
                     fragment_doimatkhau fragment_doimatkhau = new fragment_doimatkhau();
                     replaceFrg(fragment_doimatkhau);
+                    Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
 
-                }else if (id == R.id.nav_dangXuat){
+                } else if (id == R.id.nav_dangXuat) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Navigation.this);
                     builder.setTitle("Xác nhận");
                     builder.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
@@ -187,8 +192,8 @@ public class Navigation extends AppCompatActivity{
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
-                           dialog.cancel();
-                           Toast.makeText(Navigation.this, "Không đăng xuất", Toast.LENGTH_SHORT).show();
+                            dialog.cancel();
+                            Toast.makeText(Navigation.this, "Không đăng xuất", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -201,8 +206,8 @@ public class Navigation extends AppCompatActivity{
         });
     }
 
-    public void replaceFrg(Fragment frg){
+    public void replaceFrg(Fragment frg) {
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.flContent,frg).addToBackStack(null).commit();
+        manager.beginTransaction().replace(R.id.flContent, frg).addToBackStack(null).commit();
     }
 }
