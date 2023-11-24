@@ -49,9 +49,8 @@
 
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvThongBao"
-        android:background="@drawable/khung"
+    <ListView
+        android:id="@+id/lvThongBao"
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

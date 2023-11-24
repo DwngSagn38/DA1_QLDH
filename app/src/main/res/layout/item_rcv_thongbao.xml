@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
 
     >
 
@@ -12,36 +11,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/khung"
 
         >
 
+
         <TextView
-            android:id="@+id/txtMaSanPham"
+            android:id="@+id/txtTieuDe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mã sản phẩm"
             android:textStyle="bold"
             android:textColor="@color/red"
             android:textSize="20dp"
             android:gravity="center"
+            android:layout_margin="10dp"
 
             />
 
         <TextView
-            android:id="@+id/txtMoTa"
+            android:id="@+id/txtNoiDung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"
-
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             android:gravity="center"
             >
 
@@ -49,17 +51,19 @@
                 android:id="@+id/txtHoTenThanhVien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 />
 
             <TextView
                 android:text="--"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:layout_marginLeft="20dp"
-
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 />
 
 
@@ -67,40 +71,27 @@
                 android:id="@+id/txtNgay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
 
                 />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            >
-            <ImageView
-                android:id="@+id/imgEditBangGia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/item_edit"
-                android:paddingBottom="10dp"
 
-                />
 
             <ImageView
-                android:id="@+id/imgDeleteBangGia"
-                android:layout_width="wrap_content"
+                android:id="@+id/imgDeleteThongBao"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:src="@drawable/item_delete"
-                android:layout_marginLeft="30dp"
 
                 />
 
-        </LinearLayout>
 
 
 

@@ -172,23 +172,25 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
                 String sdtKH = edSDTsua.getText().toString().trim();
                 String diaChiKH = edDiaChisua.getText().toString().trim();
 
-                boolean isUpdated = khachHangDAO.capNhatKhachHang(khachHang.getMaKhachHang(), tenKH, sdtKH, diaChiKH);
-
-                if (isUpdated){
-                    khachHang.setTenKhachHang(tenKH);
-                    khachHang.setSoDienThoai(sdtKH);
-                    notifyDataSetChanged();
-                    dialog.dismiss();
-                    Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                if (tenKH.trim().isEmpty() || sdtKH.trim().isEmpty() || diaChiKH.trim().isEmpty()){
+                    Toast.makeText(context, "Không được bỏ trống", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                    boolean isUpdated = khachHangDAO.capNhatKhachHang(khachHang.getMaKhachHang(), tenKH, sdtKH, diaChiKH);
+                    if (isUpdated){
+                        khachHang.setTenKhachHang(tenKH);
+                        khachHang.setSoDienThoai(sdtKH);
+                        notifyDataSetChanged();
+                        dialog.dismiss();
+                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
         });
-
-
 
         dialog.show();
     }
