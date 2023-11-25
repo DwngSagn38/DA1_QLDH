@@ -121,11 +121,6 @@ public class DbHelper extends SQLiteOpenHelper {
                                             " (2, 6, 230)," +
                                             " (3, 4, 150)");
 
-        //mã, tên, trạng thái, mã bảng giá
-//        db.execSQL("INSERT INTO SANPHAM VALUES('SP01','', 'Gấu bông', 1, 2)," +
-//                                            " ('SP02','', 'Hoa', 2, 1)," +
-//                                            " ('SP03','', 'Khăn', 1, 1)");
-
 
         //maThanhVien, tenThanhVien, soDienThoai, matKhau, phanQuyen
         db.execSQL("INSERT INTO THANHVIEN VALUES('TV01', 'Nguyễn Thị Lý', '0922222222', '123456', 0),\n" +

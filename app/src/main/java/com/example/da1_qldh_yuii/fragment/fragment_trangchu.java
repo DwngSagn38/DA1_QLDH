@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.adapter.ThongBaoAdapter;
 import com.example.da1_qldh_yuii.dao.ThongBaoDAO;
+import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
 import com.example.da1_qldh_yuii.model.Photo;
 import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
@@ -83,7 +84,7 @@ public class fragment_trangchu extends Fragment {
         btnSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment SanPhamFrg = new fragment_sanpham_khohang();
+                Fragment SanPhamFrg = new frgSanPham();
                 FragmentTransaction frg = getActivity().getSupportFragmentManager().beginTransaction();
                 frg.replace(R.id.flContent, SanPhamFrg).commit();
             }

@@ -46,6 +46,8 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     // xin quyền
     implementation ("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+
+    implementation ("pub.devrel:easypermissions:3.0.0")
 //    // chọn ảnh
 //    implementation("gun0912.ted:tedbottompicker:2.0.1")
 

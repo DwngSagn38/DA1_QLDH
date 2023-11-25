@@ -109,6 +109,8 @@ public class fragment_khachhang extends Fragment {
                     Toast.makeText(getContext(), "Không được bỏ trống", Toast.LENGTH_SHORT).show();
                 } else if (khachHangDAO.checkMaKH(maKH)) {
                     Toast.makeText(getContext(), "Mã khách hàng đã được sử dụng", Toast.LENGTH_SHORT).show();
+                } else if (!isso(sdtKH)) {
+                    Toast.makeText(getContext(), "Số điện thoại chưa đúng", Toast.LENGTH_SHORT).show();
                 } else {
                     boolean check = khachHangDAO.themKhachHang(maKH,tenKH,sdtKH,diaChiKH);
                     if (check){
@@ -134,6 +136,10 @@ public class fragment_khachhang extends Fragment {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
+    }
+
+    public boolean isso(String so){
+        return so.matches("\\d+");
     }
 
     }

@@ -3,17 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@drawable/khung"
+    android:padding="10dp"
+    android:layout_margin="10dp"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cập nhật đơn vị vận chuyển"
+        android:text="Thông tin đơn vị vận chuyển"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/blue"
         android:textSize="26dp"
 
 
@@ -32,6 +34,7 @@
             android:background="@drawable/khung"
             android:drawableStart="@drawable/anh1"
             android:drawablePadding="10dp"
+            android:textColor="@color/blue"
             android:hint="Mã đơn vị vận chuyển"
             android:textSize="18dp"
             />
@@ -52,6 +55,7 @@
             android:background="@drawable/khung"
             android:drawableStart="@drawable/anh2"
             android:drawablePadding="10dp"
+            android:textColor="@color/blue"
             android:hint="Tên đơn vị vận chuyển"
             android:textSize="18dp"
             />
@@ -69,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="10dp"
+            android:textColor="@color/blue"
             android:background="@drawable/khung"
             android:drawableStart="@drawable/anh3"
             android:drawablePadding="10dp"
@@ -79,22 +84,48 @@
 
 
 
+    <LinearLayout
+        android:id="@+id/llStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/trangthai"
+            android:checked="true"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:buttonTint="#F44336"
+            android:layout_gravity="center"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tt"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mô tả: "
         android:textSize="26dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="60dp"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
         />
-
     <EditText
         android:id="@+id/edtMoTaDVVCsua"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="70dp"
         android:background="@drawable/khung"
+        android:textColor="@color/blue"
         android:layout_margin="20dp"
         android:paddingLeft="20dp"
 
@@ -105,6 +136,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:paddingBottom="20dp"
         >
 
         <Button

@@ -150,7 +150,6 @@ public class Navigation extends AppCompatActivity {
                     setTitle("Quản lý đơn vị vận chuyển");
                     fragment_donvivanchuyen fragmentDonvivanchuyen = new fragment_donvivanchuyen();
                     replaceFrg(fragmentDonvivanchuyen);
-                    Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.nav_thongBao) {
                     setTitle("Quản lý thông báo");

@@ -37,7 +37,7 @@ import java.util.Objects;
 
 public class fragment_banggiatheosize extends Fragment {
 
-    BangGiaTheoSizeDAO bangGiaTheoSizeDAO;
+    BangGiaTheoSizeDAO bangGiaTheoSizeDAO ;
     RecyclerView recyclerViewBangGia;
     ThanhVienDAO tvDAO;
     int level;
@@ -47,8 +47,6 @@ public class fragment_banggiatheosize extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_banggiatheosize, container, false);
-
-        TextView tvtest =view.findViewById(R.id.tvtest);
         recyclerViewBangGia = view.findViewById(R.id.rcvBangGiaTheoSize);
         FloatingActionButton floatAddTV = view.findViewById(R.id.floatAddBangGia);
 
@@ -108,7 +106,9 @@ public class fragment_banggiatheosize extends Fragment {
                     int size = Integer.parseInt(edtSizeAdd.getText().toString());
                     double giaBan = Double.parseDouble(edtGiaBanAdd.getText().toString());
 
-                    boolean check = bangGiaTheoSizeDAO.themBangGia(size, giaBan);
+                    bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(getContext());
+                    BangGia bg = new BangGia(size,giaBan);
+                    boolean check = bangGiaTheoSizeDAO.themBangGia(bg);
                     if (check){
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         //load data

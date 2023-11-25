@@ -60,8 +60,8 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         }
 
         holder.txtMaBangGia.setText("Mã bảng giá: " + list.get(position).getMaBangGia());
-        holder.txtSize.setText("Size: " + list.get(position).getSize());
-        holder.txtGiaBan.setText("Giá bán: " + list.get(position).getGiaBan());
+        holder.txtSize.setText("Size: " + list.get(position).getSize() + " cm");
+        holder.txtGiaBan.setText("Giá bán: " + list.get(position).getGiaBan() + " VNĐ");
 
 
         //edit banggia

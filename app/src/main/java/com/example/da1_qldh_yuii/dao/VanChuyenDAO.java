@@ -23,6 +23,7 @@ public class VanChuyenDAO {
 
     public long insert(VanChuyen vc) {
         ContentValues values = new ContentValues();
+        values.put("maVanChuyen", vc.getMaVanChuyen());
         values.put("tenVanChuyen", vc.getTenVanChuyen());
         values.put("giaVanChuyen", vc.getGiaVanChuyen());
         values.put("moTa", vc.getMoTa());
@@ -46,6 +47,11 @@ public class VanChuyenDAO {
     public List<VanChuyen> getAll() {
         String sql = "SELECT * FROM VANCHUYEN";
         return getData(sql);
+    }
+
+    public List<VanChuyen> dsVCNgung(int status) {
+        String sql = "SELECT * FROM VANCHUYEN where trangThai=?";
+        return getData(sql,new String[]{String.valueOf(status)});
     }
 
     public VanChuyen getID(String id) {

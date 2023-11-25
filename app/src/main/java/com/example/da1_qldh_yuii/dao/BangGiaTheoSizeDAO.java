@@ -35,17 +35,14 @@ public class BangGiaTheoSizeDAO {
     }
 
 
-    public boolean themBangGia(int size, double giaBan){
+    public boolean themBangGia(BangGia bg){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("size", size);
-        contentValues.put("giaBan", giaBan);
+        contentValues.put("size", bg.getSize());
+        contentValues.put("giaBan", bg.getGiaBan());
 
         long check = sqLiteDatabase.insert("BANGGIA", null, contentValues);
-        if (check == -1)
-            return false;
-
-        return true;
+        return  check != -1;
 
     }
 
