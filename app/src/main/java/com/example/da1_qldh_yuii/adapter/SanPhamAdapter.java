@@ -71,7 +71,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
             }
 
 //            holder.imgAnhSP.setImageResource(sp.getAnhSanPham());
-            holder.imgAnhSP.setImageURI(sp.getAnhSanPham());
+             holder.imgAnhSP.setImageURI(sp.getAnhSanPham());
 
             holder.SetOnItemClickListener(new ThanhVienAdapter.OnItemClickListener() {
                 @Override

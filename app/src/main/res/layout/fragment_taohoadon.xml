@@ -55,15 +55,39 @@
             android:layout_marginLeft="10dp"
             android:text="Size 25"/>
     </LinearLayout>
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn sản phẩm"
-        android:textColor="@color/black"
         android:background="@color/gray"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="15dp"/>
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn sản phẩm"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/btnTaoHDon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tạo hóa đơn"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/blue"
+            android:background="@drawable/khung"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/taoHD"
+            android:drawablePadding="10dp"/>
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvTaoHoaDon"
         android:layout_width="match_parent"
