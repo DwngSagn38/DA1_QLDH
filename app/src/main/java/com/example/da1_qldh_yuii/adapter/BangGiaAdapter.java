@@ -30,6 +30,7 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
     private ArrayList<BangGia> list;
     private BangGiaTheoSizeDAO bangGiaTheoSizeDAO;
 
+
     public BangGiaAdapter(Context context, ArrayList<BangGia> list, BangGiaTheoSizeDAO bangGiaTheoSizeDAO) {
         this.context = context;
         this.list = list;
@@ -120,6 +121,9 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
 
             imgEditBangGia = itemView.findViewById(R.id.imgEditBangGia);
             imgDeleteBangGia = itemView.findViewById(R.id.imgDeleteBangGia);
+
+
+
 
 
         }

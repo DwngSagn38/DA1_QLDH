@@ -78,13 +78,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:drawableStart="@drawable/themhd"
             android:text="Tạo hóa đơn"
             android:layout_marginRight="10dp"
             android:textColor="@color/blue"
             android:background="@drawable/khung"
             android:padding="10dp"
             android:textSize="20sp"
-            android:drawableStart="@drawable/taoHD"
             android:drawablePadding="10dp"/>
     </LinearLayout>
 
