@@ -214,6 +214,9 @@ public class frgSanPham extends Fragment {
             // cập nhật không cho nhập mã
             edtMaSPadd.setFocusable(false);
             edtMaSPadd.setClickable(false);
+            imgAnhSanPhamAdd.setClickable(false);
+            imgAnhSanPhamAdd.setFocusable(false);
+
             edtMaSPadd.setText(sp.getMaSanPham());
             edtTenSPadd.setText(sp.getTenSanPham());
             imgAnhSanPhamAdd.setImageURI(sp.getAnhSanPham());
@@ -228,14 +231,16 @@ public class frgSanPham extends Fragment {
 
             // set mã bảng giá của sản phẩm hiện tại về vị trí đầu tiên
             ArrMabg.insert(bgDao.getID(sp.getMaBangGia()).getSize(), 0);
+        }else {
+            imgAnhSanPhamAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openImagePicker();
+                }
+            });
         }
 
-        imgAnhSanPhamAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImagePicker();
-            }
-        });
+
 
         btnHuyAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,6 +273,7 @@ public class frgSanPham extends Fragment {
 
                     if (type == 1) {
                         spDao = new SanPhamDAO(context);
+                        sp.setAnhSanPham(sp.getAnhSanPham());
                         if (spDao.update(sp) != -1) {
                             Toast.makeText(context, "Đang cập Cập nhật hãy load lại danh sách", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
