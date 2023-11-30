@@ -77,8 +77,8 @@ public class fragment_thongbao extends Fragment {
         tbDAO = new ThongBaoDAO(getActivity());
         thanhVienDAO = new ThanhVienDAO(getContext());
 
-
         loadData();
+
         imgAddThongBao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

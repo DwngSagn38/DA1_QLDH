@@ -35,7 +35,7 @@
                 android:src="@drawable/back"
                 android:visibility="gone"
                 android:layout_gravity="right|center_vertical"
-                android:layout_marginLeft="175dp"
+                android:layout_marginLeft="155dp"
 
                 />
         </LinearLayout>
@@ -73,11 +73,11 @@
 
             <ImageView
                 android:id="@+id/imgThemDVVCadd"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="75dp"
+                android:layout_marginLeft="55dp"
+                android:src="@drawable/next"
 
                 />
 
@@ -119,7 +119,7 @@
                 android:layout_height="30dp"
                 android:src="@drawable/next"
                 android:layout_gravity="center"
-                android:layout_marginLeft="35dp"
+                android:layout_marginLeft="17dp"
 
                 />
 
@@ -163,7 +163,7 @@
                 android:layout_height="30dp"
                 android:src="@drawable/next"
                 android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 />
 
 

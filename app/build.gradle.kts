@@ -9,6 +9,7 @@ android {
     defaultConfig {
         applicationId = "com.example.da1_qldh_yuii"
         minSdk = 29
+        //noinspection EditedTargetSdkVersion
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,5 +51,7 @@ dependencies {
     implementation ("pub.devrel:easypermissions:3.0.0")
 //    // chọn ảnh
 //    implementation("gun0912.ted:tedbottompicker:2.0.1")
+
+    implementation ("pub.devrel:easypermissions:3.0.0")
 
 }
