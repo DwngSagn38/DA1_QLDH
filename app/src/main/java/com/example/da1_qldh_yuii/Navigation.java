@@ -183,6 +183,7 @@ public class Navigation extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
                             Intent intent = new Intent(Navigation.this, DangNhap.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             Toast.makeText(Navigation.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         }

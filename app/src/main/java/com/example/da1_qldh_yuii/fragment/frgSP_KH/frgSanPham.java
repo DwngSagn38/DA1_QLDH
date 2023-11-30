@@ -234,6 +234,7 @@ public class frgSanPham extends Fragment {
             @Override
             public void onClick(View view) {
                 openImagePicker();
+//               requestPermission(context);
             }
         });
 
@@ -305,56 +306,64 @@ public class frgSanPham extends Fragment {
                 Toast.makeText(context, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
             }
         };
-
+//        TedPermission.create()
+//                .setPermissionListener(permissionlistener)
+//                .setDeniedMessage("\n" +
+//                        "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
+//                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                .check();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                TedPermission.create()
-                        .setPermissionListener(permissionlistener)
-                        .setDeniedMessage("\n" +
-                                "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
-                        .setPermissions(Manifest.permission.READ_MEDIA_IMAGES)
-                        .check();
-            }else {
-                TedPermission.create()
-                        .setPermissionListener(permissionlistener)
-                        .setDeniedMessage("\n" +
-                                "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
-                        .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .check();
-            }
+            TedPermission.create()
+                    .setPermissionListener(permissionlistener)
+                    .setDeniedMessage("\n" +
+                            "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
+                    .setPermissions(Manifest.permission.READ_MEDIA_IMAGES)
+                    .check();
+        } else {
+            TedPermission.create()
+                    .setPermissionListener(permissionlistener)
+                    .setDeniedMessage("\n" +
+                            "Nếu bạn từ chối quyền, bạn không thể sử dụng dịch vụ này\n\nVui lòng bật quyền tại [Cài đặt] > [Quyền]")
+                    .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .check();
         }
-
-
     }
+
 
     private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                Log.e(TAG, "onActivityResult");
-                if (result.getResultCode() == Activity.RESULT_OK) {
-                    Intent data = result.getData();
-                    if (data == null) {
-                        return;
-                    }
-                    Uri uri = data.getData();
-                    sanPham.setAnhSanPham(uri);
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
-                        imgPicker.setImageBitmap(bitmap);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Log.e(TAG, "onActivityresult");
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data == null) {
+                            return;
+                        }
+                        Uri uri = data.getData();
+                        sanPham.setAnhSanPham(uri);
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+                            imgPicker.setImageBitmap(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
             }
     );
 
+
     // Phương thức này được gọi khi người dùng nhấn vào nút upload ảnh
     public void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        activityResultLauncher.launch(intent);
-//        Intent intent = new Intent(Intent.ACTION_PICK);
-//        intent.setType("image/*");
-//        activityResultLauncher.launch(Intent.createChooser(intent, "Select picture"));
+//        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        activityResultLauncher.launch(intent);
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+
+        activityResultLauncher.launch(Intent.createChooser(intent, "Select picture"));
 //        activityResultLauncher.launch(intent.setData(selectedImageUri));
     }
 }
