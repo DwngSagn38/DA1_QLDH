@@ -27,56 +27,51 @@
 
         <ImageView
             android:id="@+id/imgAnhSanPhamAdd"
-            android:layout_width="240dp"
-            android:layout_height="180dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:background="@drawable/chonanh"
             />
-<!--        <Button-->
-<!--            android:id="@+id/btnChonAnh"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Chọn ảnh"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/blue"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="17dp"-->
-<!--            android:layout_margin="10dp"-->
-
-<!--            />-->
 
 
-        <EditText
-            android:id="@+id/edtMaSPadd"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/khung"
-            android:hint="Mã sản phẩm"
-            android:textSize="20dp"
-            android:paddingLeft="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/blue"
-            android:textColorHint="@color/blue"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@drawable/bg_nhap"
+                android:id="@+id/edtMaSPadd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Mã sản phẩm"
+                android:textSize="20dp"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            />
-
-        <EditText
-            android:id="@+id/edtTenSPadd"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/khung"
-            android:hint="Tên sản phẩm"
-            android:textSize="20dp"
-            android:paddingLeft="20dp"
-            android:textColor="@color/blue"
-            android:textColorHint="@color/blue"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edtTenSPadd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/khung"
+                android:hint="Tên sản phẩm"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
 
-            />
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

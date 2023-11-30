@@ -51,6 +51,7 @@ import com.example.da1_qldh_yuii.fragment.fragment_sanpham_khohang;
 import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.SanPham;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
@@ -163,7 +164,7 @@ public class frgSanPham extends Fragment {
         Dialog dialog = builder.create();
         dialog.show();
 
-        EditText edtMaSPadd = view.findViewById(R.id.edtMaSPadd);
+        TextInputEditText edtMaSPadd = view.findViewById(R.id.edtMaSPadd);
         EditText edtTenSPadd = view.findViewById(R.id.edtTenSPadd);
         ImageView imgAnhSanPhamAdd = view.findViewById(R.id.imgAnhSanPhamAdd);
         Spinner spnMaBangGiaadd = view.findViewById(R.id.spnMaBangGiaadd);
