@@ -12,7 +12,6 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +23,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.Navigation;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.BangGiaAdapter;
 import com.example.da1_qldh_yuii.dao.BangGiaTheoSizeDAO;
@@ -50,9 +50,7 @@ public class fragment_banggiatheosize extends Fragment {
         recyclerViewBangGia = view.findViewById(R.id.rcvBangGiaTheoSize);
         FloatingActionButton floatAddTV = view.findViewById(R.id.floatAddBangGia);
 
-
         loadDataBG(getContext(),recyclerViewBangGia);
-
 
         // Nhân viên không có quyền thêm bảng giá
         // Nhận Bundle từ Fragment

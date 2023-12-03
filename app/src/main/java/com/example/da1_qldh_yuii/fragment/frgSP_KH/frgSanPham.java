@@ -91,7 +91,6 @@ public class frgSanPham extends Fragment {
         getAnhXa(view);
 
 
-
         loadData(list);
         floatAddSanPham.setOnClickListener(new View.OnClickListener() {
             @Override

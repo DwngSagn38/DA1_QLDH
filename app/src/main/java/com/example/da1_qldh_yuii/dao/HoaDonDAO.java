@@ -26,10 +26,11 @@ public class HoaDonDAO {
 
     public long insert(HoaDon obj) {
         ContentValues values = new ContentValues();
-        values.put("maSanPham", obj.getMaSanPham());
+        values.put("maHoaDon", obj.getMaHoaDon());
         values.put("maThanhVien", obj.getMaThanhVien());
         values.put("maKhachHang", obj.getMaKhachHang());
         values.put("maVanChuyen", obj.getMaVanChuyen());
+        values.put("gio", obj.getGio());
         values.put("ngayTao", obj.getNgayTao());
         values.put("ngayNhanHang", obj.getNgayNhanHang());
         values.put("tienCoc", obj.getTienCoc());
@@ -41,7 +42,6 @@ public class HoaDonDAO {
 
     public long update(HoaDon obj) {
         ContentValues values = new ContentValues();
-        values.put("maSanPham", obj.getMaSanPham());
         values.put("maThanhVien", obj.getMaThanhVien());
         values.put("maKhachHang", obj.getMaKhachHang());
         values.put("maVanChuyen", obj.getMaVanChuyen());
@@ -52,6 +52,12 @@ public class HoaDonDAO {
         values.put("ghiChu", obj.getGhiChu());
         values.put("trangThai", obj.getTrangThai());
         return db.update("HOADON", values, "maHoaDon = ?", new String[]{String.valueOf(obj.getMaHoaDon())});
+    }
+
+    public List<HoaDon> getListStatus(int status){
+        String sql = "SELECT * FROM HOADON where trangThai = ?";
+        List<HoaDon> list = getData(sql,String.valueOf(status));
+        return list;
     }
 
     public long delete(String id) {
@@ -77,11 +83,11 @@ public class HoaDonDAO {
         while (cursor.moveToNext()) {
             HoaDon hd = new HoaDon();
             hd.setMaHoaDon(cursor.getString(cursor.getColumnIndex("maHoaDon")));
-            hd.setMaSanPham(cursor.getInt(cursor.getColumnIndex("maSanPham")));
-            hd.setMaThanhVien(cursor.getInt(cursor.getColumnIndex("maThanhVien")));
-            hd.setMaKhachHang(cursor.getInt(cursor.getColumnIndex("maKhachHang")));
-            hd.setMaVanChuyen(cursor.getInt(cursor.getColumnIndex("maVanChuyen")));
+            hd.setMaThanhVien(cursor.getString(cursor.getColumnIndex("maThanhVien")));
+            hd.setMaKhachHang(cursor.getString(cursor.getColumnIndex("maKhachHang")));
+            hd.setMaVanChuyen(cursor.getString(cursor.getColumnIndex("maVanChuyen")));
             hd.setNgayTao(cursor.getString(cursor.getColumnIndex("ngayTao")));
+            hd.setGio(cursor.getInt(cursor.getColumnIndex("gio")));
             hd.setNgayNhanHang(cursor.getString(cursor.getColumnIndex("ngayNhanHang")));
             hd.setTienCoc(cursor.getDouble(cursor.getColumnIndex("tienCoc")));
             hd.setSoLuong(cursor.getInt(cursor.getColumnIndex("soLuong")));

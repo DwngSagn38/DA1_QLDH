@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 
 import com.example.da1_qldh_yuii.DangNhap;
+import com.example.da1_qldh_yuii.Navigation;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.KhachHangAdapter;
 
@@ -51,8 +52,6 @@ public class fragment_khachhang extends Fragment {
         loadData();
 
         // Lấy reference đến NavController
-
-
 
         floatAddKH.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,8 @@
 package com.example.da1_qldh_yuii.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -45,11 +47,19 @@ public class fragment_donvivanchuyen extends Fragment {
         llDVVCadd = view.findViewById(R.id.llDVVCadd);
         imgback = view.findViewById(R.id.imgback);
 
+        SharedPreferences pref = getContext().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+
+        if (level == 1){
+            llDVVCadd.setVisibility(View.GONE);
+        }
+
         vcDao = new VanChuyenDAO(getContext());
         list.addAll(vcDao.getAll());
         llDVVCds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 loadData(list);
                 loadds(llDVVCds,llDVVCadd,llDVVCNgung);
             }
@@ -80,22 +90,21 @@ public class fragment_donvivanchuyen extends Fragment {
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                back();
+                back(level);
             }
         });
 
         return view;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void loadData(ArrayList<VanChuyen> list){
-        ArrayList<VanChuyen> list1 = new ArrayList<>(list);
+//        ArrayList<VanChuyen> list1 = new ArrayList<>();
+//        list1.addAll(list);
         rcvDonViVanChuyen.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new VanChuyenAdapter(getContext(),list1);
+        adapter = new VanChuyenAdapter(getContext(),list);
         rcvDonViVanChuyen.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
     }
-    public void back(){
+    public void back(int level){
         llDVVCadd.setBackgroundResource(R.drawable.bg_bottom);
         llDVVCds.setBackgroundResource(R.drawable.bg_bottom);
         llDVVCNgung.setBackgroundResource(R.drawable.bg_bottom);
@@ -104,6 +113,9 @@ public class fragment_donvivanchuyen extends Fragment {
         llDVVCNgung.setVisibility(View.VISIBLE);
         imgback.setVisibility(View.GONE);
         rcvDonViVanChuyen.setVisibility(View.GONE);
+        if (level == 1){
+            llDVVCadd.setVisibility(View.GONE);
+        }
     }
 
     public void loadds(LinearLayout  lo1, LinearLayout lo2, LinearLayout lo3){

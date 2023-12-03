@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     public DbHelper(@Nullable Context context) {
-        super(context, "QLHD", null, 7);
+        super(context, "QLHD", null, 8);
     }
 
     @Override
@@ -45,33 +45,32 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String dbHoaDon = "CREATE TABLE HOADON (\n" +
                 "    maHoaDon TEXT PRIMARY KEY,\n" +
-                "    maSanPham INTEGER,\n" +
                 "    maThanhVien INTEGER,\n" +
                 "    maKhachHang INTEGER,\n" +
                 "    maVanChuyen INTEGER,\n" +
                 "    ngayTao TEXT,\n" +
+                "    gio integer,\n" +
                 "    ngayNhanHang TEXT,\n" +
                 "    tienCoc DOUBLE,\n" +
                 "    soLuong INTEGER,\n" +
                 "    ghiChu TEXT,\n" +
                 "    trangThai INTEGER,\n" +
-                "    FOREIGN KEY (maSanPham) REFERENCES SANPHAM(maSanPham),\n" +
+
                 "    FOREIGN KEY (maThanhVien) REFERENCES THANHVIEN(maThanhVien),\n" +
                 "    FOREIGN KEY (maKhachHang) REFERENCES KHACHHANG(maKhachHang),\n" +
                 "FOREIGN KEY (maVanChuyen) REFERENCES VANCHUYEN(maVanChuyen) \n" +
                 ");";
         db.execSQL(dbHoaDon);
 
-
         String dbChiTietHoaDon = "CREATE TABLE CHITIETHOADON(\n" +
-                "    maChiTietHoaDon TEXT PRIMARY KEY ,\n" +
                 "    maHoaDon TEXT,\n" +
-                "    giamGia DOUBLE,\n" +
+                "    maSanPham TEXT,\n" +
+                "    soLuong INTEGER,\n" +
+                "    PRIMARY KEY (maHoaDon, maSanPham),\n" +
+                "    FOREIGN KEY (maSanPham) REFERENCES SANPHAM(maSanPham),\n" +
                 "    FOREIGN KEY (maHoaDon) REFERENCES HOADON(maHoaDon)\n" +
                 ");";
         db.execSQL(dbChiTietHoaDon);
-
-
 
         String dbVanChuyen = "CREATE TABLE VANCHUYEN (\n" +
                 "    maVanChuyen TEXT PRIMARY KEY,\n" +
@@ -110,6 +109,11 @@ public class DbHelper extends SQLiteOpenHelper {
                 "ngayDang DATE," +
                 "FOREIGN KEY (maThanhVien) REFERENCES THANHVIEN (maThanhVien))");
 
+        db.execSQL("Create table TaoHoaDon (maTHD integer primary key," +
+                "maSanPham text," +
+                "soLuongMua integer," +
+                "FOREIGN KEY (maSanPham) REFERENCES SANPHAM (maSanPham))");
+
         //add dl
 
         db.execSQL("INSERT INTO KHACHHANG VALUES ('KH01', 'Nhung', '0366666666', 'Hải Dương')," +
@@ -134,10 +138,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
 
-        //maHoaDon, maSanPham, maThanhVien, maKhachHang, maVanChuyen, ngayTao, ngayNhanHang, tienCoc, soLuong, ghiChu, trangThai
-        db.execSQL("INSERT INTO HOADON VALUES" +
-                "('HD01', 'SP02', 'TV03', 'KH02', 'VC02', '2023-11-08', '2023-11-15', 0, 1, 'Giao hàng nhanh', 0)," +
-                "('HD02', 'SP01', 'TV01', 'KH01', 'VC01', '2023-11-08', '2023-11-15', 500000, 3, 'Giao hàng nhanh', 1)");
+        //maHoaDon, maThanhVien, maKhachHang, maVanChuyen, ngayTao, ngayNhanHang, tienCoc, soLuong, ghiChu, trangThai
+//        db.execSQL("INSERT INTO HOADON VALUES" +
+//                "('HD01', 'TV03', 'KH02', 'VC02', '2023-11-08', '2023-11-15', 0, 1, 'Giao hàng nhanh', 0)," +
+//                "('HD02', 'TV01', 'KH01', 'VC01', '2023-11-08', '2023-11-15', 500000, 3, 'Giao hàng nhanh', 1)");
 
         //maChiTietHoaDon, maHoaDon, giamGia
         db.execSQL("INSERT INTO CHITIETHOADON VALUES('CT01', 'HD01', 10)," +
@@ -164,6 +168,7 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS THANHVIEN");
             db.execSQL("DROP TABLE IF EXISTS TONKHO");
             db.execSQL("DROP TABLE IF EXISTS THONGBAO");
+            db.execSQL("DROP TABLE IF EXISTS TaoHoaDon");
             onCreate(db);
 
         }

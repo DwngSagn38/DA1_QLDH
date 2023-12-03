@@ -1,6 +1,12 @@
 package com.example.da1_qldh_yuii.model;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class SanPham {
     private String maSanPham,tenSanPham;
@@ -50,14 +56,6 @@ public class SanPham {
     public void setAnhSanPham(Uri anhSanPham) {
         this.anhSanPham = anhSanPham;
     }
-//
-//    public int getAnhSanPham() {
-//        return anhSanPham;
-//    }
-//
-//    public void setAnhSanPham(int anhSanPham) {
-//        this.anhSanPham = anhSanPham;
-//    }
 
     public int getTrangThai() {
         return trangThai;

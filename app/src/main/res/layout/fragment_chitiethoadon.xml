@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".fragment.fragment_chitiethoadon">
 
     <LinearLayout
@@ -137,11 +137,21 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/tvGio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="giờ:"
+            android:textSize="14dp"
+            android:textStyle="italic"
+            android:layout_gravity="end"
+            android:textColor="@color/black"/>
+        <TextView
             android:id="@+id/tvNgayTaoDon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ngày tạo đơn:"
-            android:textSize="20dp"
+            android:textSize="14dp"
+            android:textStyle="italic"
             android:layout_gravity="end"
             android:textColor="@color/black"/>
 

@@ -13,9 +13,9 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
             android:src="@drawable/section"/>
 
         <Button
@@ -37,17 +37,17 @@
             android:layout_marginLeft="5dp"
             android:padding="1dp"
             android:text="Chưa giao"/>
-        <Button
-            android:id="@+id/btnDangGiao"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="35dp"
-            android:background="@drawable/khung"
-            android:textSize="10dp"
-            android:textColor="@color/blue"
-            android:padding="2dp"
-            android:layout_marginLeft="5dp"
-            android:text="Đang giao"/>
+<!--        <Button-->
+<!--            android:id="@+id/btnDangGiao"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:background="@drawable/khung"-->
+<!--            android:textSize="10dp"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:padding="2dp"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:text="Đang giao"/>-->
         <Button
             android:id="@+id/btnDaGiao"
             android:layout_width="0dp"
@@ -66,7 +66,7 @@
             android:background="@drawable/khung"
             android:textSize="10dp"
             android:textColor="@color/brown"
-            android:layout_marginLeft="5dp"
+            android:layout_marginHorizontal="5dp"
             android:text="Hủy"/>
     </LinearLayout>
     <TextView
@@ -78,9 +78,25 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="15dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvHoaDon"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_margin="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvHoaDon"
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="match_parent"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/flAddHD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/item_add"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="70dp"
+            android:backgroundTint="@color/blue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
 </LinearLayout>

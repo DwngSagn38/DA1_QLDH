@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -53,6 +54,14 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenAdapter.view
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
 
         if (position >= 0  && position <list.size()){
+            SharedPreferences pref = context.getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+            int level = pref.getInt("LEVEL", 1);
+
+            if (level == 1){
+                holder.trangthai.setClickable(false);
+                holder.trangthai.setFocusable(false);
+            }
+
             VanChuyen vc = list.get(position);
             holder.tenDVVCht.setText(vc.getTenVanChuyen());
             holder.maDVVCht.setText(vc.getMaVanChuyen());
@@ -65,12 +74,14 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenAdapter.view
 
             holder.trangthai.setButtonTintList(ColorStateList.valueOf(Color.parseColor(statusColor)));
 
-            holder.trangthai.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialogchitiet(vc);
-                }
-            });
+            if (level != 1){
+                holder.trangthai.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogchitiet(vc);
+                    }
+                });
+            }
         }
     }
 
@@ -112,15 +123,15 @@ public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenAdapter.view
         Button btnLuuDVVCtt = view.findViewById(R.id.btnLuuDVVCtt);
         TextView txtMoTaDVVCtt =view.findViewById(R.id.txtMoTaDVVCtt);
 
-        txtMaDVVCtt.setText(vc.getMaVanChuyen());
-        txtTenDVVCtt.setText(vc.getTenVanChuyen());
-        txtChiPhiDVVCtt.setText(vc.getGiaVanChuyen()+"");
+        txtMaDVVCtt.setText("Mã DVVC: "+vc.getMaVanChuyen());
+        txtTenDVVCtt.setText("Tên DVVC: "+vc.getTenVanChuyen());
+        txtChiPhiDVVCtt.setText("Giá VC: "+vc.getGiaVanChuyen()+"");
         txtMoTaDVVCtt.setText(vc.getMoTa());
         if (vc.getTrangThai() == 1) {
-            txtTrangThaitt.setText("Tạm ngừng");
+            txtTrangThaitt.setText("Trạng thái: Tạm ngừng");
             txtTrangThaitt.setTextColor(Color.RED);
         }else{
-            txtTrangThaitt.setText("Còn hợp tác");
+            txtTrangThaitt.setText("Trạng thái: Còn hợp tác");
             txtTrangThaitt.setTextColor(Color.BLUE);
         }
 

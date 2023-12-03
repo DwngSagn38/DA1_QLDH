@@ -1,22 +1,46 @@
 package com.example.da1_qldh_yuii.model;
 
 public class HoaDon {
-    private String maHoaDon,ngayTao,ngayNhanHang,ghiChu;
-    private int maSanPham,maThanhVien,maKhachHang,maVanChuyen,soLuong,trangThai;
+    private String maHoaDon,maSanPham,maThanhVien,maKhachHang,maVanChuyen,ngayTao,ngayNhanHang,ghiChu;
+    private int soLuong,trangThai;
     private double tienCoc;
+
+    private double tongTien;
+    private int gio;
+
+    public int getGio() {
+        return gio;
+    }
+
+    public void setGio(int gio) {
+        this.gio = gio;
+    }
+
+    public HoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
+    }
+
+    public double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHoaDon, String ngayTao, String ngayNhanHang, String ghiChu, int maSanPham, int maThanhVien, int maKhachHang, int maVanChuyen, int soLuong, int trangThai, double tienCoc) {
+    public HoaDon(String maHoaDon, String maSanPham, String maThanhVien, String maKhachHang, String maVanChuyen, String ngayTao,int gio, String ngayNhanHang, String ghiChu, int soLuong, int trangThai, double tienCoc) {
         this.maHoaDon = maHoaDon;
-        this.ngayTao = ngayTao;
-        this.ngayNhanHang = ngayNhanHang;
-        this.ghiChu = ghiChu;
         this.maSanPham = maSanPham;
         this.maThanhVien = maThanhVien;
         this.maKhachHang = maKhachHang;
         this.maVanChuyen = maVanChuyen;
+        this.ngayTao = ngayTao;
+        this.gio = gio;
+        this.ngayNhanHang = ngayNhanHang;
+        this.ghiChu = ghiChu;
         this.soLuong = soLuong;
         this.trangThai = trangThai;
         this.tienCoc = tienCoc;
@@ -28,6 +52,38 @@ public class HoaDon {
 
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
+    }
+
+    public String getMaSanPham() {
+        return maSanPham;
+    }
+
+    public void setMaSanPham(String maSanPham) {
+        this.maSanPham = maSanPham;
+    }
+
+    public String getMaThanhVien() {
+        return maThanhVien;
+    }
+
+    public void setMaThanhVien(String maThanhVien) {
+        this.maThanhVien = maThanhVien;
+    }
+
+    public String getMaKhachHang() {
+        return maKhachHang;
+    }
+
+    public void setMaKhachHang(String maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
+
+    public String getMaVanChuyen() {
+        return maVanChuyen;
+    }
+
+    public void setMaVanChuyen(String maVanChuyen) {
+        this.maVanChuyen = maVanChuyen;
     }
 
     public String getNgayTao() {
@@ -52,38 +108,6 @@ public class HoaDon {
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
-    }
-
-    public int getMaSanPham() {
-        return maSanPham;
-    }
-
-    public void setMaSanPham(int maSanPham) {
-        this.maSanPham = maSanPham;
-    }
-
-    public int getMaThanhVien() {
-        return maThanhVien;
-    }
-
-    public void setMaThanhVien(int maThanhVien) {
-        this.maThanhVien = maThanhVien;
-    }
-
-    public int getMaKhachHang() {
-        return maKhachHang;
-    }
-
-    public void setMaKhachHang(int maKhachHang) {
-        this.maKhachHang = maKhachHang;
-    }
-
-    public int getMaVanChuyen() {
-        return maVanChuyen;
-    }
-
-    public void setMaVanChuyen(int maVanChuyen) {
-        this.maVanChuyen = maVanChuyen;
     }
 
     public int getSoLuong() {

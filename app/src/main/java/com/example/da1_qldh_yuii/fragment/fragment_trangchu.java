@@ -13,11 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.Navigation;
 import com.example.da1_qldh_yuii.adapter.ThongBaoAdapter;
 import com.example.da1_qldh_yuii.dao.ThongBaoDAO;
 import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
+import com.example.da1_qldh_yuii.fragment.frgTHD_CSP.fragment_chonsanpham;
 import com.example.da1_qldh_yuii.model.Photo;
 import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
@@ -48,6 +49,7 @@ public class fragment_trangchu extends Fragment {
     public fragment_trangchu() {
         // Required empty public constructor
     }
+    Navigation check = new Navigation();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +62,8 @@ public class fragment_trangchu extends Fragment {
 
         lvThongBao = view.findViewById(R.id.lvThongBao);
 
+        // check statust hóa đơn
+        check.checkStatus(getContext());
 
         //btnKhachHang
         btnKhachHang = view.findViewById(R.id.btnKhachHang);
@@ -80,6 +84,15 @@ public class fragment_trangchu extends Fragment {
             }
         });
 
+        btnTaoHoaDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment chonspfrg = new fragment_chonsanpham();
+                FragmentTransaction frg = getActivity().getSupportFragmentManager().beginTransaction();
+                frg.replace(R.id.flContent, chonspfrg).commit();
+            }
+        });
+
 
         btnSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,13 +100,6 @@ public class fragment_trangchu extends Fragment {
                 Fragment SanPhamFrg = new frgSanPham();
                 FragmentTransaction frg = getActivity().getSupportFragmentManager().beginTransaction();
                 frg.replace(R.id.flContent, SanPhamFrg).commit();
-            }
-        });
-
-        btnTaoHoaDon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Chức năng đang cải thiện", Toast.LENGTH_SHORT).show();
             }
         });
 

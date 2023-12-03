@@ -186,7 +186,6 @@ public class BangGiaAdapter extends RecyclerView.Adapter<BangGiaAdapter.ViewHold
         list.clear();
         list = bangGiaTheoSizeDAO.getDSBangGia();
         notifyDataSetChanged();
-
     }
 
     public boolean isInt(String so){

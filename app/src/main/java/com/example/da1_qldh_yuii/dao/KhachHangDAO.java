@@ -10,6 +10,7 @@ import com.example.da1_qldh_yuii.database.DbHelper;
 import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.HoaDon;
 import com.example.da1_qldh_yuii.model.KhachHang;
+import com.example.da1_qldh_yuii.model.VanChuyen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +93,20 @@ public class KhachHangDAO {
         } else {
             return 1; // Xóa thành công
         }
+    }
+
+    @SuppressLint("Range")
+    public KhachHang getID(String id) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM KHACHHANG WHERE maKhachHang = ?", new String[]{id});
+        if (cursor.moveToFirst()){
+            KhachHang kh = new KhachHang();
+            kh.setTenKhachHang(cursor.getString(cursor.getColumnIndex("tenKhachHang")));
+            kh.setSoDienThoai(cursor.getString(cursor.getColumnIndex("soDienThoai")));
+            kh.setDiaChi(cursor.getString(cursor.getColumnIndex("diaChi")));
+            return kh;
+        }
+        return new KhachHang();
     }
 
 
