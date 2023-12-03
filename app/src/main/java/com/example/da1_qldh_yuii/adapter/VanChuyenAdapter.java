@@ -20,14 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.VanChuyenDAO;
+import com.example.da1_qldh_yuii.fragment.fragment_donvivanchuyen;
 import com.example.da1_qldh_yuii.model.VanChuyen;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VanChuyenAdapter extends RecyclerView.Adapter<VanChuyenAdapter.viewholder> {
 
