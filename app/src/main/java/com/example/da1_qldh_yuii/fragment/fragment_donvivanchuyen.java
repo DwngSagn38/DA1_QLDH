@@ -66,6 +66,7 @@ public class fragment_donvivanchuyen extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                rcvDonViVanChuyen.setVisibility(View.VISIBLE);
                 handleSearch(newText);
                 return true;
             }
@@ -127,9 +128,9 @@ public class fragment_donvivanchuyen extends Fragment {
 
     @SuppressLint("NotifyDataSetChanged")
     public void loadData(ArrayList<VanChuyen> list){
-        ArrayList<VanChuyen> list1 = new ArrayList<>(list);
+//        ArrayList<VanChuyen> list1 = new ArrayList<>(list);
         rcvDonViVanChuyen.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new VanChuyenAdapter(getContext(),list1);
+        adapter = new VanChuyenAdapter(getContext(),list);
         rcvDonViVanChuyen.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.Navigation;
@@ -81,7 +82,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
             HoaDon hd = list.get(position);
             KhachHang kh = khDAO.getID(hd.getMaKhachHang());
             holder.tvTenKhachHang.setText("Khách: "+kh.getTenKhachHang());
-            holder.tvHD.setText(" - "+hd.getMaHoaDon());
+            holder.tvHD.setText("Mã: "+hd.getMaHoaDon());
             holder.tvNgayNhan.setText("Ngày nhận: "+hd.getNgayNhanHang());
 
             if (hd.getTrangThai() == 0){
@@ -98,11 +99,11 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
                 }
             }else if (hd.getTrangThai() == 1){
                 holder.tvTrangThai.setText("Đã giao");
-                holder.tvTrangThai.setTextColor(Color.GREEN);
-                holder.tvTenKhachHang.setTextColor(Color.GREEN);
-                holder.tvHD.setTextColor(Color.GREEN);
-                holder.tvNgayNhan.setTextColor(Color.GREEN);
-                holder.tvTongTien.setTextColor(Color.GREEN);
+                holder.tvTrangThai.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                holder.tvTenKhachHang.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                holder.tvHD.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                holder.tvNgayNhan.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                holder.tvTongTien.setTextColor(ContextCompat.getColor(context, R.color.blue));
             }else {
                 holder.tvTrangThai.setText("Hủy");
                 holder.tvTenKhachHang.setTextColor(Color.GRAY);
@@ -185,7 +186,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
             tvTrangThaiHD.setTextColor(Color.RED);
         } else if (hd.getTrangThai() == 1) {
             tvTrangThaiHD.setText("Đã giao");
-            tvTrangThaiHD.setTextColor(Color.GREEN);
+            tvTrangThaiHD.setTextColor(ContextCompat.getColor(context, R.color.blue));
             btnHuyHD.setVisibility(View.GONE);
         } else {
             btnGui.setVisibility(View.GONE);
@@ -201,7 +202,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
         tvTenSanPham.setText("Sản phẩm : "+ ArrMasp.toString());
         tvSoLuong.setText("Số lượng : "+ ArrSL.toString());
         tvGia.setText("Giá : "+ ArrGia.toString());
-        tvVanChuyen.setText("Ship: "+vc.getTenVanChuyen() + " - "+vc.getGiaVanChuyen()+" VNĐ");
+        tvVanChuyen.setText("Phí vận chuyển: "+vc.getGiaVanChuyen()+" VNĐ");
         tvGiamGia.setText("Giảm giá : 0%");
         tvTienCoc.setText("Tiền cọc : "+hd.getTienCoc()+"%");
         tvTongTien.setText("Tổng tiền : "+tongtien+" VNĐ");
