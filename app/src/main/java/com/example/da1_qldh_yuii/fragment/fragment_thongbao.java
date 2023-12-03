@@ -44,8 +44,6 @@ public class fragment_thongbao extends Fragment {
 
     ArrayList<ThongBao> list;
 
-    ArrayList<ThanhVien> listThanhVien;
-
     ThanhVienDAO thanhVienDAO;
 
     static ThongBaoDAO tbDAO;
@@ -85,6 +83,7 @@ public class fragment_thongbao extends Fragment {
                 openDialog(getActivity(),0,new ThongBao());
             }
         });
+
 
 
         lvThongBao.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

@@ -6,11 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,13 +28,17 @@ import com.example.da1_qldh_yuii.DangNhap;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.KhachHangAdapter;
 
+import com.example.da1_qldh_yuii.adapter.ThanhVienAdapter;
 import com.example.da1_qldh_yuii.dao.KhachHangDAO;
 
 import com.example.da1_qldh_yuii.model.KhachHang;
 
+import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class fragment_khachhang extends Fragment {
@@ -37,6 +47,38 @@ public class fragment_khachhang extends Fragment {
     KhachHangDAO khachHangDAO;
     RecyclerView recyclerViewKhachHang;
     DangNhap dn = new DangNhap();
+
+
+    KhachHangAdapter adapter;
+    private SearchView searchView;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               handleSearch(newText);
+                return true;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,5 +184,28 @@ public class fragment_khachhang extends Fragment {
         return so.matches("\\d+");
     }
 
+
+    private String removeDau(String str) {
+        String strKhongDau = Normalizer.normalize(str, Normalizer.Form.NFD);
+        return strKhongDau.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
+    private void handleSearch(String query) {
+        List<KhachHang> listSearch = new ArrayList<>();
+        String tenTimKhongDau = removeDau(query.toLowerCase());
+        for (KhachHang kh : list) {
+            String tenKhongDau = removeDau(kh.getTenKhachHang().toLowerCase());
+            if (tenKhongDau.contains(tenTimKhongDau)) {
+                listSearch.add(kh);
+            }
+        }
+        adapter = new KhachHangAdapter(getActivity(), (ArrayList<KhachHang>) listSearch);
+        recyclerViewKhachHang.setAdapter(adapter);
+
+    }
+
+
+
+}
+
+
 

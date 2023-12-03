@@ -1,27 +1,36 @@
 package com.example.da1_qldh_yuii.fragment;
 
+import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
+
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.R;
+import com.example.da1_qldh_yuii.adapter.KhachHangAdapter;
 import com.example.da1_qldh_yuii.adapter.VanChuyenAdapter;
 import com.example.da1_qldh_yuii.dao.VanChuyenDAO;
+import com.example.da1_qldh_yuii.model.KhachHang;
 import com.example.da1_qldh_yuii.model.VanChuyen;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class fragment_donvivanchuyen extends Fragment {
@@ -34,6 +43,35 @@ public class fragment_donvivanchuyen extends Fragment {
     private RecyclerView rcvDonViVanChuyen;
     LinearLayout llDVVCNgung,llDVVCds,llDVVCadd;
     ImageView imgback;
+
+    private SearchView searchView;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                handleSearch(newText);
+                return true;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,4 +151,24 @@ public class fragment_donvivanchuyen extends Fragment {
         imgback.setVisibility(View.VISIBLE);
         rcvDonViVanChuyen.setVisibility(View.VISIBLE);
     }
+
+    private String removeDau(String str) {
+        String strKhongDau = Normalizer.normalize(str, Normalizer.Form.NFD);
+        return strKhongDau.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
+    private void handleSearch(String query) {
+        List<VanChuyen> listSearch = new ArrayList<>();
+        String tenTimKhongDau = removeDau(query.toLowerCase());
+        for (VanChuyen vc : list) {
+            String tenKhongDau = removeDau(vc.getTenVanChuyen().toLowerCase());
+            if (tenKhongDau.contains(tenTimKhongDau)) {
+                listSearch.add(vc);
+            }
+        }
+        adapter = new VanChuyenAdapter(getActivity(), (ArrayList<VanChuyen>) listSearch);
+        rcvDonViVanChuyen.setAdapter(adapter);
+
+    }
+
+
 }
