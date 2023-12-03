@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.R;
@@ -23,6 +24,7 @@ import com.example.da1_qldh_yuii.fragment.fragment_khachhang;
 import com.example.da1_qldh_yuii.model.KhachHang;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.viewholder>{
 
@@ -39,6 +41,8 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.view
     }
 
     ThanhVienAdapter.OnItemClickListener OnItemClickListener;
+
+
     @NonNull
     @Override
     public KhachHangAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -17,14 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
+import com.example.da1_qldh_yuii.fragment.fragment_thanhvien;
 import com.example.da1_qldh_yuii.model.ThanhVien;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.viewholder> {
 
@@ -32,11 +35,11 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
     private final Context context;
     private final ArrayList<ThanhVien> list;
 
+
     // OnClickItem : B1 :  tạo một interface để xử lý sự kiện khi người dùng chọn
     public interface OnItemClickListener {
         void onItemClick(int i);
     }
-
 
 
 
