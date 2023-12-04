@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.SanPhamAdapter;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
 import com.example.da1_qldh_yuii.dao.TaoHoaDonDAO;
+import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
 import com.example.da1_qldh_yuii.model.SanPham;
 import com.example.da1_qldh_yuii.model.TaoHoaDon;
 
@@ -37,7 +39,8 @@ public class fragment_chonsanpham extends Fragment {
     ArrayList<SanPham> list = new ArrayList<>();
     SanPhamDAO spDao ;
     ImageView btnSelect;
-    Button btnTatCa,btnSize15,btnSize20,btnSize25,btnTaoHDon;
+    RelativeLayout rlTSP;
+    Button btnTatCa,btnSize15,btnSize20,btnSize25,btnTaoHDon,btnThemSp;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +50,15 @@ public class fragment_chonsanpham extends Fragment {
 
         spDao = new SanPhamDAO(getContext());
         list = (ArrayList<SanPham>) spDao.getAll();
+
+        if (list.size() != 0){
+            btnThemSp.setVisibility(View.GONE);
+            rlTSP.setVisibility(View.VISIBLE);
+        }else {
+            btnThemSp.setVisibility(View.VISIBLE);
+            rlTSP.setVisibility(View.GONE);
+        }
+
         rcvTaoHoaDon.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new SanPhamAdapter(getContext(), list);
         adapter.setCurrentFragment(getActivity());
@@ -78,6 +90,15 @@ public class fragment_chonsanpham extends Fragment {
                 }
             }
         });
+
+        btnThemSp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment chonspfrg = new frgSanPham();
+                FragmentTransaction frg = getActivity().getSupportFragmentManager().beginTransaction();
+                frg.replace(R.id.flContent, chonspfrg).commit();
+            }
+        });
         return view;
 
     }
@@ -90,6 +111,8 @@ public class fragment_chonsanpham extends Fragment {
         btnSize20 = view.findViewById(R.id.btnSize20);
         btnSize25 = view.findViewById(R.id.btnSize25);
         btnTaoHDon= view.findViewById(R.id.btnTaoHDon);
+        btnThemSp = view.findViewById(R.id.btnThemSp);
+        rlTSP = view.findViewById(R.id.rlTSP);
     }
 
     public void HienSelect(){

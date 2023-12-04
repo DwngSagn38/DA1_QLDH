@@ -48,19 +48,80 @@
             android:layout_marginLeft="10dp"
             android:text="Đơn hàng"/>
     </LinearLayout>
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thống kê số lượng bán"
-        android:textColor="@color/black"
         android:background="@color/gray"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="15dp"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Thống kê số lượng"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+        <TextView
+            android:id="@+id/tvthongKe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Tổng"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTKDH"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray">
+        <TextView
+            android:id="@+id/tvDaGiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn hàng đã giao : "
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/tvChuaGiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn hàng chưa giao : "
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/tvHuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn hàng bị hủy : "
+            android:textColor="@color/brown"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvThongKe"
         android:layout_width="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

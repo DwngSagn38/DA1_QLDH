@@ -61,7 +61,7 @@ public class TonKhoDAO {
         Cursor cursor = db.rawQuery(sql, selectionArgs);
         while (cursor.moveToNext()) {
             TonKho tk = new TonKho();
-            tk.setMaTonKho(cursor.getString(cursor.getColumnIndex("maTonKho")));
+            tk.setMaTonKho(cursor.getInt(cursor.getColumnIndex("maTonKho")));
             tk.setMaSanPham(cursor.getString(cursor.getColumnIndex("maSanPham")));
             tk.setMaHoaDon(cursor.getString(cursor.getColumnIndex("maHoaDon")));
             tk.setSoLuong(cursor.getInt(cursor.getColumnIndex("soLuong")));

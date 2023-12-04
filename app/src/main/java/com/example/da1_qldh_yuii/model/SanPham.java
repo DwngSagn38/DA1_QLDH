@@ -14,6 +14,31 @@ public class SanPham {
 
     private int trangThai,maBangGia;
 
+    int soLuongDon,soLuongMua;
+
+    public SanPham(String maSanPham, int soLuongDon, int soLuongMua) {
+        this.maSanPham = maSanPham;
+        this.soLuongDon = soLuongDon;
+        this.soLuongMua = soLuongMua;
+    }
+
+
+    public int getSoLuongMua() {
+        return soLuongMua;
+    }
+
+    public void setSoLuongMua(int soLuongMua) {
+        this.soLuongMua = soLuongMua;
+    }
+
+    public int getSoLuongDon() {
+        return soLuongDon;
+    }
+
+    public void setSoLuongDon(int soLuongDon) {
+        this.soLuongDon = soLuongDon;
+    }
+
     public SanPham() {
     }
 

@@ -143,7 +143,6 @@ public class Navigation extends AppCompatActivity {
                 setTitle("Thống kê");
                 fragment_trangchu_thongke fragment_trangchu_thongke = new fragment_trangchu_thongke();
                 replaceFrg(fragment_trangchu_thongke);
-                Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.bottom_khoHang) {
                 setTitle("Kho hàng");
                 fragment_sanpham_khohang fragment_sanpham_khohang = new fragment_sanpham_khohang();
@@ -191,7 +190,6 @@ public class Navigation extends AppCompatActivity {
                     setTitle("Đổi mật khẩu");
                     fragment_doimatkhau fragment_doimatkhau = new fragment_doimatkhau();
                     replaceFrg(fragment_doimatkhau);
-                    Toast.makeText(Navigation.this, "Chức năng đang bảo trì", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.nav_dangXuat) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Navigation.this);

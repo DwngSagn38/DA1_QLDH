@@ -65,7 +65,7 @@ public class frgSanPham extends Fragment {
     private RecyclerView rcvSanPham;
     private Button btnTatCa,btnTheosize;
     private EditText btnTT;
-    private TextView txtDanhSachSP;
+    private TextView txtDanhSachSP,tvThemSp;
     private Uri selectedImageUri;
     private ImageView imgPicker;
     ArrayList<SanPham> list = new ArrayList<>();
@@ -89,7 +89,13 @@ public class frgSanPham extends Fragment {
         View view = inflater.inflate(R.layout.fragment_frg_san_pham, container, false);
 
         getAnhXa(view);
+        spDao = new SanPhamDAO(getContext());
+        list = (ArrayList<SanPham>) spDao.getAll();
 
+        if (list.size() != 0){
+            tvThemSp.setVisibility(View.GONE);
+        }
+        tvThemSp.setVisibility(View.VISIBLE);
 
         loadData(list);
         floatAddSanPham.setOnClickListener(new View.OnClickListener() {
@@ -144,11 +150,10 @@ public class frgSanPham extends Fragment {
         btnTT = view.findViewById(R.id.btnTT);
         btnTatCa = view.findViewById(R.id.btnTatCa);
         txtDanhSachSP = view.findViewById(R.id.txtDanhSachSP);
+        tvThemSp = view.findViewById(R.id.tvThemSp);
     }
 
     public void loadData(ArrayList<SanPham> list) {
-        spDao = new SanPhamDAO(getContext());
-        list = (ArrayList<SanPham>) spDao.getAll();
         rcvSanPham.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new SanPhamAdapter(getContext(), list);
         rcvSanPham.setAdapter(adapter);

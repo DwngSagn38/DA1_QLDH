@@ -1,24 +1,27 @@
 package com.example.da1_qldh_yuii.model;
 
 public class TonKho {
-    private String maTonKho,maSanPham,maHoaDon;
-    private int soLuong;
+    private String maSanPham,maHoaDon;
+    private int soLuong,maTonKho;
 
     public TonKho() {
     }
 
-    public TonKho(String maTonKho, String maSanPham, String maHoaDon, int soLuong) {
-        this.maTonKho = maTonKho;
+    public TonKho(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
+    }
+
+    public TonKho(String maSanPham, String maHoaDon, int soLuong) {
         this.maSanPham = maSanPham;
         this.maHoaDon = maHoaDon;
         this.soLuong = soLuong;
     }
 
-    public String getMaTonKho() {
+    public int getMaTonKho() {
         return maTonKho;
     }
 
-    public void setMaTonKho(String maTonKho) {
+    public void setMaTonKho(int maTonKho) {
         this.maTonKho = maTonKho;
     }
 

@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:text="Hôm nay"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:textColor="@color/blue"/>
@@ -81,7 +81,19 @@
         android:layout_gravity="center_horizontal"
         android:text="2.235.000VND"
         android:textSize="30dp"
+        android:layout_margin="20dp"
         android:textColor="@color/blue"
         android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Lưu ý : doanh thu sẽ được tính vào số lượng sản phẩm bán ra và đã giao hàng thành công!"
+        android:textSize="18dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/brown"
+        android:textStyle="italic"/>
 
 </LinearLayout>

@@ -92,15 +92,15 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(dbThanhVien);
 
 
-        String dbTonKho = "CREATE TABLE TONKHO (\n" +
-                "    maTonKho TEXT PRIMARY KEY,\n" +
-                "    maSanPham TEXT,\n" +
-                "    maHoaDon TEXT,\n" +
-                "    soLuong INTEGER,\n" +
-                "    FOREIGN KEY (maSanPham) REFERENCES SANPHAM(maSanPham),\n" +
-                "    FOREIGN KEY (maHoaDon) REFERENCES HOADON(maHoaDon)\n" +
-                ");";
-        db.execSQL(dbTonKho);
+//        String dbTonKho = "CREATE TABLE TONKHO (\n" +
+//                "    maTonKho Integer PRIMARY KEY autoincrement,\n" +
+//                "    maSanPham TEXT,\n" +
+//                "    maHoaDon TEXT,\n" +
+//                "    soLuong INTEGER,\n" +
+//                "    FOREIGN KEY (maSanPham) REFERENCES SANPHAM(maSanPham),\n" +
+//                "    FOREIGN KEY (maHoaDon) REFERENCES HOADON(maHoaDon)\n" +
+//                ");";
+//        db.execSQL(dbTonKho);
 
         db.execSQL("CREATE TABLE THONGBAO (maThongBao INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "maThanhVien TEXT," +
@@ -144,11 +144,11 @@ public class DbHelper extends SQLiteOpenHelper {
 //                "('HD02', 'TV01', 'KH01', 'VC01', '2023-11-08', '2023-11-15', 500000, 3, 'Giao hàng nhanh', 1)");
 
         //maChiTietHoaDon, maHoaDon, giamGia
-        db.execSQL("INSERT INTO CHITIETHOADON VALUES('CT01', 'HD01', 10)," +
-                                                    " ('CT02','HD02',20)");
+//        db.execSQL("INSERT INTO CHITIETHOADON VALUES('CT01', 'HD01', 10)," +
+//                                                    " ('CT02','HD02',20)");
 
         //maTonKho, maSanPham, maHoaDon, soLuong
-        db.execSQL("INSERT INTO TONKHO VALUES('TK01', 'SP01', 'HD01', 1)");
+//        db.execSQL("INSERT INTO TONKHO VALUES('TK01', 'SP01', 'HD01', 1)");
 
         //maThongBao, maThanhVien, tieuDe, noiDung, ngayDang
         db.execSQL("INSERT INTO THONGBAO VALUES(1, 'TV01','MÃ SP02','GIẢM GIÁ 10%','10-11-2023')");

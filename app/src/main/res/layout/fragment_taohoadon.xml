@@ -77,8 +77,20 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnThemSp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_nhap"
+        android:backgroundTint="@color/blue"
+        android:drawableStart="@drawable/themhd"
+        android:padding="10dp"
+        android:layout_margin="50dp"
+        android:text="Thêm sản phẩm"
+        android:textColor="@color/white" />
 
     <RelativeLayout
+        android:id="@+id/rlTSP"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +24,13 @@ import com.example.da1_qldh_yuii.dao.ChiTietHoaDonDAO;
 import com.example.da1_qldh_yuii.dao.HoaDonDAO;
 import com.example.da1_qldh_yuii.dao.KhachHangDAO;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
+import com.example.da1_qldh_yuii.dao.TonKhoDAO;
 import com.example.da1_qldh_yuii.dao.VanChuyenDAO;
 import com.example.da1_qldh_yuii.model.BangGia;
 import com.example.da1_qldh_yuii.model.ChiTietHoaDon;
 import com.example.da1_qldh_yuii.model.HoaDon;
 import com.example.da1_qldh_yuii.model.KhachHang;
+import com.example.da1_qldh_yuii.model.TonKho;
 import com.example.da1_qldh_yuii.model.VanChuyen;
 
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
     BangGiaTheoSizeDAO bgDAO;
     VanChuyenDAO vcDAO;
     SanPhamDAO spDAO;
+    TonKhoDAO tkDAO;
     private int initialMin;
     private int initialhours;
     final Context context;
@@ -58,6 +62,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
         bgDAO = new BangGiaTheoSizeDAO(context);
         spDAO = new SanPhamDAO(context);
         vcDAO = new VanChuyenDAO(context);
+        tkDAO = new TonKhoDAO(context);
     }
 
     @NonNull
@@ -111,6 +116,8 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
                 holder.tvNgayNhan.setTextColor(Color.GRAY);
                 holder.tvTrangThai.setTextColor(Color.GRAY);
                 holder.tvTongTien.setTextColor(Color.GRAY);
+                TonKho tonKho = new TonKho(hd.getMaHoaDon());
+                tkDAO.insert(tonKho);
             }
             List<String> ArrMasp = new ArrayList<>();
             List<Integer> ArrSL = new ArrayList<>();
@@ -221,11 +228,21 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
         btnHuyHD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                hd.setTrangThai(2);
-                hdDAO.update(hd);
-                Toast.makeText(context, "Đơn hàng đã bị hủy", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-                notifyDataSetChanged();
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setTitle("Cảnh báo!");
+                builder1.setMessage("Bạn có chắc chắn muốn hủy đơn hàng này không?");
+                builder1.setPositiveButton("Không",null);
+                builder1.setNegativeButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        hd.setTrangThai(2);
+                        hdDAO.update(hd);
+                        Toast.makeText(context, "Đơn hàng đã bị hủy", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        notifyDataSetChanged();
+                    }
+                });
+                builder1.show();
             }
         });
 
