@@ -1,7 +1,33 @@
 package com.example.da1_qldh_yuii.model;
 
 public class HoaDon {
-    private String maHoaDon,maSanPham,maThanhVien,maKhachHang,maVanChuyen,ngayTao,ngayNhanHang,ghiChu;
+    private String maHoaDon;
+    private String maSanPham;
+    private String maThanhVien;
+    private String maKhachHang;
+    private String maVanChuyen;
+    private String ngayTao;
+    private String ngayNhanHang;
+    private String ghiChu;
+    private String ngayGiaoHang;
+
+    public String getNgayGiaoHang() {
+        return ngayGiaoHang;
+    }
+
+    public void setNgayGiaoHang(String ngayGiaoHang) {
+        this.ngayGiaoHang = ngayGiaoHang;
+    }
+
+    public String getNgayGiaoOk() {
+        return ngayGiaoOk;
+    }
+
+    public void setNgayGiaoOk(String ngayGiaoOk) {
+        this.ngayGiaoOk = ngayGiaoOk;
+    }
+
+    private String ngayGiaoOk;
     private int soLuong,trangThai;
     private double tienCoc;
 

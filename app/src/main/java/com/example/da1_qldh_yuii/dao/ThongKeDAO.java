@@ -133,4 +133,36 @@ public class ThongKeDAO {
             return 0;
         }
     }
+    @SuppressLint("Range")
+    public ArrayList<SanPham> getDoanhThuTheoMaSP() {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        String query = "SELECT sp.tenSanPham, SUM(bg.giaBan * ct.soLuong) as DoanhThu " +
+                "FROM CHITIETHOADON ct " +
+                "JOIN HOADON hd ON ct.maHoaDon = hd.maHoaDon " +
+                "JOIN SANPHAM sp ON ct.maSanPham = sp.maSanPham " +
+                "JOIN BANGGIA bg ON sp.maBangGia = bg.maBangGia " +
+                "WHERE hd.trangThai = 1 " +
+                "GROUP BY sp.maSanPham";
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                String tenSanPham = cursor.getString(cursor.getColumnIndex("tenSanPham"));
+                double doanhThu = cursor.getDouble(cursor.getColumnIndex("DoanhThu"));
+
+                SanPham sanPham = new SanPham();
+                sanPham.setTenSanPham(tenSanPham);
+                sanPham.setDoanhThu(doanhThu);
+
+                sanPhams.add(sanPham);
+            } while (cursor.moveToNext());
+        }
+
+        return sanPhams;
+    }
+
+
 }

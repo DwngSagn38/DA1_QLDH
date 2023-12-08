@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class fragment_hoadon extends Fragment {
 
-    Button btnChuaGiao,btnTatCa,btnDaGiao,btnHuy;
+    Button btnChuaGiao,btnTatCa,btnDaGiao,btnHuy,btnDangGiao;
     RecyclerView rcvHoaDon;
 
     FloatingActionButton flAddHD;
@@ -46,6 +46,7 @@ public class fragment_hoadon extends Fragment {
         btnTatCa = view.findViewById(R.id.btnTatCa);
         btnDaGiao = view.findViewById(R.id.btnDaGiao);
         btnHuy = view.findViewById(R.id.btnHuy);
+        btnDangGiao = view.findViewById(R.id.btnDangGiao);
         rcvHoaDon = view.findViewById(R.id.rcvHoaDon);
         flAddHD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +60,12 @@ public class fragment_hoadon extends Fragment {
         hdDAO = new HoaDonDAO(getContext());
         list = (ArrayList<HoaDon>) hdDAO.getAll();
         loadData(list);
-        setClickButton(btnTatCa,btnDaGiao,btnChuaGiao,btnHuy);
+        setClickButton(btnTatCa,btnDaGiao,btnChuaGiao,btnHuy,btnDangGiao);
         btnTatCa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loadData(list);
-                setClickButton(btnTatCa,btnDaGiao,btnChuaGiao,btnHuy);
+                setClickButton(btnTatCa,btnDaGiao,btnChuaGiao,btnHuy,btnDangGiao);
             }
         });
 
@@ -74,7 +75,7 @@ public class fragment_hoadon extends Fragment {
                 ArrayList<HoaDon> list1 = new ArrayList<>();
                 list1.addAll(hdDAO.getListStatus(1));
                 loadData(list1);
-                setClickButton(btnDaGiao,btnTatCa,btnChuaGiao,btnHuy);
+                setClickButton(btnDaGiao,btnTatCa,btnChuaGiao,btnHuy,btnDangGiao);
             }
         });
 
@@ -84,7 +85,17 @@ public class fragment_hoadon extends Fragment {
                 ArrayList<HoaDon> list1 = new ArrayList<>();
                 list1.addAll(hdDAO.getListStatus(0));
                 loadData(list1);
-                setClickButton(btnChuaGiao,btnTatCa,btnDaGiao,btnHuy);
+                setClickButton(btnChuaGiao,btnTatCa,btnDaGiao,btnHuy,btnDangGiao);
+            }
+        });
+
+        btnDangGiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<HoaDon> list1 = new ArrayList<>();
+                list1.addAll(hdDAO.getListStatus(2));
+                loadData(list1);
+                setClickButton(btnDangGiao,btnTatCa,btnDaGiao,btnHuy,btnChuaGiao);
             }
         });
 
@@ -92,9 +103,9 @@ public class fragment_hoadon extends Fragment {
             @Override
             public void onClick(View view) {
                 ArrayList<HoaDon> list1 = new ArrayList<>();
-                list1.addAll(hdDAO.getListStatus(2));
+                list1.addAll(hdDAO.getListStatus(3));
                 loadData(list1);
-                setClickButton(btnHuy,btnTatCa,btnDaGiao,btnChuaGiao);
+                setClickButton(btnHuy,btnTatCa,btnDaGiao,btnChuaGiao,btnDangGiao);
             }
         });
 
@@ -106,15 +117,16 @@ public class fragment_hoadon extends Fragment {
         adapter = new HoaDonAdapter(getContext(),list);
         rcvHoaDon.setAdapter(adapter);
     }
-    public void setClickButton(Button b1,Button b2, Button b3, Button b4){
+    public void setClickButton(Button b1,Button b2, Button b3, Button b4,Button b5){
         b1.setBackgroundResource(R.drawable.khungdn);
         b2.setBackgroundResource(R.drawable.khung);
         b3.setBackgroundResource(R.drawable.khung);
         b4.setBackgroundResource(R.drawable.khung);
+        b5.setBackgroundResource(R.drawable.khung);
         b1.setTextColor(Color.WHITE);
         b2.setTextColor(Color.BLUE);
         b3.setTextColor(Color.BLUE);
         b4.setTextColor(Color.BLUE);
-
+        b5.setTextColor(Color.BLUE);
     }
 }

@@ -14,6 +14,16 @@ public class SanPham {
 
     private int trangThai,maBangGia;
 
+    double doanhThu;
+
+    public double getDoanhThu() {
+        return doanhThu;
+    }
+
+    public void setDoanhThu(double doanhThu) {
+        this.doanhThu = doanhThu;
+    }
+
     int soLuongDon,soLuongMua;
 
     public SanPham(String maSanPham, int soLuongDon, int soLuongMua) {

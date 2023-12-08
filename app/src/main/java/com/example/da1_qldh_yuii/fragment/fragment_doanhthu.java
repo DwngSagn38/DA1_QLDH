@@ -1,5 +1,6 @@
 package com.example.da1_qldh_yuii.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,18 @@ import android.widget.Toast;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.ThongKeDAO;
+import com.example.da1_qldh_yuii.model.SanPham;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -31,6 +39,7 @@ public class fragment_doanhthu extends Fragment {
     private int initialMonth;
     private int initialDay;
     ThongKeDAO tkDAO;
+    PieChart piechart;
 
     Button btnThangNay,btnTuanNay,btnHomNay;
     TextView tvDoanhThu,tvTime;
@@ -51,11 +60,27 @@ public class fragment_doanhthu extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tvDoanhThu = view.findViewById(R.id.tvDoanhThu);
-        tvTime = view.findViewById(R.id.tvTime);
+//        tvTime = view.findViewById(R.id.tvTime);
         btnHomNay = view.findViewById(R.id.btnHomNay);
         btnTuanNay = view.findViewById(R.id.btnTuanNay);
         btnThangNay = view.findViewById(R.id.btnThangNay);
+        piechart = view.findViewById(R.id.piechart);
 
+        tkDAO = new ThongKeDAO(getContext());
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        ArrayList<SanPham> list = new ArrayList<>(tkDAO.getDoanhThuTheoMaSP());
+        for (SanPham sp : list){
+            entries.add(new PieEntry((float) sp.getDoanhThu(),sp.getTenSanPham()));
+        }
+
+        PieDataSet pieDataSet = new PieDataSet(entries,"Doanh thu");
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+
+        PieData data = new PieData(pieDataSet);
+        piechart.setData(data);
+        piechart.getDescription().setEnabled(false);
+        piechart.animateY(1000);
+        piechart.invalidate();
 
         // Lấy ngày hiện tại
         Calendar calendar = Calendar.getInstance();
@@ -69,8 +94,8 @@ public class fragment_doanhthu extends Fragment {
         long doanhThu = tkDAO.getDoanhThu();
         NumberFormat numberFormat = NumberFormat.getInstance();
         String formattedDoanhThu = numberFormat.format(doanhThu);
-        tvDoanhThu.setText(formattedDoanhThu+".000 VNĐ");
-        tvTime.setText("Tổng");
+        tvDoanhThu.setText(formattedDoanhThu+" VNĐ");
+//        tvTime.setText("Tổng");
 
         btnHomNay.setOnClickListener(new View.OnClickListener() {
             @Override

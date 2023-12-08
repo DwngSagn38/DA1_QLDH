@@ -37,6 +37,8 @@ public class HoaDonDAO {
         values.put("soLuong", obj.getSoLuong());
         values.put("ghiChu", obj.getGhiChu());
         values.put("trangThai", obj.getTrangThai());
+        values.put("ngayGiaoHang", obj.getNgayGiaoHang());
+        values.put("ngayGiaoHangOK", obj.getNgayGiaoOk());
         return db.insert("HOADON", null, values);
     }
 
@@ -50,7 +52,10 @@ public class HoaDonDAO {
         values.put("tienCoc", obj.getTienCoc());
         values.put("soLuong", obj.getSoLuong());
         values.put("ghiChu", obj.getGhiChu());
+        values.put("gio", obj.getGio());
         values.put("trangThai", obj.getTrangThai());
+        values.put("ngayGiaoHang", obj.getNgayGiaoHang());
+        values.put("ngayGiaoHangOK", obj.getNgayGiaoOk());
         return db.update("HOADON", values, "maHoaDon = ?", new String[]{String.valueOf(obj.getMaHoaDon())});
     }
 
@@ -93,7 +98,8 @@ public class HoaDonDAO {
             hd.setSoLuong(cursor.getInt(cursor.getColumnIndex("soLuong")));
             hd.setGhiChu(cursor.getString(cursor.getColumnIndex("ghiChu")));
             hd.setTrangThai(cursor.getInt(cursor.getColumnIndex("trangThai")));
-
+            hd.setNgayGiaoHang(cursor.getString(cursor.getColumnIndex("ngayGiaoHang")));
+            hd.setNgayGiaoOk(cursor.getString(cursor.getColumnIndex("ngayGiaoHangOK")));
             list.add(hd);
         }
         return list;

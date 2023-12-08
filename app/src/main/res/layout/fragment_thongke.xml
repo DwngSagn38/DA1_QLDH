@@ -83,6 +83,28 @@
         android:orientation="vertical"
         android:background="@color/gray">
         <TextView
+            android:id="@+id/tvChuaGiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn hàng chưa giao : "
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/tvDangGiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn hàng đang giao : "
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"/>
+        <TextView
             android:id="@+id/tvDaGiao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,17 +116,6 @@
             android:padding="15dp"
             android:layout_marginLeft="20dp"/>
 
-        <TextView
-            android:id="@+id/tvChuaGiao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đơn hàng chưa giao : "
-            android:textColor="@color/red"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:padding="15dp"
-            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/tvHuy"

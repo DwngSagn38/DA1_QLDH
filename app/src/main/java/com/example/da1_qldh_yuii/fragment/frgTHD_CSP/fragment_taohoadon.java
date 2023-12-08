@@ -194,7 +194,7 @@ public class fragment_taohoadon extends Fragment {
         initialMonth = calendar.get(Calendar.MONTH);
         initialDay = calendar.get(Calendar.DAY_OF_MONTH);
         initialMin = calendar.get(Calendar.MINUTE);
-        initialhours = calendar.get(Calendar.HOUR);
+        initialhours = calendar.get(Calendar.HOUR_OF_DAY);
         datePickerImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,12 +305,14 @@ public class fragment_taohoadon extends Fragment {
                     String matv = pref.getString("MATV","");
                     hd.setMaHoaDon(ma);
                     hd.setMaThanhVien(matv);
-                    hd.setNgayTao( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
-                    hd.setGio(initialMin);
+                    hd.setNgayTao( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date())+" -- "+initialhours+":"+initialMin);
+//                    hd.setGio(initialMin);
                     hd.setNgayNhanHang(String.valueOf(tvNgayNhan.getText()));
                     hd.setGhiChu(ghichu);
                     hd.setTrangThai(0);
                     hd.setSoLuong(list.size());
+                    hd.setNgayGiaoHang("");
+                    hd.setNgayGiaoOk("");
 
                     if (hdDAO.insert(hd) != -1){
 

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class fragment_thongke extends Fragment {
 
-    TextView tvthongKe,tvAllDH,tvChuaGiao,tvDaGiao,tvHuy;
+    TextView tvthongKe,tvAllDH,tvChuaGiao,tvDaGiao,tvHuy,tvDangGiao;
     LinearLayout llTKDH;
     ThongKeDAO tkDAO;
     ThongKeAdapter adapter;
@@ -93,8 +93,9 @@ public class fragment_thongke extends Fragment {
                 llTKDH.setVisibility(View.VISIBLE);
                 tvthongKe.setText("Tổng: "+ tkDAO.getTongDonHang());
                 tvDaGiao.setText("Đơn hàng đã giao : "+tkDAO.getDHDaGiao(1));
+                tvDangGiao.setText("Đơn hàng đang giao : "+tkDAO.getDHDaGiao(2));
                 tvChuaGiao.setText("Đơn hàng chưa giao : "+tkDAO.getDHDaGiao(0));
-                tvHuy.setText("Đơn hàng đã hủy : "+tkDAO.getDHDaGiao(2));
+                tvHuy.setText("Đơn hàng đã hủy : "+tkDAO.getDHDaGiao(3));
             }
         });
     }
@@ -122,6 +123,7 @@ public class fragment_thongke extends Fragment {
         tvChuaGiao = view.findViewById(R.id.tvChuaGiao);
         tvHuy =view.findViewById(R.id.tvHuy);
         tvDaGiao = view.findViewById(R.id.tvDaGiao);
+        tvDangGiao = view.findViewById(R.id.tvDangGiao);
         llTKDH =view.findViewById(R.id.llTKDH);
 
     }

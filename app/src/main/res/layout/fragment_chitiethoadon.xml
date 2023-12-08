@@ -160,6 +160,24 @@
                 android:textStyle="italic"
                 android:layout_gravity="end"
                 android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvNgayGiaoHang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày giao:"
+                android:textSize="14dp"
+                android:textStyle="italic"
+                android:layout_gravity="end"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/tvNgayGiaoHangOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày hoàn thành:"
+                android:textSize="14dp"
+                android:textStyle="italic"
+                android:layout_gravity="end"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -185,7 +203,7 @@
                 android:padding="10dp"
                 android:drawablePadding="8dp"
                 android:background="@drawable/khung"
-                android:text="Gửi"/>
+                android:text="Gửi hàng"/>
             <Button
                 android:id="@+id/btnHuyHD"
                 android:layout_width="wrap_content"

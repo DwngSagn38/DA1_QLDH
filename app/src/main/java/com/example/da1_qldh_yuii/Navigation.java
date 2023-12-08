@@ -53,11 +53,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Navigation extends AppCompatActivity {
 
@@ -234,6 +236,7 @@ public class Navigation extends AppCompatActivity {
         // Lấy ngày hiện tại
         Calendar calendar = Calendar.getInstance();
         int Min = calendar.get(Calendar.MINUTE);
+        int Hours = calendar.get(Calendar.HOUR_OF_DAY);
         int gioHienTai = Min;
         HoaDonDAO hdDAO = new HoaDonDAO(context);
 
@@ -245,9 +248,9 @@ public class Navigation extends AppCompatActivity {
         }
 
         for (HoaDon hd : list){
-            if (hd.getTrangThai() == 0){
-                if (hd.getGio()+1 < gioHienTai){
+            if (hd.getTrangThai() == 2 && hd.getGio() + 2 < gioHienTai){
                     hd.setTrangThai(1);
+                    hd.setNgayGiaoOk( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()) + " -- "+Hours+":"+Min);
                     hdDAO.update(hd);
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MyApplication.CHANNEL_ID);
 
@@ -272,55 +275,8 @@ public class Navigation extends AppCompatActivity {
                                 new String[]{Manifest.permission.POST_NOTIFICATIONS},
                                 999);
                     }
-                }
             }
         }
     }
-//    public void checkHuy(Context context){
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        LocalDate currentDate = LocalDate.now();
-//        String currentDateStr = currentDate.format(formatter);
-//        HoaDonDAO hdDAO = new HoaDonDAO(context);
-//
-//        ArrayList<HoaDon> list = new ArrayList<>();
-//        list.addAll(hdDAO.getAll());
-//
-//        if (list.size() == 0){
-//            return;
-//        }
-//
-//        for (HoaDon hd : list){
-//            if (hd.getTrangThai() == 1){
-//                LocalDate ngayNhanHang = LocalDate.parse(hd.getNgayNhanHang(), formatter);
-//                if (currentDateStr.equals(ngayNhanHang)){
-//                    hd.setTrangThai(2);
-//                    hdDAO.update(hd);
-//                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MyApplication.CHANNEL_ID);
-//
-//                    builder.setSmallIcon(R.drawable.ic_launcher_background);
-//                    builder.setContentTitle("Thông báo mới!");
-//                    builder.setContentText("Mã hóa đơn "+hd.getMaHoaDon()+ " đã được giao.");
-//                    builder.setSmallIcon(R.drawable.logo);
-//
-//                    Bitmap logo = BitmapFactory.decodeResource(context.getResources(), R.drawable.sp_new2);
-//
-//                    builder.setStyle(new NotificationCompat.BigPictureStyle()
-//                            .bigPicture(logo).bigLargeIcon(null)
-//                    );
-//                    NotificationManagerCompat com = NotificationManagerCompat.from(context);
-//
-//                    if(ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS)
-//                            == PackageManager.PERMISSION_GRANTED
-//                    ){
-//                        com.notify((int) new Date().getTime(), builder.build());
-//                    }else{
-//                        ActivityCompat.requestPermissions(((Activity) context),
-//                                new String[]{Manifest.permission.POST_NOTIFICATIONS},
-//                                999);
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
+
 }

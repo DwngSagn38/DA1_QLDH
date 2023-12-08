@@ -18,6 +18,110 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:id="@+id/lladmin"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:background="@drawable/khungdn"
+                android:backgroundTint="@color/white"
+                android:layout_margin="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/khung"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Doanh thu"
+                        android:textStyle="italic"
+                        android:textColor="@color/blue"
+                        android:layout_margin="5dp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvTongDT"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="0"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/khung"
+                    android:layout_marginHorizontal="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Tổng đơn"
+                        android:textStyle="italic"
+                        android:layout_margin="5dp"
+                        android:textColor="@color/blue"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvTongDH"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="0"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/khung"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Sản phẩm"
+                        android:textStyle="italic"
+                        android:textColor="@color/blue"
+                        android:layout_margin="5dp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvTongSL"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="0"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnDsachChuaGiao"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/khung"
+                android:layout_marginLeft="20dp"
+                android:text="Bạn có ... hóa đơn chưa giao"
+                android:drawableEnd="@drawable/next"
+                android:drawableStart="@drawable/hoadon"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/red"/>
             <EditText
                 android:id="@+id/edSearch"
                 android:layout_width="match_parent"
@@ -28,6 +132,7 @@
                 android:layout_margin="20dp"
                 android:drawableStart="@drawable/search"
                 android:hint="Search..."
+                android:visibility="gone"
                 android:textColorHint="@color/blue"/>
             <TextView
                 android:layout_width="match_parent"
