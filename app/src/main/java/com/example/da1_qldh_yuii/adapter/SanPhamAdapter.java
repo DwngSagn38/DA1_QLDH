@@ -196,16 +196,20 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
                 @Override
                 public void onClick(View view) {
                     ArrayList<TaoHoaDon> list1 = new ArrayList<>();
-                    TaoHoaDonDAO taoHoaDonDAO = new TaoHoaDonDAO(context);
-                    list1 = (ArrayList<TaoHoaDon>) taoHoaDonDAO.getAll();
-                    if (list1.size() > 0){
-                        Fragment taohoadonfrg = new fragment_taohoadon();
-                        FragmentTransaction frg = fragmentManager.beginTransaction();
-                        frg.replace(R.id.flContent, taohoadonfrg).commit();
-                        dialog.dismiss();
-                    }else {
-                        Toast.makeText(context, "Vui lòng chọn sản phẩm", Toast.LENGTH_SHORT).show();
+                    list1.addAll(thdDAO.getAll());
+                    for (TaoHoaDon select : list1){
+                        if (select.getMaSanPham().equals(sp.getMaSanPham())){
+                            thdDAO.delete(select.getMaSanPham());
+                        }
                     }
+                    TaoHoaDon thd = new TaoHoaDon();
+                    thd.setMaSanPham(sp.getMaSanPham());
+                    thd.setSoLuongMua(1);
+                    thdDAO.insert(thd);
+                    Fragment taohoadonfrg = new fragment_taohoadon();
+                    FragmentTransaction frg = fragmentManager.beginTransaction();
+                    frg.replace(R.id.flContent, taohoadonfrg).commit();
+                    dialog.dismiss();
                 }
             });
         }
@@ -260,7 +264,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
                 dialog.dismiss();
             }
         });
-
 
         notifyDataSetChanged();
     }
