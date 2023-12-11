@@ -21,8 +21,8 @@ import android.widget.TextView;
 
 import com.example.da1_qldh_yuii.Navigation;
 import com.example.da1_qldh_yuii.adapter.ThongBaoAdapter;
+import com.example.da1_qldh_yuii.dao.TKeDAO;
 import com.example.da1_qldh_yuii.dao.ThongBaoDAO;
-import com.example.da1_qldh_yuii.dao.ThongKeDAO;
 import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
 import com.example.da1_qldh_yuii.fragment.frgTHD_CSP.fragment_chonsanpham;
 import com.example.da1_qldh_yuii.model.Photo;
@@ -30,6 +30,7 @@ import com.example.da1_qldh_yuii.adapter.PhotoAdapter;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.model.ThongBao;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -202,10 +203,12 @@ public class fragment_trangchu extends Fragment {
     }
 
     public void getThongKe(){
-        ThongKeDAO tkDAO = new ThongKeDAO(getContext());
+        TKeDAO tkDAO = new TKeDAO(getContext());
         tvTongDH.setText(tkDAO.getTongDonHang()+" đơn");
         tvTongSL.setText(tkDAO.getTongSoLuong()+"");
-        tvTongDT.setText(tkDAO.getDoanhThu()+" VNĐ");
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        String formattedDoanhThu = numberFormat.format(tkDAO.getDoanhThu());
+        tvTongDT.setText(formattedDoanhThu+" VNĐ");
         btnDsachChuaGiao.setText("Bạn có "+tkDAO.getDHDaGiao(0)+" đơn hàng đang chờ xử lý");
     }
 }

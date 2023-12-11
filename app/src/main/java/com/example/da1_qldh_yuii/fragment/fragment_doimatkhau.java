@@ -1,6 +1,7 @@
 package com.example.da1_qldh_yuii.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.da1_qldh_yuii.DangNhap;
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.ThanhVienDAO;
 import com.example.da1_qldh_yuii.model.ThanhVien;
@@ -50,10 +52,11 @@ public class fragment_doimatkhau extends Fragment {
                     thanhVien.setMatKhau(edPassChange.getText().toString());
 
                     if (tvDao.update(thanhVien) > 0) {
-                        Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công, mời bạn đăng nhập lại", Toast.LENGTH_SHORT).show();
                         edPassOld.setText("");
                         edPassChange.setText("");
                         edRePassChange.setText("");
+                        startActivity(new Intent(getActivity(), DangNhap.class));
                     } else {
                         Toast.makeText(getActivity(), "Thay đổi mật khẩu thất bại", Toast.LENGTH_SHORT).show();
                     }

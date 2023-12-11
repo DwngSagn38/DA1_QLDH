@@ -13,11 +13,10 @@ import com.example.da1_qldh_yuii.model.SanPham;
 
 import java.util.ArrayList;
 
-public class ThongKeDAO {
-
+public class TKeDAO {
     DbHelper dbHelper;
 
-    public ThongKeDAO(Context context) {
+    public TKeDAO(Context context) {
         dbHelper = new DbHelper(context);
     }
 
@@ -164,5 +163,51 @@ public class ThongKeDAO {
         return sanPhams;
     }
 
+    public long getDoanhThuTheoNgay(String fromDate,String toDate) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT SUM(bg.giaBan * ct.soLuong) as TongDoanhThu " +
+                "FROM CHITIETHOADON ct " +
+                "JOIN HOADON hd ON ct.maHoaDon = hd.maHoaDon " +
+                "JOIN SANPHAM sp ON ct.maSanPham = sp.maSanPham " +
+                "JOIN BANGGIA bg ON sp.maBangGia = bg.maBangGia " +
+                "WHERE hd.trangThai = 1 AND hd.ngayGiaoHangOK BETWEEN ? AND ?", new String[]{fromDate, toDate});
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") long totalRevenue = cursor.getLong(cursor.getColumnIndex("TongDoanhThu"));
+            Log.d(TAG, "getDoanhThu: " + totalRevenue);
+            return totalRevenue;
+        } else {
+            return 0;
+        }
+    }
 
+    @SuppressLint("Range")
+    public ArrayList<SanPham> getDoanhThuTheoMaSPTheoNgay(String fromDate, String toDate) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        String query = "SELECT sp.tenSanPham, SUM(bg.giaBan * ct.soLuong) as DoanhThu " +
+                "FROM CHITIETHOADON ct " +
+                "JOIN HOADON hd ON ct.maHoaDon = hd.maHoaDon " +
+                "JOIN SANPHAM sp ON ct.maSanPham = sp.maSanPham " +
+                "JOIN BANGGIA bg ON sp.maBangGia = bg.maBangGia " +
+                "WHERE hd.trangThai = 1 AND hd.ngayTao BETWEEN ? AND ? " +
+                "GROUP BY sp.maSanPham";
+
+        Cursor cursor = database.rawQuery(query,  new String[]{fromDate, toDate});
+
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                String tenSanPham = cursor.getString(cursor.getColumnIndex("tenSanPham"));
+                double doanhThu = cursor.getDouble(cursor.getColumnIndex("DoanhThu"));
+
+                SanPham sanPham = new SanPham();
+                sanPham.setTenSanPham(tenSanPham);
+                sanPham.setDoanhThu(doanhThu);
+
+                sanPhams.add(sanPham);
+            } while (cursor.moveToNext());
+        }
+
+        return sanPhams;
+    }
 }

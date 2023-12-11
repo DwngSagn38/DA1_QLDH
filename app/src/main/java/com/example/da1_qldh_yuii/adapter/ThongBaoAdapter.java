@@ -23,7 +23,7 @@ import com.example.da1_qldh_yuii.model.ThongBao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class ThongBaoAdapter extends ArrayAdapter<ThongBao> {
+public class    ThongBaoAdapter extends ArrayAdapter<ThongBao> {
 
     private Context context;
     fragment_thongbao fragment;

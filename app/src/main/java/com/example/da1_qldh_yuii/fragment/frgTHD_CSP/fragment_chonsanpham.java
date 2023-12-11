@@ -59,8 +59,11 @@ public class fragment_chonsanpham extends Fragment {
             rlTSP.setVisibility(View.GONE);
         }
 
+        TaoHoaDonDAO thdDAO = new TaoHoaDonDAO(getContext());
+        ArrayList<TaoHoaDon> list1 = (ArrayList<TaoHoaDon>) thdDAO.getAll();
+
         rcvTaoHoaDon.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new SanPhamAdapter(getContext(), list);
+        adapter = new SanPhamAdapter(getContext(), list,getActivity().getSupportFragmentManager());
         adapter.setCurrentFragment(getActivity());
         rcvTaoHoaDon.setAdapter(adapter);
         AnSelect();

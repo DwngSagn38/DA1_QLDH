@@ -2,6 +2,7 @@ package com.example.da1_qldh_yuii.fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -63,7 +64,7 @@ public class fragment_banggiatheosize extends Fragment {
         floatAddTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                showDialog(getContext(),recyclerViewBangGia);
             }
         });
 
@@ -82,10 +83,10 @@ public class fragment_banggiatheosize extends Fragment {
 
     }
 
-    private void showDialog(){
+    public void showDialog(Context context,RecyclerView recyclerView){
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = getLayoutInflater();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View view = inflater.inflate(R.layout.dl_them_banggiatheosize, null);
         builder.setView(view);
 
@@ -104,19 +105,19 @@ public class fragment_banggiatheosize extends Fragment {
                     int size = Integer.parseInt(edtSizeAdd.getText().toString());
                     double giaBan = Double.parseDouble(edtGiaBanAdd.getText().toString());
 
-                    bangGiaTheoSizeDAO = new BangGiaTheoSizeDAO(getContext());
+                    BangGiaTheoSizeDAO bgDAO = new BangGiaTheoSizeDAO(context);
                     BangGia bg = new BangGia(size,giaBan);
-                    boolean check = bangGiaTheoSizeDAO.themBangGia(bg);
+                    boolean check = bgDAO.themBangGia(bg);
                     if (check){
-                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                         //load data
-                        loadDataBG(getContext(),recyclerViewBangGia);
+                        loadDataBG(context,recyclerView);
 
                     }else{
-                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    Toast.makeText(getContext(), "Size hoặc giá bán chưa hợp lệ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Size hoặc giá bán chưa hợp lệ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -74,6 +74,8 @@ public class TaoHoaDonAdapter extends RecyclerView.Adapter<TaoHoaDonAdapter.view
                         holder.edtSoLuongMua.setText(thd.getSoLuongMua()+"");
                         thdDAO.update(thd);
                         notifyDataSetChanged();
+                    }else {
+                        holder.edtSoLuongMua.setText(0+"");
                     }
                 }
             });

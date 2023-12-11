@@ -120,8 +120,6 @@ public class fragment_taohoadon extends Fragment {
             }
         });
 
-
-
         return view;
     }
     public void getViewID(View view){
@@ -306,7 +304,6 @@ public class fragment_taohoadon extends Fragment {
                     hd.setMaHoaDon(ma);
                     hd.setMaThanhVien(matv);
                     hd.setNgayTao( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date())+" -- "+initialhours+":"+initialMin);
-//                    hd.setGio(initialMin);
                     hd.setNgayNhanHang(String.valueOf(tvNgayNhan.getText()));
                     hd.setGhiChu(ghichu);
                     hd.setTrangThai(0);
@@ -314,6 +311,7 @@ public class fragment_taohoadon extends Fragment {
                     hd.setNgayGiaoHang("");
                     hd.setNgayGiaoOk("");
 
+                    // thêm hóa đơn
                     if (hdDAO.insert(hd) != -1){
 
                         Toast.makeText(context, "Thêm thành công hóa đơn : "+ma, Toast.LENGTH_SHORT).show();

@@ -248,7 +248,7 @@ public class Navigation extends AppCompatActivity {
         }
 
         for (HoaDon hd : list){
-            if (hd.getTrangThai() == 2 && hd.getGio() + 2 < gioHienTai){
+            if (hd.getTrangThai() == 2 && hd.getGio() + 1 < gioHienTai){
                     hd.setTrangThai(1);
                     hd.setNgayGiaoOk( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()) + " -- "+Hours+":"+Min);
                     hdDAO.update(hd);

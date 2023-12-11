@@ -18,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.R;
@@ -26,6 +29,7 @@ import com.example.da1_qldh_yuii.dao.SanPhamDAO;
 import com.example.da1_qldh_yuii.dao.TaoHoaDonDAO;
 import com.example.da1_qldh_yuii.fragment.frgTHD_CSP.fragment_chonsanpham;
 import com.example.da1_qldh_yuii.fragment.frgSP_KH.frgSanPham;
+import com.example.da1_qldh_yuii.fragment.frgTHD_CSP.fragment_taohoadon;
 import com.example.da1_qldh_yuii.model.SanPham;
 import com.example.da1_qldh_yuii.model.TaoHoaDon;
 
@@ -37,6 +41,9 @@ import java.util.Set;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewholder> {
     frgSanPham frg = new frgSanPham();
+
+    private FragmentManager fragmentManager;
+
     private Context currentFragment;
     public void setCurrentFragment(Context fragment) {
         currentFragment = fragment;
@@ -50,9 +57,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
     private final Context context;
     private final ArrayList<SanPham> list;
 
-    public SanPhamAdapter(Context context, ArrayList<SanPham> list) {
+    public SanPhamAdapter(Context context, ArrayList<SanPham> list,FragmentManager fragmentManager) {
         this.context = context;
         this.list = list;
+        this.fragmentManager = fragmentManager;
         spDao = new SanPhamDAO(context);
         bgDao = new BangGiaTheoSizeDAO(context);
         thdDAO = new TaoHoaDonDAO(context);
@@ -131,11 +139,19 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
         LinearLayout llChucnang = view.findViewById(R.id.llChucnang);
         TextView btnTaoHDon = view.findViewById(R.id.btnTaoHDon);
         TextView btnTaoHDonOK = view.findViewById(R.id.btnTaoHDonOK);
+        TextView imgTaoHD = view.findViewById(R.id.imgTaoHD);
+
+        SharedPreferences pref = context.getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+        if (level == 1){
+            llChucnang.setVisibility(View.GONE);
+        }
 
         if (context.equals(currentFragment)){
 
             llChucnang.setVisibility(View.GONE);
             btnTaoHDon.setVisibility(View.VISIBLE);
+            imgTaoHD.setVisibility(View.VISIBLE);
             if (sp.getTrangThai() == 2){
                 btnTaoHDon.setVisibility(View.GONE);
                 btnTaoHDonOK.setVisibility(View.GONE);
@@ -173,6 +189,23 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.viewhold
                     btnTaoHDon.setVisibility(View.VISIBLE);
                     btnTaoHDonOK.setVisibility(View.GONE);
                     notifyDataSetChanged();
+                }
+            });
+
+            imgTaoHD.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ArrayList<TaoHoaDon> list1 = new ArrayList<>();
+                    TaoHoaDonDAO taoHoaDonDAO = new TaoHoaDonDAO(context);
+                    list1 = (ArrayList<TaoHoaDon>) taoHoaDonDAO.getAll();
+                    if (list1.size() > 0){
+                        Fragment taohoadonfrg = new fragment_taohoadon();
+                        FragmentTransaction frg = fragmentManager.beginTransaction();
+                        frg.replace(R.id.flContent, taohoadonfrg).commit();
+                        dialog.dismiss();
+                    }else {
+                        Toast.makeText(context, "Vui lòng chọn sản phẩm", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

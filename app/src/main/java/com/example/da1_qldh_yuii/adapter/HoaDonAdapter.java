@@ -112,12 +112,6 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
                 holder.tvHD.setTextColor(ContextCompat.getColor(context, R.color.green));
                 holder.tvNgayNhan.setTextColor(ContextCompat.getColor(context, R.color.green));
                 holder.tvTongTien.setTextColor(ContextCompat.getColor(context, R.color.green));
-//                if (hd.getGio()+2 == gioHienTai){
-//                    hd.setTrangThai(1);
-//                    hdDAO.update(hd);
-//                    Toast.makeText(context, hd.getMaHoaDon()+ " Đã được cập nhật trạng thái", Toast.LENGTH_SHORT).show();
-//                    hd.setNgayGiaoOk( new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
-//                }
             }else {
                 holder.tvTrangThai.setText("Hủy");
                 holder.tvTenKhachHang.setTextColor(Color.GRAY);
@@ -125,27 +119,25 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.viewholder
                 holder.tvNgayNhan.setTextColor(Color.GRAY);
                 holder.tvTrangThai.setTextColor(Color.GRAY);
                 holder.tvTongTien.setTextColor(Color.GRAY);
-                TonKho tonKho = new TonKho(hd.getMaHoaDon());
-                tkDAO.insert(tonKho);
             }
             List<String> ArrMasp = new ArrayList<>();
             List<Integer> ArrSL = new ArrayList<>();
             List<Double> ArrGia = new ArrayList<>();
 
+            double tongTien = 0;
             ArrayList<ChiTietHoaDon> listct = (ArrayList<ChiTietHoaDon>) ctDAO.getID(hd.getMaHoaDon());
             for (ChiTietHoaDon ct : listct){
-                ArrMasp.add(ct.getMaSanPham());
-                ArrSL.add(ct.getSoLuong());
+                if (ct.getSoLuong() != 0){
+                    ArrMasp.add(ct.getMaSanPham());
+                    ArrSL.add(ct.getSoLuong());
+                    BangGia bg = bgDAO.getID(spDAO.getID(ct.getMaSanPham()).getMaBangGia());
+                    double giaban = bg.getGiaBan();
+                    ArrGia.add(giaban);
+                    int soluong = ct.getSoLuong();
+                    tongTien += (giaban*soluong);
+                }
             }
 
-            double tongTien = 0;
-            for (ChiTietHoaDon ct : listct){
-                BangGia bg = bgDAO.getID(spDAO.getID(ct.getMaSanPham()).getMaBangGia());
-                double giaban = bg.getGiaBan();
-                ArrGia.add(giaban);
-                int soluong = ct.getSoLuong();
-                tongTien += (giaban*soluong);
-            }
             VanChuyen vc = vcDAO.getID(hd.getMaVanChuyen());
             double phivc = vc.getGiaVanChuyen();
 

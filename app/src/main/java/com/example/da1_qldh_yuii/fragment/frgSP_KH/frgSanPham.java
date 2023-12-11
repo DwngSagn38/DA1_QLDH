@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -92,6 +93,12 @@ public class frgSanPham extends Fragment {
         spDao = new SanPhamDAO(getContext());
         list = (ArrayList<SanPham>) spDao.getAll();
 
+        SharedPreferences pref = getContext().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+        if (level == 0){
+            floatAddSanPham.setVisibility(View.VISIBLE);
+        }
+
         if (list.size() != 0){
             tvThemSp.setVisibility(View.GONE);
         }
@@ -105,6 +112,7 @@ public class frgSanPham extends Fragment {
                 opendialog(sanPham, getContext(), 0, list);
             }
         });
+
         btnTatCa.setBackgroundResource(R.drawable.khungdn);
         btnTatCa.setTextColor(Color.WHITE);
         btnTatCa.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +124,13 @@ public class frgSanPham extends Fragment {
                 btnTheosize.setBackgroundResource(R.drawable.khung);
                 btnTatCa.setTextColor(Color.WHITE);
                 btnTheosize.setTextColor(Color.BLUE);
+                floatAddSanPham.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SanPham sanPham = new SanPham();
+                        opendialog(sanPham, getContext(), 0, list);
+                    }
+                });
             }
         });
 
@@ -127,8 +142,15 @@ public class frgSanPham extends Fragment {
                 txtDanhSachSP.setText("Danh sách bảng giá");
                 btnTheosize.setBackgroundResource(R.drawable.khungdn);
                 btnTatCa.setBackgroundResource(R.drawable.khung);
+                tvThemSp.setVisibility(View.GONE);
                 btnTheosize.setTextColor(Color.WHITE);
                 btnTatCa.setTextColor(Color.BLUE);
+                floatAddSanPham.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        frgBG.showDialog(getContext(),rcvSanPham);
+                    }
+                });
             }
         });
         btnTT.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +177,7 @@ public class frgSanPham extends Fragment {
 
     public void loadData(ArrayList<SanPham> list) {
         rcvSanPham.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new SanPhamAdapter(getContext(), list);
+        adapter = new SanPhamAdapter(getContext(), list,getActivity().getSupportFragmentManager());
         rcvSanPham.setAdapter(adapter);
     }
 

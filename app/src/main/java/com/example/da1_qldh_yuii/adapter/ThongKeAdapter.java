@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.dao.SanPhamDAO;
-import com.example.da1_qldh_yuii.dao.ThongKeDAO;
+import com.example.da1_qldh_yuii.dao.TKeDAO;
 import com.example.da1_qldh_yuii.model.SanPham;
 
 import java.util.ArrayList;
@@ -20,14 +20,14 @@ import java.util.ArrayList;
 public class ThongKeAdapter extends RecyclerView.Adapter<ThongKeAdapter.viewholder> {
 
     SanPhamDAO spDao;
-    ThongKeDAO tkDao;
+    TKeDAO tkDao;
     private final Context context;
     private final ArrayList<SanPham> list;
 
     public ThongKeAdapter(Context context, ArrayList<SanPham> list) {
         this.context = context;
         this.list = list;
-        tkDao = new ThongKeDAO(context);
+        tkDao = new TKeDAO(context);
         spDao = new SanPhamDAO(context);
     }
 

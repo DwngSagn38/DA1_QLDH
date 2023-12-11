@@ -3,6 +3,8 @@ package com.example.da1_qldh_yuii.fragment;
 import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -84,8 +86,18 @@ public class fragment_donvivanchuyen extends Fragment {
         llDVVCadd = view.findViewById(R.id.llDVVCadd);
         imgback = view.findViewById(R.id.imgback);
 
+        SharedPreferences pref = getContext().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        int level = pref.getInt("LEVEL", 1);
+        if (level == 1){
+            llDVVCadd.setVisibility(View.GONE);
+            llDVVCNgung.setVisibility(View.GONE);
+            llDVVCds.setVisibility(View.GONE);
+            rcvDonViVanChuyen.setVisibility(View.VISIBLE);
+        }
+
         vcDao = new VanChuyenDAO(getContext());
         list.addAll(vcDao.getAll());
+        loadData(list);
         llDVVCds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

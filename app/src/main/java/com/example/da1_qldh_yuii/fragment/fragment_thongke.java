@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.da1_qldh_yuii.R;
 import com.example.da1_qldh_yuii.adapter.ThongKeAdapter;
-import com.example.da1_qldh_yuii.dao.ThongKeDAO;
+import com.example.da1_qldh_yuii.dao.TKeDAO;
 import com.example.da1_qldh_yuii.model.SanPham;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class fragment_thongke extends Fragment {
 
     TextView tvthongKe,tvAllDH,tvChuaGiao,tvDaGiao,tvHuy,tvDangGiao;
     LinearLayout llTKDH;
-    ThongKeDAO tkDAO;
+    TKeDAO tkDAO;
     ThongKeAdapter adapter;
     ArrayList<SanPham> list = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class fragment_thongke extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getView(view);
 
-        tkDAO = new ThongKeDAO(getContext());
+        tkDAO = new TKeDAO(getContext());
         list.addAll(tkDAO.getAll());
         loadData(list);
         setClickButton(btnTatCa,btnTop5,btnDonHang);

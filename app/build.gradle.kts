@@ -32,7 +32,6 @@ android {
 
 dependencies {
 
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -48,6 +47,7 @@ dependencies {
     implementation ("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
     implementation ("pub.devrel:easypermissions:3.0.0")
 
+    // thống kê
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }
